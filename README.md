@@ -32,17 +32,25 @@ Dedicated servers for streaming and licenses with major publishers are a bit exp
 
 
 ## Technologies Used
+- [Soundiiz](https://soundiiz.com/), a playlist export tool
+- [Exportify](https://github.com/watsonbox/exportify), exports spotify playlists in CSV format
 - [Spotify API](https://developer.spotify.com/), for music metadata and playlist information
 - [Apple Music API](https://developer.apple.com/documentation/applemusicapi/), for pulling playlist information
+- [Audio Fingerprint Identifier](https://github.com/itspoma/audio-fingerprint-identifying-python), for helping identify music
 - [Replit](https://replit.com/), a collaborative browser IDE
 - [FFmpeg](https://github.com/FFmpeg/FFmpeg), an open-source collection of tools for multimedia processing
 
 
 ## Features
 Planned features:
-- Awesome feature 1
-- Awesome feature 2
-- Awesome feature 3
+
+- File Scanner
+	- Allows users to scan their local music libraries and convert to local editable playlists
+	- Avery's story corresponds to this
+
+- Open Borders
+    - Allows users to use our platform to import and export playlists to and from Apple Music and Spotify
+	- Austin and Nelson's stories correspond to this
 
 <!--
 ## Screenshots
