@@ -1,5 +1,5 @@
 # Beat.Box
-> Our team is building a multimedia platform for music, internet radio, and podcasts so listeners everywhere can save time by streamlining their experience. Beat.Box will allow users to stream music, play their own downloaded music files, tune into globally-synced internet radio channels, and listen to their favorite podcasts all with the same app. 
+> Our team is building a media platform for music playlists so listeners can save time by making sharing playlists a breeze. Beat.Box will allow users to import and export playlists to and from their favorite streaming platforms and convert their offline libraries to sharable playlists.
 
 > By Libin Koyikalathu, Naomi Padilla, Austin Sansing, Nelson Uzoaru, and Avery VanAusdal
 <!--   > Live demo [TBA](https://bitbucket.org/cs3398-s22-romulans/beat-box/src/). <!-- If you have the project hosted somewhere, include the link here. -->
