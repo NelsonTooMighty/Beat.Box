@@ -1,12 +1,14 @@
-# Project Name
-> Outline a brief description of your project.
-> Live demo [_here_](https://www.example.com). <!-- If you have the project hosted somewhere, include the link here. -->
+# Beat.Box
+> Our team is building a multimedia platform for music, internet radio, and podcasts so listeners everywhere can save time by streamlining their experience. Beat.Box will allow users to stream music, play their own downloaded music files, tune into globally-synced internet radio channels, and listen to their favorite podcasts all with the same app. 
+
+> By Libin Koyikalathu, Naomi Padilla, Austin Sansing, Nelson Uzoaru, and Avery VanAusdal
+<!--   > Live demo [TBA](https://bitbucket.org/cs3398-s22-romulans/beat-box/src/). <!-- If you have the project hosted somewhere, include the link here. -->
 
 ## Table of Contents
 * [General Info](#general-information)
 * [Technologies Used](#technologies-used)
 * [Features](#features)
-* [Screenshots](#screenshots)
+<!-- * [Screenshots](#screenshots)
 * [Setup](#setup)
 * [Usage](#usage)
 * [Project Status](#project-status)
@@ -17,7 +19,9 @@
 
 
 ## General Information
-- Provide general information about your project here.
+
+Dedicated servers for streaming and licenses with major publishers are a bit expensive for a student project, so we'll be working with what we've got.
+<!-- - Provide general information about your project here.
 - What problem does it (intend to) solve?
 - What is the purpose of your project?
 - Why did you undertake it?
@@ -36,29 +40,29 @@ List the ready features here:
 - Awesome feature 2
 - Awesome feature 3
 
-
+<!--
 ## Screenshots
 ![Example screenshot](./img/screenshot.png)
 <!-- If you have screenshots you'd like to share, include them here. -->
 
-
+<!--
 ## Setup
 What are the project requirements/dependencies? Where are they listed? A requirements.txt or a Pipfile.lock file perhaps? Where is it located?
 
 Proceed to describe how to install / setup one's local environment / get started with the project.
 
-
+<!--
 ## Usage
 How does one go about using it?
 Provide various use cases and code examples here.
 
 `write-your-code-here`
 
-
+<!--
 ## Project Status
 Project is: _in progress_ / _complete_ / _no longer being worked on_. If you are no longer working on it, provide reasons why.
 
-
+<!--
 ## Room for Improvement
 Include areas you believe need improvement / could be improved. Also add TODOs for future development.
 
