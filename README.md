@@ -19,6 +19,7 @@
 
 
 ## General Information
+![Logo](https://bitbucket.org/cs3398-s22-romulans/beat.box/downloads/Beat.Box.png)
 
 Dedicated servers for streaming and licenses with major publishers are a bit expensive for a student project, so we'll be working with what we've got.
 <!-- - Provide general information about your project here.
@@ -29,13 +30,14 @@ Dedicated servers for streaming and licenses with major publishers are a bit exp
 
 
 ## Technologies Used
-- Tech 1 - version 1.0
-- Tech 2 - version 2.0
-- Tech 3 - version 3.0
+- [Spotify API](https://developer.spotify.com/), for music metadata and playlist information
+- [Apple Music API](https://developer.apple.com/documentation/applemusicapi/), for pulling playlist information
+- [Replit](https://replit.com/), a collaborative browser IDE
+- [FFmpeg](https://github.com/FFmpeg/FFmpeg), an open-source collection of tools for multimedia processing
 
 
 ## Features
-List the ready features here:
+Planned features:
 - Awesome feature 1
 - Awesome feature 2
 - Awesome feature 3
