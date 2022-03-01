@@ -1,3 +1,7 @@
+import javax.swing.*;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 public class Song { //API documentation: https://developer.spotify.com/documentation/web-api/reference/#/operations/get-track, https://developer.apple.com/documentation/musickit/track/
     String trackTitle;
     String artistName;
@@ -84,5 +88,26 @@ public class Song { //API documentation: https://developer.spotify.com/documenta
         this.localPath = localPath;
         this.isLocal = isLocal;
         this.albumArtLocation = null; //Todo: check isLocal, find albumArtLocation
+    }
+
+    public ImageIcon getAlbumArtImageIcon() {
+        if(albumArtLocation != null) {
+            if (isLocal) {
+                try {
+                    return new ImageIcon(albumArtLocation);
+                } catch (Exception e) {
+                    System.err.print("Invalid local path: " + albumArtLocation);
+                    e.printStackTrace();
+                }
+            } else {
+                try {
+                    return new ImageIcon(new URL(albumArtLocation));
+                } catch (Exception e) {
+                    System.err.print("Invalid URL: " + albumArtLocation);
+                    e.printStackTrace();
+                }
+            }
+        }
+        return null;
     }
 }
