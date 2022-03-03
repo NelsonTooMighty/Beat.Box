@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class Player  {
 
-    public Player() throws LineUnavailableException, UnsupportedAudioFileException, IOException  {
+    public Player() throws Exception {
         File file = new File ("befine.wav");
         AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
         Clip clip = AudioSystem.getClip();

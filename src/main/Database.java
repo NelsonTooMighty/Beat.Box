@@ -4,11 +4,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.io.*;
-import java.util.Iterator;
 
 public class Database extends ArrayList<Playlist> { //add(Playlist), remove(Playlist), etc
-    private static Database singleton = new Database();
-    private String localLibrary = "playlists/";
+    private static final Database singleton = new Database();
+    private final String localLibrary = "playlists/";
 
     private Database() {boot();}
 
@@ -19,23 +18,31 @@ public class Database extends ArrayList<Playlist> { //add(Playlist), remove(Play
     void boot() { //with help from https://www.logicbig.com/how-to/code-snippets/jcode-java-io-files-newdirectorystream.html
         Path path = Paths.get(localLibrary);
         try (DirectoryStream<Path> ds = Files.newDirectoryStream(path)) {
-            Iterator<Path> iterator = ds.iterator();
-            while (iterator.hasNext()) {
-                Path p = iterator.next();
-                readFromFile(path.relativize(p).toString());
+            for (Path p : ds) {
+                loadFromFile(p.toString());
             }
-        } catch (IOException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    void readFromFile(String filepath) throws FileNotFoundException { //with help from https://www.tutorialspoint.com/java/java_serialization.htm
+    Playlist loadFromFile(String filepath) throws IOException, ClassNotFoundException { //with help from https://www.tutorialspoint.com/java/java_serialization.htm
+        Playlist pl = null;
         FileInputStream fileIn = new FileInputStream(filepath);
+        ObjectInputStream in = new ObjectInputStream(fileIn);
+        pl = (Playlist) in.readObject();
+        in.close();
+        fileIn.close();
+        return pl;
     }
 
     void saveToFile(Playlist pl) throws IOException {
+        saveToFile(pl, localLibrary + pl.getPlaylistName().replace('/',' ') + pl.hashCode());
+    }
+
+    void saveToFile(Playlist pl, String filepath) throws IOException {
         FileOutputStream fileOut =
-                new FileOutputStream(localLibrary + pl.getPlaylistName().replace('/',' ') + pl.hashCode());
+                new FileOutputStream(filepath);
         ObjectOutputStream out = new ObjectOutputStream(fileOut);
         out.writeObject(pl);
         out.close();

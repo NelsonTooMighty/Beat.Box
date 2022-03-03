@@ -1,7 +1,8 @@
 import javax.swing.*;
+import java.io.Serializable;
 import java.net.URL;
 
-public class Song { //API documentation: https://developer.spotify.com/documentation/web-api/reference/#/operations/get-track, https://developer.apple.com/documentation/musickit/track/
+public class Song implements Serializable { //API documentation: https://developer.spotify.com/documentation/web-api/reference/#/operations/get-track, https://developer.apple.com/documentation/musickit/track/
     String trackTitle;
     String artistName;
     String albumName;
