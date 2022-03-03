@@ -8,17 +8,20 @@
 int main(){
     pid_t pid;
     char array[100];
-    char* argument_list [] = {"open","-a","Music.app", NULL};
+    
     if ((pid=fork())==0){
-        chdir("..");
-        printf("First Change: %s\n",getcwd(array,100));
-        chdir("Applications");
-        printf("Application Change: %s\n",getcwd(array,100));
-        execlp("open","open","-a","Music.app",(char *)NULL);
+        
+        chdir(".."); //Changes to basic Directory
+
+        //printf("First Change: %s\n",getcwd(array,100));
+
+        chdir("Applications"); //changes to Applications
+
+        //printf("Application Change: %s\n",getcwd(array,100));
+
+        execlp("open","open","-a","Music.app",(char *)NULL); // terminal code that opens Apple Music
     }
         
-        //"Applications",
-       
-        //printf("Other Execute: %d\n",&execv);
+    
     
 }
