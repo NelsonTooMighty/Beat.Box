@@ -7,7 +7,7 @@ import java.io.*;
 
 public class Database extends ArrayList<Playlist> { //add(Playlist), remove(Playlist), etc
     private static final Database singleton = new Database();
-    private final String localLibrary = "playlists/";
+    private final String localLibrary = "../playlists/";
 
     private Database() {boot();}
 
@@ -19,7 +19,7 @@ public class Database extends ArrayList<Playlist> { //add(Playlist), remove(Play
         Path path = Paths.get(localLibrary);
         try (DirectoryStream<Path> ds = Files.newDirectoryStream(path)) {
             for (Path p : ds) {
-                loadFromFile(p.toString());
+                add(loadFromFile(p.toString()));
             }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
