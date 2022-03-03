@@ -51,6 +51,15 @@ Planned features:
 - Open Borders
     - Allows users to use our platform to import and export playlists to and from Apple Music and Spotify
 	- Austin and Nelson's stories correspond to this
+## Acknowledgements
+Give credit here.
+- This project was inspired by...
+- This project was based on [this tutorial](https://www.example.com).
+- Many thanks to...
+- The design of the website template sketch is based on by [Pandora](www.pandora.com) [Spotify](spotify.com) and a tutorial from
+[Satori Graphics] from youtube (https://www.youtube.com/watch?v=eiV7E_LVlxs&ab_channel=SatoriGraphics)
+- The operating systems code to open Apple Music comes from Xiao Chen lab 1 homework and 
+  linuxHint.com(https://linuxhint.com/c-chdir-function-usage/).
 
 <!--
 ## Screenshots
@@ -87,11 +96,7 @@ To do:
 - Feature to be added 2
 
 
-## Acknowledgements
-Give credit here.
-- This project was inspired by...
-- This project was based on [this tutorial](https://www.example.com).
-- Many thanks to...
+
 
 
 ## Contact
