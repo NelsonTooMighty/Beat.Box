@@ -18,7 +18,7 @@ public class FavoritePlaylistCreator extends LayoutFrame {
     currentDatabase.add(likedPlaylist);
 
     
-    ActionListener likeNow = new ActionListener(){
+    ActionListener likeNow = new ActionListener(){ // supposed to react when user clicks the icon
         @Override
         public void actionPerformed(ActionEvent e){
             if (isLiked){ 
