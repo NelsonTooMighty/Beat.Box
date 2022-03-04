@@ -20,6 +20,10 @@ int main(){
         //printf("Application Change: %s\n",getcwd(array,100));
 
         execlp("open","open","-a","Music.app",(char *)NULL); // terminal code that opens Apple Music
+
+        // to run code gcc AppleMusicOpener.c -o apple
+        // then type ./apple
+    
     }
         
     
