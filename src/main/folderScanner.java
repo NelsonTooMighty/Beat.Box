@@ -5,37 +5,37 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 public class folderScanner {
-    public String songTitle(){
+    public void songTitle(){
         Scanner input = new Scanner(System.in);
         String songName;
+        String []songArray;
         int stringLength;
+        Playlist currentPlaylist = new Playlist();
+        Database currentDatabase = Database.getInstance();
+
         Path path = Paths.get(input.nextLine());
-        try (DirectoryStream<Path> ds = Files.newDirectoryStream(path)) {
-            for (Path p : ds) {
+        try (DirectoryStream<Path> ds = Files.newDirectoryStream(path)) 
+        {
+            for (Path p : ds) 
+            {
                 Song currentSong = new Song();
-                current
+                songName = p.toString();
+                songArray = songName.split("[\\.]+");
+                stringLength = songArray.length;
+                songName = songArray[stringLength - 2];
+                currentSong.setTrackTitle(songName);
+                currentSong.setLocal(true);
+                currentSong.setLocalPath(p.toString());
+                currentPlaylist.add(currentSong);
             }
-        } catch (IOException e) {
+            
+        } catch (IOException e) 
+        {
             e.printStackTrace();
         }
-        input = new Scanner(System.in);
-
-        while(input.hasNext()){
-            songName = input.next();
-            songName.split
-            stringLength = songName.length();
-            if(songName.contains(".mp3") || songName.contains(".wav")){
-                songName = songName.substring(0,stringLength -4);
-            }
-            else if (songName.contains(".flac")){
-                songName = songName.substring(0,stringLength-5);
-            }
-
-
-            System.out.println(songName);
-            return songName;
-        }
-
+        currentDatabase.add(currentPlaylist);
+       
+        input.close();
     }
 
 }
