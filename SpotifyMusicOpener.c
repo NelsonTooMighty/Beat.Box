@@ -21,8 +21,8 @@ int main(){
 
         execlp("open","open","-a","Spotify.app",(char *)NULL); // terminal code that opens Spotify Music
     }
-       // to run code gcc AppleMusicOpener.c -o apple
-        // then type ./apple
+       // to run code gcc AppleMusicOpener.c -o spotify
+        // then type ./spotify
     
     
 }
