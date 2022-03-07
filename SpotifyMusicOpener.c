@@ -19,13 +19,10 @@ int main(){
 
         //printf("Application Change: %s\n",getcwd(array,100));
 
-        execlp("open","open","-a","Music.app",(char *)NULL); // terminal code that opens Apple Music
-
-        // to run code gcc AppleMusicOpener.c -o apple
-        // then type ./apple
-    
+        execlp("open","open","-a","Spotify.app",(char *)NULL); // terminal code that opens Spotify Music
     }
-        
+       // to run code use terminal and enter: gcc SpotifyMusicOpener.c -o spotify
+        // then type ./spotify
     
     
 }
