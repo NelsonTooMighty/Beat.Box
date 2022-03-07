@@ -69,10 +69,10 @@ Give credit here.
 - Naomi has created a basic functional GUI on netbean. I got the buttons to lead to other GUI that we plan on creating in the next sprint 
  are the artist and song page. 
  -Naomi got done a basic Music Player gui with functional play, restart and pause button. This GUI reads a wav file and plays this file as a 
-  a clip. She tried to connect both functional GUIS but each GUI was made on a different platforms so it was difficult to combine the two.
+  a clip. She tried to connect both functional GUIS but each GUI was made on a different platforms so it was difficult to combine the two. 
 
 ## sprint two goals 
--Naomi is expected to design future layouts for 
+-Naomi is expected to design future layouts for  the music player
  
 
 <!--
