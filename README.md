@@ -60,6 +60,17 @@ Give credit here.
 [Satori Graphics] from youtube (https://www.youtube.com/watch?v=eiV7E_LVlxs&ab_channel=SatoriGraphics)
 - The operating systems code to open Apple Music comes from Xiao Chen lab 1 homework and 
   linuxHint.com(https://linuxhint.com/c-chdir-function-usage/).
+-Designing the the basic music player I followed BRO CODE on youtube (https://www.youtube.com/watch?v=SyZQVJiARTQ), 
+-Learning about netbean and how to create a basic functional GUI I took guidance from Mahmoud Hamwi (https://www.youtube.com/watch?v=lg5zWJTQWx8&t=229s)
+## done items
+- Naomi has created a basic functional GUI on netbean. I got the buttons to lead to other GUI that we plan on creating in the next sprint 
+ are the artist and song page. 
+ -Naomi got done a basic Music Player gui with functional play, restart and pause button. This GUI reads a wav file and plays this file as a 
+  a clip. She tried to connect both functional GUIS but each GUI was made on a different platforms so it was difficult to combine the two.
+
+## sprint two goals 
+-Naomi is expected to design future layouts for 
+ 
 
 <!--
 ## Screenshots
