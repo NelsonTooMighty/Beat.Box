@@ -8,6 +8,7 @@
 * [General Info](#general-information)
 * [Technologies Used](#technologies-used)
 * [Features](#features)
+* [Acknowledgements](#acknowledgements)
 
 <!-- 
 * [Screenshots](#screenshots)
@@ -15,7 +16,6 @@
 * [Usage](#usage)
 * [Project Status](#project-status)
 * [Room for Improvement](#room-for-improvement)
-* [Acknowledgements](#acknowledgements)
 * [Contact](#contact)
 * [License](#license) -->
 
@@ -32,6 +32,7 @@ Dedicated servers for streaming and licenses with major publishers are a bit exp
 
 
 ## Technologies Used
+- [Spotify Web API Java](https://github.com/spotify-web-api-java/spotify-web-api-java), a Java wrapper for Spotify's API on GitHub
 - [Soundiiz](https://soundiiz.com/), a playlist export tool
 - [Exportify](https://github.com/watsonbox/exportify), exports spotify playlists in CSV format
 - [Spotify API](https://developer.spotify.com/), for music metadata and playlist information
@@ -51,6 +52,8 @@ Planned features:
 - Open Borders
     - Allows users to use our platform to import and export playlists to and from Apple Music and Spotify
 	- Austin and Nelson's stories correspond to this
+
+	
 ## Acknowledgements
 Give credit here.
 - This project was inspired by...
