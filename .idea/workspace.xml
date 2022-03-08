@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< refs/remotes/origin/master
     <list default="true" id="e20f25ba-c7bc-43d0-80cb-579fe9d9e0bd" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
@@ -22,6 +23,9 @@
       <change beforePath="$PROJECT_DIR$/src/resources/test_serial" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/TestDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/TestDatabase.java" afterDir="false" />
     </list>
+=======
+    <list default="true" id="e20f25ba-c7bc-43d0-80cb-579fe9d9e0bd" name="Changes" comment="" />
+>>>>>>> add a research folder and moved beat.box java file into main
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,7 +55,11 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+<<<<<<< refs/remotes/origin/master
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+=======
+    <property name="WebServerToolWindowFactoryState" value="false" />
+>>>>>>> add a research folder and moved beat.box java file into main
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../Personal Projects/Java" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
