@@ -143,13 +143,13 @@ Planned features:
 
   - Worked on References:
       - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/test/
-  - Acknowledgements:
+  - Acknowledgements: Avery VanAusdal for helping me out and giving me pointers for where to start on the testers. 
   - Summary of Work Done:
       - Created a tester classes for both song and playlist classes
-  - Status:
+  - Status: Completed my tester classes
   - Issues/Needed Fixes:
   - Sprint 2 Expectations:
-    -
+    - Continue to build on testers needed for classes created for the player.
     -
     -
 ### Libin Koyikalathu:
