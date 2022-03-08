@@ -56,8 +56,8 @@ Planned features:
 ## Sprint 1:
 ### Naomi Rae:
   - Worked on References:
-        - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/main/LayoutFrame.java
-        - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/main/Player.java
+      - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/main/LayoutFrame.java
+      - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/main/Player.java
   - Acknowledgements:
       - Designing the the basic music player I followed BRO CODE on youtube
         - https://www.youtube.com/watch?v=SyZQVJiARTQ
