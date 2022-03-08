@@ -53,7 +53,32 @@ Planned features:
     - Allows users to use our platform to import and export playlists to and from Apple Music and Spotify
 	- Austin and Nelson's stories correspond to this
 
-	
+# Naomi Rae:
+    * ## Worked on References:
+      * ### https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/main/LayoutFrame.java
+      * ### https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/main/Player.java
+    * ## Acknowledgements:
+      * ###
+      * ###
+      * ###
+    * ## Summary of Work Done:
+      * ###
+      * ###
+      * ###
+    * ## Status:
+      * ###
+      * ###
+      * ###
+    * ## Needed Fixes:
+      * ###
+      * ###
+      * ###
+    * ## Sprint 2 Expectations:
+      * ###
+      * ###
+      * ###
+
+    
 ## Acknowledgements
 Give credit here.
 - This project was inspired by...
@@ -67,10 +92,10 @@ Give credit here.
 -Learning about netbean and how to create a basic functional GUI I took guidance from Mahmoud Hamwi (https://www.youtube.com/watch?v=lg5zWJTQWx8&t=229s)
 ## done items
 - Naomi did research and has created a basic functional GUI on netbean. I got the buttons to lead to other GUI that we plan on creating in the next sprint 
- are the artist and song page. // https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/main/LayoutFrame.java
+ are the artist and song page. // 
  -Naomi got done a basic Music Player gui with functional play, restart and pause button. This GUI reads a wav file and plays this file as a 
   a clip. She tried to connect both functional GUIS but each GUI was made on a different platforms so it was difficult to combine the two. 
-   https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/main/Player.java
+   
 -Libin has created two classes which can open spotify and apple music with a linux/apple system https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/SpotifyMusicOpener.c , 
  , https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/AppleMusicOpener.c
  -Libin created a liked playlist in which contains a button in the shape of our logo, once it is clicked it will add on to a liked playlist and be saved on 
