@@ -1,4 +1,4 @@
-
+/*
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -30,12 +30,13 @@ public class FavoritePlaylistCreator extends LayoutFrame {
                 addSong();
             }
         }
+    };
+
+    
     }
     private void addSong(){likedPlaylist.add(currentSong);}
     private void removeSong(){likedPlaylist.remove(currentSong);}
     
-    }
-
-    
     
 }
+*/

@@ -7,7 +7,7 @@ import java.io.*;
 
 public class Database extends ArrayList<Playlist> { //add(Playlist), remove(Playlist), etc
     private static final Database singleton = new Database();
-    private final String localLibrary = "../playlists/";
+    private final String localLibrary = "playlists/";
 
     private Database() {boot();}
 

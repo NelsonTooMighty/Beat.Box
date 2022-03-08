@@ -8,7 +8,7 @@ public class Song implements Serializable { //API documentation: https://develop
     String albumName;
     String releaseDate;
     String albumArtLocation;
-    boolean isLocal;
+    boolean isLocal = false;
     String localPath;
 
     public Song() {
