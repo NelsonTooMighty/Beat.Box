@@ -53,59 +53,164 @@ Planned features:
     - Allows users to use our platform to import and export playlists to and from Apple Music and Spotify
 	- Austin and Nelson's stories correspond to this
 
-## Naomi Rae:
+## Sprint 1:
+### Naomi Rae:
 
   - Worked on References:
-      - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/main/LayoutFrame.java
-      - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/main/Player.java
+    - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/main/LayoutFrame.java
+    - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/main/Player.java
   - Acknowledgements:
-      -
-      -
+    - Designing the the basic music player I followed BRO CODE on youtube
+      - https://www.youtube.com/watch?v=SyZQVJiARTQ
+    - Learning about netbean and how to create a basic functional GUI I took guidance from Mahmoud Hamwi
+      - https://www.youtube.com/watch?v=lg5zWJTQWx8&t=229s
       -
   - Summary of Work Done:
-      -
-      -
+    - Did research and had created a basic functional GUI on netbean. I got the buttons to lead to other GUI that we plan on creating in the next sprint are the artist and song page.
+    - Created a basic Music Player gui with functional play, restart and pause button. This GUI reads a wav file and plays this file as a clip. I tried to connect both functional GUIS but each GUI was made on a different platforms so it was difficult to combine the two.
       -
   - Status:
-      -
-      -
-      -
-  - Needed Fixes:
-      -
-      -
+    -
+    -
+    -
+  - Issues/Needed Fixes:
+    - Got 2 different GUI's
+    -
+    -
+  - Sprint 2 Expectations:
+    - Create a more establish connection between the front and back end of the GUI.
+    - Expect to design future layouts for the music player and the front end of the GUI.
+    -
+### Austin Sansing:
+
+  - Worked on References:
+    - 
+    - 
+  - Acknowledgements:
+    -
+    -
+    -
+  - Summary of Work Done:
+    -
+    -
+    -
+  - Status:
+    -
+    -
+    -
+  - Issues/ Needed Fixes:
+    - 
+    -
       -
   - Sprint 2 Expectations:
-      -
-      -
-      -
+    - 
+    -
+    -
+### Avery VanAusdal:
 
+  - Worked on References:
+    - 
+    - 
+  - Acknowledgements:
+    -
+    -
+    -
+  - Summary of Work Done:
+    -
+    -
+    -
+  - Status:
+    -
+    -
+    -
+  - Issues/Needed Fixes:
+    - 
+    -
+    -
+  - Sprint 2 Expectations:
+    -
+    -
+    -
+### Nelson Uzoaru:
+
+  - Worked on References:
+    - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/test/
+    - 
+  - Acknowledgements:
+    -
+    -
+    -
+  - Summary of Work Done:
+    - Created a tester classes for both song and playlist classes
+    -
+    -
+  - Status:
+    -
+    -
+    -
+  - Issues/Needed Fixes:
+    -
+    -
+    -
+  - Sprint 2 Expectations:
+    -
+    -
+    -
+### Libin Koyikalathu:
+
+  - Worked on References:
+    - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/SpotifyMusicOpener.c
+    - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/AppleMusicOpener.c
+    - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/main/FavoritePlaylistCreator.java
+    - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/main/folderScanner.java
+    - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/Website%20Layout.png
+  - Acknowledgements:
+    - The design of the website template sketch is based on by [Pandora],[Spotify] and a tutorial from [Satori Graphics] from youtube.
+        - www.pandora.com
+        - www.spotify.com
+        - https://www.youtube.com/watch?v=eiV7E_LVlxs&ab_channel=SatoriGraphics
+
+    - The operating systems code to open Apple Music is based from Xiao Chen lab 1 homework and [linuxHint.com]
+        - https://linuxhint.com/c-chdir-function-usage/
+  - Summary of Work Done:
+    - Created two classes which can open spotify and apple music with a linux/apple system
+    - With the help of Naomi created a sample of expected design of music player.
+    - Create a button that once clicked by user if they liked the song will send the song to the liked playlist and be saved on the database.
+    - I was able to create a scanner that will read a local file address and store song on local playlist and storage server.
+  - Status:
+    -
+    -
+    -
+  - Issues/Needed Fixes:
+    - 
+    -
+    -
+  - Sprint 2 Expectations:
+    -
+    -
+    -
     
 ## Acknowledgements
 Give credit here.
 - This project was inspired by...
 - This project was based on [this tutorial](https://www.example.com).
 - Many thanks to...
-- The design of the website template sketch is based on by [Pandora](www.pandora.com) [Spotify](spotify.com) and a tutorial from
-[Satori Graphics] from youtube (https://www.youtube.com/watch?v=eiV7E_LVlxs&ab_channel=SatoriGraphics)
-- The operating systems code to open Apple Music comes from Xiao Chen lab 1 homework and 
-  linuxHint.com(https://linuxhint.com/c-chdir-function-usage/).
--Designing the the basic music player I followed BRO CODE on youtube (https://www.youtube.com/watch?v=SyZQVJiARTQ), 
--Learning about netbean and how to create a basic functional GUI I took guidance from Mahmoud Hamwi (https://www.youtube.com/watch?v=lg5zWJTQWx8&t=229s)
+-  ()
+- ().
+- (), 
+- ()
 ## done items
-- Naomi did research and has created a basic functional GUI on netbean. I got the buttons to lead to other GUI that we plan on creating in the next sprint 
- are the artist and song page. // 
- -Naomi got done a basic Music Player gui with functional play, restart and pause button. This GUI reads a wav file and plays this file as a 
-  a clip. She tried to connect both functional GUIS but each GUI was made on a different platforms so it was difficult to combine the two. 
+- Naomi  // 
+ -Naomi got done  
    
--Libin has created two classes which can open spotify and apple music with a linux/apple system https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/SpotifyMusicOpener.c , 
- , https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/AppleMusicOpener.c
- -Libin created a liked playlist in which contains a button in the shape of our logo, once it is clicked it will add on to a liked playlist and be saved on 
-  the database // https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/main/FavoritePlaylistCreator.java
+-Libin has   , 
+ , 
+ -Libin // 
 
-- Nelson created tester classes for both song and playlist classes, https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/test/
+- Nelson , 
 
 ## sprint two goals 
--Naomi is expected to design future layouts for the music player and the front end of the GUI.
+-Naomi is 
  cleaner and appealing design that we all will discuss before the next sprint starts. This sprint the backend and front-end arent
   connected this sprint but do plan for there to be an established connection with basic functionality. 
  
