@@ -68,7 +68,7 @@ Planned features:
   - Summary of Work Done:
     - Did research and had created a basic functional GUI on netbean. I got the buttons to lead to other GUI that we plan on creating in the next sprint are the artist and song page.
     - Created a basic Music Player gui with functional play, restart and pause button. This GUI reads a wav file and plays this file as a clip. I tried to connect both functional GUIS but each GUI was made on a different platforms so it was difficult to combine the two.
-      -
+      
   - Status:
     -
     -
@@ -100,37 +100,44 @@ Planned features:
     -
   - Issues/ Needed Fixes:
     - 
-    -
-      -
+    - 
+    - 
   - Sprint 2 Expectations:
     - 
     -
     -
 ### Avery VanAusdal:
-
-  - Worked on References:
-    - 
-    - 
+    
+  - Work done:
+      - Created [Song Class](https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/main/Song.java) for representing individual tracks
+        - Commits: [9b0d34c](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/135d6d89d411af15e5fd401c1cf3df8da517ef66) and [135d6d8](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/b4c8b6599d9c60c0f6dca9ffd3cb96f14f6171c0)
+      - Created [Playlist Class](https://bitbucket.org/cs3398-s22-romulans/beat.box/src/demo/src/main/Playlist.java) which stores Song objects as a linked list
+        - Commits: [4b85687](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/4b856872aa0f28466b6b65b47fed8367d106c186) and [bd56e74](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/bd56e74e10ff294d743a398a83a297c2637d99a3)
+      - Created [Database Class](https://bitbucket.org/cs3398-s22-romulans/beat.box/src/demo/src/main/Database.java) to store and manage Playlist objects using the Singleton pattern, includes a Playlist serializer and de-serializer
+        - Commits: [8bd1765](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/8bd1765a6293aad9873df597ce353af45be77bcb) and [
+          bd56e74](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/bd56e74e10ff294d743a398a83a297c2637d99a3)
+        - Created [TestDatabase Class](https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/test/TestDatabase.java) to test serializer functionality and correctness
+          - Commit: [1624672](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/1624672e92e22095d7fe3c447714df6fd4ee954e)
+      - Set up Gradle build capabilities
+        - Commit: [f0f9222](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/f0f9222c101b3c697b1d1c4cd98e45756877f03e)
   - Acknowledgements:
-    -
-    -
-    -
-  - Summary of Work Done:
-    -
-    -
-    -
+    - [Gradle docs](https://docs.gradle.org/7.3.3/userguide/java_testing.html) for Java build and test integration
+    - [LogicBig tutorial on DirectoryStream objects](https://www.logicbig.com/how-to/code-snippets/jcode-java-io-files-newdirectorystream.html) for help with parsing through file directories
+    - [TutorialsPoint tutorial on Java Serialization](https://www.tutorialspoint.com/java/java_serialization.htm) for help with saving playlists to the disk
   - Status:
-    -
-    -
-    -
+    - For the backend, we have the basics (Songs stored in Playlists stored in the Database) but will need additional higher-level classes for interfacing with the GUI/user
+    - User input for using the backend is currently not implemented in any form
   - Issues/Needed Fixes:
-    - 
-    -
-    -
-  - Sprint 2 Expectations:
-    -
-    -
-    -
+    - Need to fix local path issues caused by Gradle restructuring our directory
+    - Need to improve documentation/comments on my existing classes to help teammates ([Javadocs](https://www.jetbrains.com/help/idea/working-with-code-documentation.html))
+  - Sprint 2 Goals:
+    - Continue adding backend functionality
+        - work on the unfinished Folder Scanner project, for importing folders of local music into playlists
+        - create a wrapper class for "buttons" which hold Playlist(s) and have functions for interacting with them (add, remove, reorder, export)
+        - start the dependent Song Identifier functionality to allow for downloading song metadata and album cover art
+    - Add and improve unit tests
+    - Provide backend support to teammates for easier GUI integration
+    - If I have time, an iterator in the Playlist class that only parses through local files (for playback)
 ### Nelson Uzoaru:
 
   - Worked on References:
