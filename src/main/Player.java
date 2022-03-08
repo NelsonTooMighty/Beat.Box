@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 
 public class Player  {
@@ -14,6 +15,29 @@ public class Player  {
         Clip clip = AudioSystem.getClip();
         clip.open(audioStream);
 
+/* Temp way to read local files to play song on gui (Austin's Input for local file reading)
+        
+        
+        public class Player {
+            public static void main(String[] args) {
+            Player player = new Player();
+            List<song> playlist = player.makeMusicList();
+
+            for(int i =0; i < 4; i++){
+                player.play(playlist);
+        }
+    }
+        public List<song> makeMusicList() {
+            List<song> musicBucket = new ArrayList<song>();
+            musicBucket.add(new song("Song Name", "PathToMusicFile"));
+            musicBucket.add(new song("Song Name", "PathToMusicFile"));
+            musicBucket.add(new song("Song Name", "PathToMusicFile"));
+            musicBucket.add(new song("Song Name", "PathToMusicFile"));
+            musicBucket.add(new song("Song Name", "PathToMusicFile"));
+                return musicBucket;
+    }
+}
+*/
 
         JFrame frame = new JFrame();
         JLabel SongName = new JLabel();
@@ -64,4 +88,8 @@ public class Player  {
         frame.pack();
         frame.setVisible(true);
     }
+
+
+
+
 }
