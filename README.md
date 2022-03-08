@@ -55,6 +55,7 @@ Planned features:
 
 ## Sprint 1:
 ### Naomi Rae:
+
   - Worked on References:
       - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/main/LayoutFrame.java
       - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/main/Player.java
