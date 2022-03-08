@@ -54,108 +54,108 @@ Planned features:
 	- Austin and Nelson's stories correspond to this
 
 ## Sprint 1:
-### Naomi Rae:
-  - Worked on References:
+  ### Naomi Rae:
+   - Worked on References:
         - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/main/LayoutFrame.java
         - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/main/Player.java
-  - Acknowledgements:
-      - Designing the the basic music player I followed BRO CODE on youtube
-        - https://www.youtube.com/watch?v=SyZQVJiARTQ
-      - Learning about netbean and how to create a basic functional GUI I took guidance from Mahmoud Hamwi
-        - https://www.youtube.com/watch?v=lg5zWJTQWx8&t=229s
-      -
+   - Acknowledgements:
+        - Designing the the basic music player I followed BRO CODE on youtube
+           - https://www.youtube.com/watch?v=SyZQVJiARTQ
+        - Learning about netbean and how to create a basic functional GUI I took guidance from Mahmoud Hamwi
+          - https://www.youtube.com/watch?v=lg5zWJTQWx8&t=229s
+        -
   - Summary of Work Done:
-      - Did research and had created a basic functional GUI on netbean. I got the buttons to lead to other GUI that we plan on creating in the next sprint are the artist and song page.
-      - Created a basic Music Player gui with functional play, restart and pause button. This GUI reads a wav file and plays this file as a clip. I tried to connect both functional GUIS but each GUI was made on a different platforms so it was difficult to combine the two.
-      -
+        - Did research and had created a basic functional GUI on netbean. I got the buttons to lead to other GUI that we plan on creating in the next sprint are the artist and song page.
+        - Created a basic Music Player gui with functional play, restart and pause button. This GUI reads a wav file and plays this file as a clip. I tried to connect both functional GUIS but each GUI was made on a different platforms so it was difficult to combine the two.
+        -
   - Status:
-      -
-      -
-      -
+        -
+        -
+        -
   - Issues/Needed Fixes:
-      - Got 2 different GUI's
-      -
-      -
+        - Got 2 different GUI's
+        -
+        -
   - Sprint 2 Expectations:
-      - Create a more establish connection between the front and back end of the GUI.
-      - Expect to design future layouts for the music player and the front end of the GUI.
-      -
-### Austin Sansing:
+        - Create a more establish connection between the front and back end of the GUI.
+        - Expect to design future layouts for the music player and the front end of the GUI.
+        -
+  ### Austin Sansing:
 
-  - Worked on References:
-      - 
-      - 
-  - Acknowledgements:
-      -
-      -
-      -
-  - Summary of Work Done:
-      -
-      -
-      -
-  - Status:
-      -
-      -
-      -
-  - Issues/ Needed Fixes:
-      - 
-      -
-      -
-  - Sprint 2 Expectations:
-      - 
-      -
-      -
-### Avery VanAusdal:
+   - Worked on References:
+        - 
+        - 
+   - Acknowledgements:
+        -
+        -
+        -
+   - Summary of Work Done:
+        -
+        -
+        -
+   - Status:
+        -
+        -
+        -
+   - Issues/ Needed Fixes:
+        - 
+        -
+        -
+   - Sprint 2 Expectations:
+        - 
+        -
+        -
+  ### Avery VanAusdal:
 
-  - Worked on References:
-      - 
-      - 
-  - Acknowledgements:
-      -
-      -
-      -
-  - Summary of Work Done:
-      -
-      -
-      -
-  - Status:
-      -
-      -
-      -
-  - Issues/Needed Fixes:
-      - 
-      -
-      -
-  - Sprint 2 Expectations:
-      -
-      -
-      -
-### Nelson Uzoaru:
+   - Worked on References:
+        - 
+        - 
+   - Acknowledgements:
+        -
+        -
+        -
+   - Summary of Work Done:
+        -
+        -
+        -
+   - Status:
+        -
+        -
+        -
+   - Issues/Needed Fixes:
+        - 
+        -
+        -
+   - Sprint 2 Expectations:
+        -
+        -
+        -
+  ### Nelson Uzoaru:
 
   - Worked on References:
       - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/test/
       - 
-  - Acknowledgements:
-      -
-      -
-      -
-  - Summary of Work Done:
-      - Created a tester classes for both song and playlist classes
-      -
-      -
-  - Status:
-      -
-      -
-      -
-  - Issues/Needed Fixes:
-      -
-      -
-      -
-  - Sprint 2 Expectations:
-      -
-      -
-      -
-### Libin Koyikalathu:
+    - Acknowledgements:
+        -
+        -
+        -
+    - Summary of Work Done:
+        - Created a tester classes for both song and playlist classes
+        -
+        -
+    - Status:
+        -
+        -
+        -
+    - Issues/Needed Fixes:
+        -
+        -
+        -
+    - Sprint 2 Expectations:
+        -
+        -
+        -
+  ### Libin Koyikalathu:
 
   - Worked on References:
       - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/SpotifyMusicOpener.c
@@ -176,18 +176,18 @@ Planned features:
       - Created a liked playlist in which contains a button in the shape of our logo, once it is clicked it will add on to a liked playlist and be saved on the database.
       - With Austin Sansings skeleton on task was able to create a button that once clicked by user if they liked the song will send the song to the liked playlist.
       - With the expertise of Avery VanAsudal on Path and Directory class on Java. I was able to create a scanner that will read a local file address and store song on local playlist and storage server.
-  - Status:
-      -
-      -
-      -
-  - Issues/Needed Fixes:
-      - 
-      -
-      -
-  - Sprint 2 Expectations:
-      -
-      -
-      -
+    - Status:
+        -
+        -
+        -
+    - Issues/Needed Fixes:
+        - 
+        -
+        -
+    - Sprint 2 Expectations:
+        -
+        -
+        -
     
 ## Acknowledgements
 Give credit here.
