@@ -56,28 +56,28 @@ Planned features:
 ## Naomi Rae:
 
   - Worked on References:
-    - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/main/LayoutFrame.java
-    -https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/main/Player.java
+      - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/main/LayoutFrame.java
+      - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/main/Player.java
   - Acknowledgements:
-    -
-    -
-    -
+      -
+      -
+      -
   - Summary of Work Done:
-    -
-    -
-    -
+      -
+      -
+      -
   - Status:
-    -
-    -
-    -
+      -
+      -
+      -
   - Needed Fixes:
-    -
-    -
-    -
+      -
+      -
+      -
   - Sprint 2 Expectations:
-    -
-    -
-    -
+      -
+      -
+      -
 
     
 ## Acknowledgements
