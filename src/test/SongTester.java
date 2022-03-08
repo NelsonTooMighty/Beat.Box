@@ -10,7 +10,7 @@ public class SongTester {
 
     @Test
     @DisplayName("Test for Song Class With No Parameters")
-    public void serializeTest() throws IOException, ClassNotFoundException
+    public void songTest() throws IOException, ClassNotFoundException
     {
         final Song TestSong= new Song();
         TestSong.setAlbumName("My Beautiful Dark Twisted Fantasy");
