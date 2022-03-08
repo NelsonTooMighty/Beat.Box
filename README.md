@@ -101,6 +101,7 @@ Give credit here.
  -Libin created a liked playlist in which contains a button in the shape of our logo, once it is clicked it will add on to a liked playlist and be saved on 
   the database // https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/main/FavoritePlaylistCreator.java
 
+- Nelson created tester classes for both song and playlist classes, https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/test/
 
 ## sprint two goals 
 -Naomi is expected to design future layouts for the music player and the front end of the GUI.
