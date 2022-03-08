@@ -165,6 +165,7 @@ Planned features:
       - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/main/folderScanner.java
   - Acknowledgements:
       -The design of the website template sketch is based on by [Pandora],[Spotify] and a tutorial from [Satori Graphics] from youtube.
+      
         - www.pandora.com
         - www.spotify.com
         - https://www.youtube.com/watch?v=eiV7E_LVlxs&ab_channel=SatoriGraphics
