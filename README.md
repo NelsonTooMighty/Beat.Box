@@ -84,16 +84,16 @@ Planned features:
 ### Austin Sansing:
 
   - Work Done:
-    - Created Product Logo (https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/Beat.Box_3.png)
-        Commit (2f742fb) [https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/2f742fb69179b7291730eb80e0c92b99d597fc26]
-    - Background Image for GUI (https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/Beat.Box.java)
-        Commit (2f742fb) [https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/2f742fb69179b7291730eb80e0c92b99d597fc26]
-    - Spotify Playlist Extractions (https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/likedsong.csv)
-        Commit (2acaade) [https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/2acaadea39211f88acf7c46bb33b0df6f65058f1]
-    - Spotify CSV to XML Convertion (https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/likedSongsSpotify.xml)
-        Commit (9e3e222) [https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/9e3e222f4853cac66b1c0ea260253917b216eefd]
-    - Local Read File & Way to Store Local Files (https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/main/Player.java)
-        Commit (243bfcc) [https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/243bfcc82687db4818ac9f3d322438221c91de61]
+    - Created Project Logo [Beat.Box_3.png](https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/Beat.Box_3.png)
+        - Commit [2f742fb](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/2f742fb69179b7291730eb80e0c92b99d597fc26)
+    - Created Background Logo Java Class [Beat.Box.java](https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/Beat.Box.java)
+        - Commit [2f742fb](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/2f742fb69179b7291730eb80e0c92b99d597fc26)
+    - Created extracted spotify playlist [likedsong.csv](https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/likedsong.csv)
+        - Commit [2acaade](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/2acaadea39211f88acf7c46bb33b0df6f65058f1)
+    - Created & Converted [likedSongsSpotify.xml](https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/likedSongsSpotify.xml)
+        - Commit [9e3e222](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/9e3e222f4853cac66b1c0ea260253917b216eefd)
+    - Created Read & Store of Loval Files [Player.java](https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/main/Player.java)
+        - Commit [243bfcc](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/243bfcc82687db4818ac9f3d322438221c91de61)
   - Acknowledgements:
     - Logo Creation
       - https://www.canva.com
