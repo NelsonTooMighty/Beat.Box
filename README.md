@@ -83,29 +83,42 @@ Planned features:
       
 ### Austin Sansing:
 
-  - Worked on References:
-    - 
-    - 
+  - Work Done:
+    - Created Product Logo (https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/Beat.Box_3.png)
+        Commit (2f742fb) [https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/2f742fb69179b7291730eb80e0c92b99d597fc26]
+    - Background Image for GUI (https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/Beat.Box.java)
+        Commit (2f742fb) [https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/2f742fb69179b7291730eb80e0c92b99d597fc26]
+    - Spotify Playlist Extractions (https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/likedsong.csv)
+        Commit (2acaade) [https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/2acaadea39211f88acf7c46bb33b0df6f65058f1]
+    - Spotify CSV to XML Convertion (https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/likedSongsSpotify.xml)
+        Commit (9e3e222) [https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/9e3e222f4853cac66b1c0ea260253917b216eefd]
+    - Local Read File & Way to Store Local Files (https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/main/Player.java)
+        Commit (243bfcc) [https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/243bfcc82687db4818ac9f3d322438221c91de61]
   - Acknowledgements:
-    -
-    -
-    -
+    - Logo Creation
+      - https://www.canva.com
+    - Spotify API
+      - https://developer.spotify.com/
   - Summary of Work Done:
-    -
-    -
-    -
+    - For the GUI, I created the logo that was implemented in the top right of our GUI. This logo will later be the background of both the GUI and the website.
+    - Extracted my personal playlist from spotify and created a CSV from it.
+    - Converted the extracted spotify playlist to an XML file for music conversion.
+    - Created a way to locally read music files on the users computer.
+    - Created a way to locally store music files on the users computer.
   - Status:
-    -
-    -
-    -
+    - Able to use the logo for an aspect of the GUI,need to research how to place it as the background.
+    - Able to store local music files and read from the stored files utilizing a vector.
+    - Begin working with Avery and Naomi to link the backend code we have running to the GUI for full funcionality.
   - Issues/ Needed Fixes:
-    - 
-    - 
-    - 
+    - Background Image creation using the logo for the program.
+    - Need to improve coding structure when integrating the backend to the GUI.
+    - Need to become more familiar with GitKraken and other softwares used in class to better represent contributions to the team.
+    - Looks into better ways to store music files, creating faster read and write times.
   - Sprint 2 Expectations:
-    - 
-    -
-    -
+    - Continue to intigrate the backend code we have and improve upon the functionality of the GUI.
+    - Cleaner GUI apperance will fully functioning buttons and displays.
+    - Spotify and Apple API conversion, to be able to find songs on the different platforms.
+    
 ### Avery VanAusdal:
     
   - Work done:
@@ -190,6 +203,7 @@ Planned features:
         - reads xml file and transfers it into Database
         - export song info from Database to Spotify/Apple
         - unification of different classes above to run task
+        
     
 ## Acknowledgements
 Give credit here.
