@@ -80,8 +80,7 @@ Planned features:
       - Create a export and import button.
       - create more GUIs for pages for artist, playist, songs, album
       - Create a back button 
-    
-    -
+      
 ### Austin Sansing:
 
   - Worked on References:
@@ -171,18 +170,26 @@ Planned features:
   - Summary of Work Done:
       - Created two classes which can open spotify and apple music with a linux/apple system
       - With the help of Naomi created a sample of expected design of music player.
-      - Create a button that once clicked by user if they liked the song will send the song to the liked playlist and be saved on the database.
+      - Create a button that once clicked by user if they liked the song will send the song to the liked playlist and be saved on the database. 
         - Based on outline and advice given by Austin Sansing
+        - Made based on single responsibility principle
       - I was able to create a scanner that will read a local file address and store song on local playlist and storage server.
         - Avery VanAusdal gave invaluable expertise on Path, split, and Database
   - Status:
-      -
-  
+      - Able to open Spotify/Apple application on Mac/Linux if code run on terminal
+      - Begun looking into using Photoshop(Inkscape) to make nicer user design
   - Issues/Needed Fixes:
-      - 
-
+      - Trouble Accessing Apples's and Spotify's toolbar to begin transfer of files for users
+      - Liked Playlist is missing a tester class
+      - folderScanner class missing a test
   - Sprint 2 Expectations:
-      - 
+      - A finished detailed outline of GUI that is presentable 
+      - Have finish java classes that can
+        - run a c code
+        - open Spotify/Apple on any operating system and initiate transfer/import
+        - reads xml file and transfers it into Database
+        - export song info from Database to Spotify/Apple
+        - unification of different classes above to run task
     
 ## Acknowledgements
 Give credit here.
@@ -193,21 +200,6 @@ Give credit here.
 - ().
 - (), 
 - ()
-## done items
-- Naomi  // 
- -Naomi got done  
-   
--Libin has   , 
- , 
- -Libin // 
-
-- Nelson , 
-
-## sprint two goals 
--Naomi is 
- cleaner and appealing design that we all will discuss before the next sprint starts. This sprint the backend and front-end arent
-  connected this sprint but do plan for there to be an established connection with basic functionality. 
- 
 
 <!--
 ## Screenshots
