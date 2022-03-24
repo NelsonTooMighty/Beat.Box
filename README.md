@@ -1,4 +1,4 @@
-# Beat.Box
+ # Beat.Box
 > Our team is building a media platform for music playlists so listeners can save time by making sharing playlists a breeze. Beat.Box will allow users to import and export playlists to and from their favorite streaming platforms and convert their offline libraries to sharable playlists.
 
 > By Libin Koyikalathu, Naomi Padilla, Austin Sansing, Nelson Uzoaru, and Avery VanAusdal
@@ -191,28 +191,33 @@ Planned features:
       - The operating systems code to open Apple Music is based from Xiao Chen lab 1 homework and [linuxHint.com]
           - https://linuxhint.com/c-chdir-function-usage/
   - Summary of Work Done:
-      - Created two classes which can open spotify and apple music with a linux/apple system
-      - With the help of Naomi created a sample of expected design of music player.
+      - Created two classes which can open spotify and apple music with a linux/apple system 
+          - [BB-36] 
+          - [BB-38]
+      - With the help of Naomi created a sample of expected design of music player. 
+          - [BB-48]
       - Create a button that once clicked by user if they liked the song will send the song to the liked playlist and be saved on the database. 
-        - Based on outline and advice given by Austin Sansing
-        - Made based on single responsibility principle
-      - I was able to create a scanner that will read a local file address and store song on local playlist and storage server.
-        - Avery VanAusdal gave invaluable expertise on Path, split, and Database
-  - Status:
+          - [BB-25]
+          - Based on outline and advice given by Austin Sansing
+          - Made based on single responsibility principle
+      - I was able to create a scanner that will read a local file address and store song on local playlist and storage server. 
+          - [BB-32]
+          - Avery VanAusdal gave invaluable expertise on Path, split, and Database
+ - Status:
       - Able to open Spotify/Apple application on Mac/Linux if code run on terminal
       - Begun looking into using Photoshop(Inkscape) to make nicer user design
-  - Issues/Needed Fixes:
-      - Trouble Accessing Apples's and Spotify's toolbar to begin transfer of files for users
-      - Liked Playlist is missing a tester class
-      - folderScanner class missing a test
-  - Sprint 2 Expectations:
-      - A finished detailed outline of GUI that is presentable 
-      - Have finish java classes that can
-        - run a c code
-        - open Spotify/Apple on any operating system and initiate transfer/import
-        - reads xml file and transfers it into Database
-        - export song info from Database to Spotify/Apple
-        - unification of different classes above to run task
+ - Issues/Needed Fixes:
+    -  Trouble Accessing Apples's and Spotify's toolbar to begin transfer of files for users
+    - Liked Playlist is missing a tester class
+    - folderScanner class missing a test
+ - Sprint 2 Expectations:
+    - A finished detailed outline of GUI that is presentable 
+    - Have finish java classes that can
+          - run a c code
+          - open Spotify/Apple on any operating system and initiate transfer/import
+          - reads xml file and transfers it into Database
+          - export song info from Database to Spotify/Apple
+          - unification of different classes above to run task
         
     
 ## Acknowledgements
