@@ -158,11 +158,11 @@ Planned features:
 
   - Worked on References:
       - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/test/
-      - created the tester for the song class (https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/test/SongTester.java)
+      - [BB-29]created the tester for the song class (https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/test/SongTester.java)
           -commits:[b632892](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/b632892105378c5d2a1fa2ff36a4c4d29fb51ebe) which checks to see if the the class works
-      - created the tester for the song class (https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/test/playlistTester.java)
+      - [BB-29]created the tester for the Playlist class (https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/test/playlistTester.java)
           -commits: [b632892](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/b632892105378c5d2a1fa2ff36a4c4d29fb51ebe) class which checks to see the playlist class works
-      - created the export file from apple music containing playlist created (https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/BeatBox(AppleTransferPlaylist).xml) 
+      - [BB-40]created the export file from apple music containing playlist created (https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/BeatBox(AppleTransferPlaylist).xml) 
           -commits: [e46d7b6] (https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/e46d7b6d7acc56ef030142a8f91e80eb469b616e) files exported from apple music
   - Acknowledgements: Avery VanAusdal for helping me out and giving me pointers for where to start on the testers. 
         - Used professors tester format from the JUnit testing from his hello gradle files, tested in class.
