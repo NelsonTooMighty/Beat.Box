@@ -60,13 +60,16 @@ Planned features:
       - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/main/LayoutFrame.java
       - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/main/Player.java
   - Acknowledgements:
-      - Designing the the basic music player I followed BRO CODE on youtube
+      - Designing the the basic music player I followed BRO CODE on youtube   
           - https://www.youtube.com/watch?v=SyZQVJiARTQ
       - Learning about netbean and how to create a basic functional GUI I took guidance from Mahmoud Hamwi
           - https://www.youtube.com/watch?v=lg5zWJTQWx8&t=229s
   - Summary of Work Done:
       - Did research and had created a basic functional GUI on netbean. I got the buttons to lead to other GUI that we plan on creating in the next sprint are the artist and song page.
+          - [BB-46]
+          - [BB-44]
       - Created a basic Music Player gui with functional play, restart and pause button. This GUI reads a wav file and plays this file as a clip. I tried to connect both functional GUIS but each GUI was made on a different platforms so it was difficult to combine the two.
+          - [BB-14]
   - Status:
       - GUIs are running independently of each other. The back in has yet to connected with the front in. 
       - Have buttons visisble and functioning to where when they are pressed they lead to another GUI that we plan on creating for other features. 
