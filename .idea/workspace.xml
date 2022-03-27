@@ -5,12 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e20f25ba-c7bc-43d0-80cb-579fe9d9e0bd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/ArtistJFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ArtistJFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/LayoutFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/LayoutFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/songLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/songLayout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppleMusicOpener.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/research/AppleMusicOpener.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BeatBox(AppleTransferPlaylist).xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/research/BeatBox(AppleTransferPlaylist).xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SpotifyMusicOpener.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/research/SpotifyMusicOpener.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Website Layout.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/research/Website Layout.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/likedSongsSpotify.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/research/likedSongsSpotify.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/likedsong.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/research/likedsong.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Beat.Box.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Beat.Box.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Beat.Box_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/Beat.Box.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/FavoritePlaylistCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/FavoritePlaylistCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/GreyBox.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/GreyBox.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/beatBox.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/test_serial" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/TestDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/TestDatabase.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,8 +51,15 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../Personal Projects/Java" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Personal Projects\beat.box\src\resources" />
+      <recent name="C:\Personal Projects\beat.box\src\main" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -59,6 +76,15 @@
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

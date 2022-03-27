@@ -1,6 +1,5 @@
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 public class FavoritePlaylistCreator extends LayoutFrame {
@@ -9,8 +8,8 @@ public class FavoritePlaylistCreator extends LayoutFrame {
 
     Playlist likedPlaylist = new Playlist();
     Database currentDatabase = Database.getInstance(); // gets access to user's database
-    ImageIcon dislikeImage = new ImageIcon("GreyBox.png"),  
-               likeImage = new ImageIcon("beatBox.png");
+    ImageIcon dislikeImage = new ImageIcon("src/resources/GreyBox.png"),
+               likeImage = new ImageIcon("../resources/Beat.Box.png");
     // got code above from https://www.oreilly.com/library/view/java-swing/156592455X/ch04s02.html
     Boolean isLiked = false;
     JButton likeButton = new JButton(dislikeImage);

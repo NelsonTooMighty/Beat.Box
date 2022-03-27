@@ -13,8 +13,8 @@ public class TestDatabase {
         Playlist test = new Playlist();
         test.setPlaylistName("Vulfy");
         test.add(new Song("Dean Town", "Vulfpeck", "The Beautiful Game", "2016", "https://f4.bcbits.com/img/a1702319957_16.jpg"));
-        d.saveToFile(test, "src/resources/test_serial");
-        Playlist inTest = d.loadFromFile("src/resources/test_serial");
+        d.saveToFile(test, "src/resources/serialized_playlist_test");
+        Playlist inTest = d.loadFromFile("src/resources/serialized_playlist_test");
         assertTrue("Vulfy".equals(inTest.getPlaylistName()));
         assertTrue("Dean Town".equals(inTest.getFirst().getTrackTitle()));
         assertTrue("Vulfpeck".equals(inTest.getFirst().getArtistName()));
