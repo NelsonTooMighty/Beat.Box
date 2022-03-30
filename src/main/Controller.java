@@ -1,9 +1,11 @@
 public class Controller {
-    private static final Controller singleton = new Controller();
-    private static final Database db = Database.getInstance();
+    private PlaylistFrame view;
+    private Database model = Database.getInstance();
 
-    private Controller() {}
-    public static Controller getInstance() {return singleton;} //Use this to get the Controller object
+    public Controller(PlaylistFrame view) {
+        this.view = view;
+
+    }
 
     public Playlist getPlaylist(int index) {
         //use db[index] to get the requested playlist
@@ -23,4 +25,11 @@ public class Controller {
     //remove playlist from Database/db
     //output: if the object was found and removed
     public boolean removePlaylist(int index) {return false;}
+
+    //gets all playlistnames
+    public String getPlaylistNames(){
+        return null;
+
+
+    }
 }
