@@ -1,3 +1,4 @@
+import java.util.Iterator;
 public class Controller {
     private static final Controller singleton = new Controller();
     private static final Database db = Database.getInstance();
@@ -23,4 +24,33 @@ public class Controller {
     //remove playlist from Database/db
     //output: if the object was found and removed
     public boolean removePlaylist(int index) {return false;}
+    public Playlist getArtistList(String artistName){
+       boolean hasPlaylist = false;
+       Iterator<Playlist> it = db.iterator();                                // used so I don't have to create for loop and force an exit
+        while(!hasPlaylist && it.hasNext()){                                 //check is existing artist playlist in database
+            Playlist currentPlaylist = it.next();
+            String currentPlaylistName = currentPlaylist.getPlaylistName();
+            if (currentPlaylistName.equals(artistName)){
+                hasPlaylist = true;
+                return currentPlaylist;
+            }
+            else{ currentPlaylist = it.next();}
+        }
+        if(!hasPlaylist){                                                    //if there is no playlist it creates one and adds songs with  
+            Playlist artistPlaylist = new Playlist();                        // artists name stored in its class
+            artistPlaylist.setPlaylistName(artistName);
+            for (Playlist playlists : db){
+                for (Song song : playlists){
+                    if (artistName.equals(song.getArtistName()))
+                        artistPlaylist.add(song);
+                }
+            }
+                return artistPlaylist;
+        }
+
+                
+            
+            
+        }
+    }
 }
