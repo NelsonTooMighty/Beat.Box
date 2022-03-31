@@ -36,13 +36,7 @@ public class DatabaseQuery {
 
     //output: list of all Playlist objects from database
     public ArrayList<Playlist> getAllPlaylists() {
-        ArrayList<Playlist> listAll = new ArrayList<Playlist>();
-        for(i = 0; i < model.size(); i++)
-        {
-            return listAll.add(model.get(i));
-        }
-    return null;
-
+        return new ArrayList<>(model);
     }
 
     public Playlist getArtistList(String artistName){
