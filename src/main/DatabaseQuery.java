@@ -32,7 +32,15 @@ public class DatabaseQuery {
     public boolean removePlaylist(int index) {return false;}
 
     //output: list of all Playlist objects from database
-    public ArrayList<Playlist> getAllPlaylists() {return null;}
+    public ArrayList<Playlist> getAllPlaylists() {
+        ArrayList<Playlist> listAll = new ArrayList<Playlist>();
+        for(i = 0; i < model.size(); i++)
+        {
+            return listAll.add(model.get(i));
+        }
+    return null;
+
+    }
 
     public Iterator<Playlist> iterator() {
         return model.iterator();
