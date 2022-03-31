@@ -5,10 +5,23 @@ import java.util.Iterator;
 public class Controller {
     private PlaylistFrame view;
     private Database model = Database.getInstance();
+    
 
     public Controller(PlaylistFrame view) {
         this.view = view;
 
+    }
+    public Song getSong(Playlist currentPlaylist,String songName){
+        boolean foundSong = false;
+        Iterator<Song> it = currentPlaylist.iterator();
+        while(!foundSong && it.hasNext()){
+            Song currentSong = it.next();
+            if (songName.equals(currentSong.getTrackTitle())){
+                foundSong = true;
+                return currentSong;
+            }
+            else{it.next();}
+        }
     }
 
     public Playlist getPlaylist(int index) {
@@ -29,6 +42,8 @@ public class Controller {
                 hasPlaylist = true;
                 return currentPlaylist;
             }
+            else{ it.next();}
+            
         }
         return null;}
 
@@ -39,10 +54,27 @@ public class Controller {
     //input: index of a playlist
     //remove playlist from Database/db
     //output: if the object was found and removed
-    public boolean removePlaylist(int index) {return false;}
+    public boolean removePlaylist(int index) {
+        boolean hasRemoved = false;
+        if (index <= model.size()){
+            model.remove(index);
+            hasRemoved = true;
+        }
+        return hasRemoved;
+    }
+    public void removePlaylist (String playlistName){
+        Playlist desiredPlaylist =  getPlaylist(playlistName);
+        model.remove(desiredPlaylist);                                //found code from 
+    }                                                                        //https://www.javatpoint.com/remove-an-element-from-arraylist-in-java
+    public void removeSongfromPlaylist(String songName, String playlistName){
+        boolean hasRemoved = false;
+        Playlist desiredPlaylist = getPlaylist(playlistName);
+        Song removeSong = getSong(desiredPlaylist,songName);
+        desiredPlaylist.remove(removeSong);
+    }
     public Playlist getArtistList(String artistName){
        boolean hasPlaylist = false;
-       Iterator<Playlist> it = model.iterator();                                // used so I don't have to create for loop and force an exit
+       Iterator<Playlist> it = model.iterator();                             // used so I don't have to create for loop and force an exit
         while(!hasPlaylist && it.hasNext()){                                 //check is existing artist playlist in database
             Playlist currentPlaylist = it.next();
             String currentPlaylistName = currentPlaylist.getPlaylistName();
