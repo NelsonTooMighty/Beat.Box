@@ -27,7 +27,11 @@ public class DatabaseQuery {
 
     //Input: index of a playlist, new name to set the playlist to
     //Output: renamed playlist object
-    public Playlist renamePlaylist(int index, String newName) {return null;}
+    public Playlist renamePlaylist(int index, String newName) { // Create a DatabaseQuery method for renaming a specified Playlist
+        Playlist temp = getPlaylist(index);
+        temp.setPlaylistName(newName);
+        return temp;
+    }
 
     //input: index of a playlist
     //remove playlist from Database/db
