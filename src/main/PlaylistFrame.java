@@ -9,12 +9,15 @@ public class PlaylistFrame {
    Controller myController;
     public PlaylistFrame(Controller myController){
         this.myController = myController;
+        myController.displayAllPlaylists(displayofPlaylist);
+
+
        
 
         ActionListener submitChoice = new ActionListener(){
             @Override
             public void actionPerformed (ActionEvent e){
-                myController.displayPlaylistcontent(displayofPlaylist,userInput.getText());
+                myController.displayPlaylistContent(displayofPlaylist,userInput.getText());
                 userInput.setText("");
 
             }
