@@ -5,8 +5,11 @@ public class DatabaseQuery {
 
     public DatabaseQuery() {}
 
-    public Playlist getPlaylist(int index) {
+    public Playlist getPlaylist(int index) { // Create DatabaseQuery method to return a requested Playlist
         //use db[index] to get the requested playlist
+        if (index < model.size())
+            return model.get(index);
+        else
         return null; //replace with a return with found playlist
     }
 
@@ -24,7 +27,11 @@ public class DatabaseQuery {
 
     //Input: index of a playlist, new name to set the playlist to
     //Output: renamed playlist object
-    public Playlist renamePlaylist(int index, String newName) {return null;}
+    public Playlist renamePlaylist(int index, String newName) { // Create a DatabaseQuery method for renaming a specified Playlist
+        Playlist temp = getPlaylist(index);
+        temp.setPlaylistName(newName);
+        return temp;
+    }
 
     //input: index of a playlist
     //remove playlist from Database/db
