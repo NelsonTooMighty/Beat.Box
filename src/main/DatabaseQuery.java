@@ -5,8 +5,11 @@ public class DatabaseQuery {
 
     public DatabaseQuery() {}
 
-    public Playlist getPlaylist(int index) {
+    public Playlist getPlaylist(int index) { // Create DatabaseQuery method to return a requested Playlist
         //use db[index] to get the requested playlist
+        if (index < model.size())
+            return model.get(index);
+        else
         return null; //replace with a return with found playlist
     }
 
