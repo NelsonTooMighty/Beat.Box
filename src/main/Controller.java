@@ -1,3 +1,6 @@
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Iterator;
 public class Controller {
     private PlaylistFrame view;
@@ -28,7 +31,7 @@ public class Controller {
     public boolean removePlaylist(int index) {return false;}
     public Playlist getArtistList(String artistName){
        boolean hasPlaylist = false;
-       Iterator<Playlist> it = db.iterator();                                // used so I don't have to create for loop and force an exit
+       Iterator<Playlist> it = model.iterator();                                // used so I don't have to create for loop and force an exit
         while(!hasPlaylist && it.hasNext()){                                 //check is existing artist playlist in database
             Playlist currentPlaylist = it.next();
             String currentPlaylistName = currentPlaylist.getPlaylistName();
@@ -41,20 +44,29 @@ public class Controller {
         if(!hasPlaylist){                                                    //if there is no playlist it creates one and adds songs with  
             Playlist artistPlaylist = new Playlist();                        // artists name stored in its class
             artistPlaylist.setPlaylistName(artistName);
-            for (Playlist playlists : db){
+            for (Playlist playlists : model){
                 for (Song song : playlists){
                     if (artistName.equals(song.getArtistName()))
                         artistPlaylist.add(song);
                 }
             }
                 return artistPlaylist;
+        }   
+        }
+    public void displayPlaylistcontent(JTextArea screen,Playlist playlistName){
+        for(Song song:playlistName){
+            String songMessage = song.getTrackTitle() + "\n \t" + song.getArtistName() +
+                                 song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n";
+            screen.append(songMessage);
         }
 
-                
-            
-            
-        }
     }
+
+    public void displayAllPlaylists (JTextArea screen){
+            for (Playlist playlists : model){                                // gets each playlist in alphabetical order and shows it in a gui's
+                screen.append(playlists.getPlaylistName());                  // text area
+            }
+        }
 
     //gets all playlistnames
     public String getPlaylistNames(){

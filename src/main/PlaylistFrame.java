@@ -9,7 +9,7 @@ public class PlaylistFrame {
    Controller myController;
     public PlaylistFrame(Controller myController){
         this.myController = myController;
-        displayofPlaylist.append(myController.getPlaylistNames());
+        myController.displayAllPlaylists(displayofPlaylist); //supposed to print everything on gui
 
 
         }
