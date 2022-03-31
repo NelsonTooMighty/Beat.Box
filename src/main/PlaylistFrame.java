@@ -9,6 +9,9 @@ public class PlaylistFrame {
    Controller myController;
     public PlaylistFrame(Controller myController){
         this.myController = myController;
+        myController.displayAllPlaylists(displayofPlaylist);
+
+
        
 
         ActionListener submitChoice = new ActionListener(){
