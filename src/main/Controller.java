@@ -19,7 +19,18 @@ public class Controller {
     //Input: name of a playlist
     //Search database for file with name (ArrayList methods can do this)
     //Output: playlist with matching name from Database/db
-    public Playlist getPlaylist(String playlistName) {return null;}
+    public Playlist getPlaylist(String playlistName) {
+        boolean hasPlaylist = false;
+        Iterator<Playlist> it = model.iterator();                                // used so I don't have to create for loop and force an exit
+        while(!hasPlaylist && it.hasNext()){                                     //check is existing artist playlist in database
+            Playlist currentPlaylist = it.next();
+            String currentPlaylistName = currentPlaylist.getPlaylistName();
+            if (currentPlaylistName.equals(playlistName)){
+                hasPlaylist = true;
+                return currentPlaylist;
+            }
+        }
+        return null;}
 
     //Input: index of a playlist, new name to set the playlist to
     //Output: renamed playlist object
@@ -53,8 +64,9 @@ public class Controller {
                 return artistPlaylist;
         }   
         }
-    public void displayPlaylistcontent(JTextArea screen,Playlist playlistName){
-        for(Song song:playlistName){
+    public void displayPlaylistcontent(JTextArea screen,String playlistName){
+        Playlist desiredPlaylist = getPlaylist(playlistName);
+        for(Song song:desiredPlaylist){
             String songMessage = song.getTrackTitle() + "\n \t" + song.getArtistName() +
                                  song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n";
             screen.append(songMessage);

@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.*;
 
 public class PlaylistFrame {
    JTextField userInput = new JTextField(50);
@@ -9,9 +10,18 @@ public class PlaylistFrame {
    Controller myController;
     public PlaylistFrame(Controller myController){
         this.myController = myController;
-        myController.displayAllPlaylists(displayofPlaylist); //supposed to print everything on gui
+       
 
+        ActionListener submitChoice = new ActionListener(){
+            @Override
+            public void actionPerformed (ActionEvent e){
+                myController.displayPlaylistcontent(displayofPlaylist,userInput.getText());
+                userInput.setText("");
 
+            }
+        };
+        submitButton.addActionListener(submitChoice);
+        userInput.addActionListener(submitChoice);
         }
 
 
