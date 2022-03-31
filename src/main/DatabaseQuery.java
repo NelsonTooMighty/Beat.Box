@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Iterator;
 public class DatabaseQuery {
-    private Database model = Database.getInstance();
+    private final Database model = Database.getInstance();
 
     public DatabaseQuery() {}
 
@@ -33,6 +33,27 @@ public class DatabaseQuery {
 
     //output: list of all Playlist objects from database
     public ArrayList<Playlist> getAllPlaylists() {return null;}
+
+    public Playlist getArtistList(String artistName){
+        for(Playlist currentPlaylist : model) {                              //check is existing artist playlist in database
+            String currentPlaylistName = currentPlaylist.getPlaylistName();
+            if (currentPlaylistName.equals(artistName)){
+                return currentPlaylist;
+            }
+        } //if it gets here, it was not found
+        //if there is no playlist it creates one and adds songs with
+        Playlist artistPlaylist = new Playlist();                        // artists name stored in its class
+        artistPlaylist.setPlaylistName(artistName);
+        ArrayList<Playlist> playlists = getAllPlaylists(); //gets list of all playlists
+        for (Playlist playlist : playlists){               //loops through them
+            for (Song song : playlist){                    //adds all songs by that Artist to the new playlist
+                if (artistName.equals(song.getArtistName()))
+                    artistPlaylist.add(song);
+            }
+        }
+        return artistPlaylist;
+
+    }
 
     public Iterator<Playlist> iterator() {
         return model.iterator();
