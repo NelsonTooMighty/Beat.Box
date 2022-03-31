@@ -11,4 +11,11 @@ public class Playlist extends LinkedList<Song> implements Serializable {
     public void setPlaylistName(String playlistName) {
         this.playlistName = playlistName;
     }
+
+    public Song getSong(String songName) {
+        for(Song song : this) {
+            if(songName.equals(song.getTrackTitle())) return song;
+        }
+        return null;
+    }
 }

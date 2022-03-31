@@ -60,13 +60,10 @@ public class DatabaseQuery {
 
     }
 
-    public Iterator<Playlist> iterator() {
-        return model.iterator();
-    }
-}
-
     public void removeSong(String playlistName, String songName){
         Playlist desiredPlaylist =  getPlaylist(playlistName);
-        Song removeSong = getSong(desiredPlaylist,songName);
+        Song removeSong = desiredPlaylist.getSong(songName);
         desiredPlaylist.remove(removeSong);                                        //Got code from: https://www.javatpoint.com/remove-an-element-from-arraylist-in-java
     }
+
+}
