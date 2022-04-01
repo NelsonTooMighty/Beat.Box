@@ -59,11 +59,4 @@ public class DatabaseQuery {
         return artistPlaylist;
 
     }
-
-    public void removeSong(String playlistName, String songName){
-        Playlist desiredPlaylist =  getPlaylist(playlistName);
-        Song removeSong = desiredPlaylist.getSong(songName);
-        desiredPlaylist.remove(removeSong);                                        //Got code from: https://www.javatpoint.com/remove-an-element-from-arraylist-in-java
-    }
-
 }

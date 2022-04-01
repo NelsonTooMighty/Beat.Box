@@ -4,7 +4,7 @@ import java.util.Iterator;
 
 public class Controller {
     private PlaylistFrame view;
-    private DatabaseQuery model = new DatabaseQuery();
+    private final DatabaseQuery model = new DatabaseQuery();
 
     public Controller(PlaylistFrame view) {
         this.view = view;

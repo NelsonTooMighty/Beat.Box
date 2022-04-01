@@ -24,4 +24,15 @@ public class Playlist extends LinkedList<Song> implements Serializable {
             return this.get(index);
         return null; //playlist isn't large enough to have a song at the index
     }
+
+    public boolean removeSong(String songName) {
+        Song song = this.getSong(songName);
+        return this.remove(song);                                        //Got code from: https://www.javatpoint.com/remove-an-element-from-arraylist-in-java
+    }
+
+    public boolean removeSong(int index) {
+        if (index < this.size())
+            return this.remove(index) != null; //true if removed (not null), false if not removed (null)
+        return false;
+    }
 }
