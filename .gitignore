@@ -10,3 +10,4 @@ out/
 build
 
 .idea/
+credentials.config
