@@ -31,10 +31,12 @@ public class Controller {
     }
 
     /**
+     * Appends a list of all unique artists with songs in the Database,
+     * with their Song count, in the following format:
+     * <p></p>1. ArtistName
+     * <t>      </t>
+     * Songs: #
      * @param screen the screen to display artist lists to
-     * @output A list of all artists with songs in the Database, no duplicates, with their Song count
-     *         1. ArtistName    Songs: #
-     *         2. ArtistName    Songs: #    etc
      */
     public void displayArtistList(JTextArea screen) {
         ArrayList<String> artists = model.getAllArtists();

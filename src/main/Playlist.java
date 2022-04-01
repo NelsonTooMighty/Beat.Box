@@ -12,6 +12,11 @@ public class Playlist extends LinkedList<Song> implements Serializable {
         this.playlistName = playlistName;
     }
 
+    /**
+     * Gets a Song from the playlist by its name.
+     * @param songName the name of the requested Song
+     * @return the Song object with the specified name, null if not found
+     */
     public Song getSong(String songName) {
         for(Song song : this)
             if(song.getSongName().equals(songName))
@@ -19,6 +24,11 @@ public class Playlist extends LinkedList<Song> implements Serializable {
         return null; //no name match found
     }
 
+    /**
+     * Gets a Song from the playlist by its index.
+     * @param index the index of the requested Song
+     * @return the Song object at the specified index, null if not found
+     */
     public Song getSong(int index) {
         if (index < this.size()) //to avoid throwing an error
             return this.get(index);
