@@ -1,14 +1,14 @@
 import java.util.ArrayList;
-import java.util.Iterator;
+
 public class DatabaseQuery {
-    private final Database model = Database.getInstance();
+    private final Database db = Database.getInstance();
 
     public DatabaseQuery() {}
 
     public Playlist getPlaylist(int index) { // Create DatabaseQuery method to return a requested Playlist
         //use db[index] to get the requested playlist
-        if (index < model.size())
-            return model.get(index);
+        if (index < db.size())
+            return db.get(index);
         else
         return null; //replace with a return with found playlist
     }
@@ -17,7 +17,7 @@ public class DatabaseQuery {
     //Search database for file with name (ArrayList methods can do this)
     //Output: playlist with matching name from Database/db
     public Playlist getPlaylist(String playlistName) {
-        for (Playlist currentPlaylist : model) {                                    //check for playlist in database
+        for (Playlist currentPlaylist : db) {                                    //check for playlist in database
             if (playlistName.equals(currentPlaylist.getPlaylistName())) {
                 return currentPlaylist;
             }
@@ -36,11 +36,11 @@ public class DatabaseQuery {
 
     //output: list of all Playlist objects from database
     public ArrayList<Playlist> getAllPlaylists() {
-        return new ArrayList<>(model);
+        return new ArrayList<>(db);
     }
 
     public Playlist getArtistList(String artistName){
-        for(Playlist currentPlaylist : model) {                              //check is existing artist playlist in database
+        for(Playlist currentPlaylist : db) {                              //check is existing artist playlist in database
             String currentPlaylistName = currentPlaylist.getPlaylistName();
             if (currentPlaylistName.equals(artistName)){
                 return currentPlaylist;

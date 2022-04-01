@@ -14,7 +14,7 @@ public class Playlist extends LinkedList<Song> implements Serializable {
 
     public Song getSong(String songName) {
         for(Song song : this)
-            if(song.getTrackTitle().equals(songName))
+            if(song.getSongName().equals(songName))
                 return song;
         return null; //no name match found
     }

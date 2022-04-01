@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class Controller {
     private PlaylistFrame view;
@@ -20,7 +19,7 @@ public class Controller {
     public void displayPlaylistContent(JTextArea screen, String playlistName) {
         Playlist desiredPlaylist = model.getPlaylist(playlistName);
         for(Song song : desiredPlaylist){
-            String songMessage = song.getTrackTitle() + "\n \t" + song.getArtistName() +
+            String songMessage = song.getSongName() + "\n \t" + song.getArtistName() +
                     song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n";
             screen.append(songMessage);
         }
