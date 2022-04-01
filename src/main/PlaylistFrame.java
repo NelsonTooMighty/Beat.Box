@@ -17,13 +17,20 @@ public class PlaylistFrame {
         ActionListener submitChoice = new ActionListener(){
             @Override
             public void actionPerformed (ActionEvent e){
-                myController.displayPlaylistContent(displayofPlaylist,userInput.getText());
+                String input = userInput.getText();
+                int playlistIndex = 0;
+                try {
+                    playlistIndex = Integer.parseInt(input);
+                } catch (NumberFormatException numberFormatException) {
+                    displayofPlaylist.append("Error: Invalid index! Please enter the integer value of the playlist.\n");
+                }
+                myController.displayPlaylistContent(displayofPlaylist,playlistIndex - 1); //-1 because the playlists are listed from 1 but are indexed from 0
                 userInput.setText("");
 
             }
         };
         submitButton.addActionListener(submitChoice);
-        userInput.addActionListener(submitChoice);
+        //userInput.addActionListener(submitChoice); should be unnecessary?
         }
 
 

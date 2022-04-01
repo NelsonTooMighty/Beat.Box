@@ -39,6 +39,24 @@ public class DatabaseQuery {
         return new ArrayList<>(db);
     }
 
+    public ArrayList<String> getAllArtists() {
+        ArrayList<String> artists = new ArrayList<>();
+        for(Playlist playlist : db) //for every playlist
+            for(Song song : playlist) //for every song in every playlist
+                if(!artists.contains(song.getArtistName())) //if the playlist doesn't have an artist name
+                    artists.add(song.getArtistName()); //add it to the list
+        return artists; //when done
+    }
+
+    public int getArtistSongCount(String artistName) {
+        int songs = 0;
+        for(Playlist playlist : db) //for every playlist
+            for(Song song : playlist) //for every song in every playlist
+                if(artistName.equals(song.getArtistName())) //if this song is theirs
+                    ++songs;
+        return songs;
+    }
+
     public Playlist getArtistList(String artistName){
         for(Playlist currentPlaylist : db) {                              //check is existing artist playlist in database
             String currentPlaylistName = currentPlaylist.getPlaylistName();
