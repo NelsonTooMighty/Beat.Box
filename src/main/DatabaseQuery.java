@@ -44,7 +44,20 @@ public class DatabaseQuery {
     //input: index of a playlist
     //remove playlist from Database/db
     //output: if the object was found and removed
-    public boolean removePlaylist(int index) {return false;}
+    public boolean removePlaylist(String playlistName) {  // Part 1 BB-61
+        Playlist desiredPlaylist = getPlaylist(playlistName);
+        model.remove(desiredPlaylist);
+
+    }
+
+    public boolean removePlaylist(int index) { // Part 2 BB-61
+        boolean wasRemoved = false;
+        if(index <= model.size()){
+            model.remove(index);
+            wasRemoved = true;
+        }
+        return wasRemoved;
+    }
 
     //output: list of all Playlist objects from database
     public ArrayList<Playlist> getAllPlaylists() {
