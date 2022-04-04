@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.util.ArrayList;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Controller {
     private PlaylistFrame view;
@@ -45,5 +47,26 @@ public class Controller {
             String output = i++ + ". " + name + "\tSongs: " + model.getArtistSongCount(name) + "\n";
             screen.append(output);
         }
+    }
+    public void likeButtonEffects(JButton likeButton){
+        Song currentSong;
+        ImageIcon dislikeImage = new ImageIcon("src/resources/GreyBox.png"),
+                likeImage = new ImageIcon("../resources/Beat.Box.png");
+        boolean inLike = model.checkLike();
+        ActionListener likeNow = new ActionListener() { // supposed to react when user clicks the icon
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (inLike) {
+                    likeButton.setIcon(dislikeImage);
+                    likedPlaylist.removeSong(currentSong);
+                    //removeSong();
+                } else {
+                    likeButton.setIcon(likeImage);
+                    likedPlaylist.addSong(currentSong);
+                    //addSong();
+                }
+            }
+        };
+        likeButton.addActionListener(likeNow);
     }
 }

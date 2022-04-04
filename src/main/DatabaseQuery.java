@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class DatabaseQuery {
     private final Database db = Database.getInstance();
+    
 
     public DatabaseQuery() {}
 
@@ -97,4 +98,6 @@ public class DatabaseQuery {
         return artistPlaylist;
 
     }
+    
+   
 }
