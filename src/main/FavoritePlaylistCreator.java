@@ -11,10 +11,10 @@ public class FavoritePlaylistCreator extends LayoutFrame {
         Boolean isLiked = false;
         JButton likeButton = new JButton(dislikeImage);
         Song currentSong; //supposed to hold current song being Played
+
         currentDatabase.add(likedPlaylist);
 
 
         
     }
-   
 }
