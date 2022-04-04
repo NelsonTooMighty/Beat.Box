@@ -98,6 +98,26 @@ public class DatabaseQuery {
         return artistPlaylist;
 
     }
-    
-   
+    public void addLikedSong(String songName){
+        db.addLikedSong(songName);
+    }
+    public void removeLikedSong(String songName){
+        db.removeLikedSong(songName);
+    }
+    }
+    public void addLikedSong(Song song){
+        db.addLikedSong(song);
+    }
+    public void removeLikedSong(Song song){
+        db.removeLikedSong(song);
+    }
+    public boolean checkLike(String songName){
+      return  db.inLike(songName);
+     }
+   public boolean checkLike(Song song){
+       return db.inLike(song);
+   }
+   public ArrayList<Song>getLikedList(){
+       return db.getLikedList();
+   }
 }

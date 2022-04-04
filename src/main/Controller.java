@@ -52,21 +52,30 @@ public class Controller {
         Song currentSong;
         ImageIcon dislikeImage = new ImageIcon("src/resources/GreyBox.png"),
                 likeImage = new ImageIcon("../resources/Beat.Box.png");
-        boolean inLike = model.checkLike();
+        boolean inLike = model.checkLike(currentSong);
         ActionListener likeNow = new ActionListener() { // supposed to react when user clicks the icon
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (inLike) {
                     likeButton.setIcon(dislikeImage);
-                    likedPlaylist.removeSong(currentSong);
+                    model.removeLikedSong(currentSong);
                     //removeSong();
                 } else {
                     likeButton.setIcon(likeImage);
-                    likedPlaylist.addSong(currentSong);
+                    model.addLikedSong(currentSong);
                     //addSong();
                 }
             }
         };
         likeButton.addActionListener(likeNow);
+    }
+    public void displayLikedList(JTextArea screen){
+        ArrayList<Song> songs = model.getLikedList();
+        int i = 1;
+        for (Song song : songs){
+            String output = i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() +
+            song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n";
+            screen.append(output);
+        }
     }
 }

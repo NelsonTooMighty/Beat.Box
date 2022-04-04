@@ -56,14 +56,27 @@ public class Database extends ArrayList<Playlist> { //add(Playlist), remove(Play
         likedPlaylist.remove(likedPlaylist.getSong(songName));
     }
     }
-    public void addLikeSong(Song song){
+    public void addLikedSong(Song song){
         likedPlaylist.add(song);
     }
     public void removeLikedSong(Song song){
         likedPlaylist.remove(song);
     }
     public boolean inLike(String songName){
-        if (likedPlaylist.getSong(songName) != null){return true;}
+        if (likedPlaylist.getSong(songName)!= null)){return true;}
         else {return false;}
      }
+    public boolean inLike(Song song){
+        if(likedPlaylist.contains(song)){
+            return true;
+        }
+        else {return false;}
+    }
+    public ArrayList<Song> getLikedList(){
+        ArrayList<Song>list = new ArrayList<Song>();
+        for(Song song : likedPlaylist){
+            list.add(song);
+        }
+        return list;
+    }
 }
