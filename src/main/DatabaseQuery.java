@@ -27,12 +27,29 @@ public class DatabaseQuery {
 
     //Input: index of a playlist, new name to set the playlist to
     //Output: renamed playlist object
-    public Playlist renamePlaylist(int index, String newName) {return null;}
+    public void renamePlaylist(int index, String newName) {
+
+        model.get(index).setPlaylistName(newName);
+
+    }
 
     //input: index of a playlist
     //remove playlist from Database/db
     //output: if the object was found and removed
-    public boolean removePlaylist(int index) {return false;}
+    public boolean removePlaylist(int index) {
+        boolean found = false; //not found yet
+        //index given is in range of the database
+        if (index <= model.size()){
+            //found and removes it
+            found = true;
+            model.remove(index);
+            return found;
+        }
+
+       else
+           return found;
+    }
+
 
     //output: list of all Playlist objects from database
     public ArrayList<Playlist> getAllPlaylists() {
