@@ -52,7 +52,9 @@ public class DatabaseQuery {
 
 
     //output: list of all Playlist objects from database
-    public ArrayList<Playlist> getAllPlaylists() {return null;}
+    public ArrayList<Playlist> getAllPlaylists() {
+        return new ArrayList<>(model);
+    }
 
     public Playlist getArtistList(String artistName){
         for(Playlist currentPlaylist : model) {                              //check is existing artist playlist in database
@@ -75,7 +77,10 @@ public class DatabaseQuery {
 
     }
 
-    public Iterator<Playlist> iterator() {
-        return model.iterator();
+    public void removeSong(String playlistName, String songName){
+        Playlist desiredPlaylist =  getPlaylist(playlistName);
+        Song removeSong = desiredPlaylist.getSong(songName);
+        desiredPlaylist.remove(removeSong);                                        //Got code from: https://www.javatpoint.com/remove-an-element-from-arraylist-in-java
     }
+
 }

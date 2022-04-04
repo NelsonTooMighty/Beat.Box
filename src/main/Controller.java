@@ -9,6 +9,18 @@ public class Controller {
     public Controller(PlaylistFrame view) {
         this.view = view;
     }
+    public Song getSong(Playlist currentPlaylist,String songName){
+        boolean foundSong = false;
+        Iterator<Song> it = currentPlaylist.iterator();
+        while(!foundSong && it.hasNext()){
+            Song currentSong = it.next();
+            if (songName.equals(currentSong.getTrackTitle())){
+                foundSong = true;
+                return currentSong;
+            }
+            else{it.next();}
+        }
+    }
 
     public void displayAllPlaylists (JTextArea screen){
         ArrayList<Playlist> playlists = model.getAllPlaylists();
