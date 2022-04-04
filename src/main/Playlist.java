@@ -45,4 +45,5 @@ public class Playlist extends LinkedList<Song> implements Serializable {
             return this.remove(index) != null; //true if removed (not null), false if not removed (null)
         return false;
     }
+    
 }
