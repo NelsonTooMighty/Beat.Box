@@ -23,7 +23,7 @@ public class folderScanner {
                 songArray = songName.split("[\\.]+");
                 stringLength = songArray.length;
                 songName = songArray[stringLength - 2];
-                currentSong.setTrackTitle(songName);
+                currentSong.setSongName(songName);
                 currentSong.setLocal(true);
                 currentSong.setLocalPath(p.toString());
                 currentPlaylist.add(currentSong);

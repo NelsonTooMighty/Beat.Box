@@ -3,7 +3,7 @@ import java.io.Serializable;
 import java.net.URL;
 
 public class Song implements Serializable { //API documentation: https://developer.spotify.com/documentation/web-api/reference/#/operations/get-track, https://developer.apple.com/documentation/musickit/track/
-    String trackTitle;
+    String songName;
     String artistName;
     String albumName;
     String releaseDate;
@@ -14,8 +14,8 @@ public class Song implements Serializable { //API documentation: https://develop
     public Song() {
     }
 
-    public Song(String trackTitle, String artistName, String albumName, String releaseDate, String albumArtLocation) {
-        this.trackTitle = trackTitle;
+    public Song(String songName, String artistName, String albumName, String releaseDate, String albumArtLocation) {
+        this.songName = songName;
         this.artistName = artistName;
         this.albumName = albumName;
         this.releaseDate = releaseDate;
@@ -24,8 +24,8 @@ public class Song implements Serializable { //API documentation: https://develop
         localPath = null;
     }
 
-    public Song(String trackTitle, String artistName, String albumName, String releaseDate, String localPath, boolean isLocal) {
-        this.trackTitle = trackTitle;
+    public Song(String songName, String artistName, String albumName, String releaseDate, String localPath, boolean isLocal) {
+        this.songName = songName;
         this.artistName = artistName;
         this.albumName = albumName;
         this.releaseDate = releaseDate;
@@ -58,12 +58,12 @@ public class Song implements Serializable { //API documentation: https://develop
         return null;
     }
 
-    public String getTrackTitle() {
-        return trackTitle;
+    public String getSongName() {
+        return songName;
     }
 
-    public void setTrackTitle(String trackTitle) {
-        this.trackTitle = trackTitle;
+    public void setSongName(String songName) {
+        this.songName = songName;
     }
 
     public String getArtistName() {
