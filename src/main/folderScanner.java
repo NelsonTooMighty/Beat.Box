@@ -6,20 +6,20 @@ import java.nio.file.Paths;
 import java.util.*;
 public class folderScanner {
     public void songTitle(){
-        Scanner input = new Scanner(System.in);
+        // Scanner input = new Scanner(System.in);
         String songName;
         String []songArray;
         int stringLength;
         Playlist currentPlaylist = new Playlist();
         Database currentDatabase = Database.getInstance();
 
-        Path path = Paths.get(input.nextLine());
-        try (DirectoryStream<Path> ds = Files.newDirectoryStream(path)) 
+        Path path = Paths.get( String // Get for folder from Naomi);
+        try (DirectoryStream<Path> ds = Files.newDirectoryStream(path)) // Edit path
         {
             for (Path p : ds) 
             {
                 Song currentSong = new Song();
-                songName = p.toString();
+                songName = p.getFileName().toString();
                 songArray = songName.split("[\\.]+");
                 stringLength = songArray.length;
                 songName = songArray[stringLength - 2];
@@ -34,8 +34,10 @@ public class folderScanner {
             e.printStackTrace();
         }
         currentDatabase.add(currentPlaylist);
+
+        return currentPlaylist;
        
-        input.close();
+        // input.close();
     }
 
 }
