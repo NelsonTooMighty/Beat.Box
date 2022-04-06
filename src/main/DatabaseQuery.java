@@ -47,14 +47,13 @@ public class DatabaseQuery {
     //output: if the object was found and removed
     public boolean removePlaylist(String playlistName) {  // Part 1 BB-61
         Playlist desiredPlaylist = getPlaylist(playlistName);
-        model.remove(desiredPlaylist);
-
+        return db.remove(desiredPlaylist);
     }
 
     public boolean removePlaylist(int index) { // Part 2 BB-61
         boolean wasRemoved = false;
-        if(index <= model.size()){
-            model.remove(index);
+        if(index <= db.size()){
+            db.remove(index);
             wasRemoved = true;
         }
         return wasRemoved;
@@ -111,13 +110,10 @@ public class DatabaseQuery {
         return artistPlaylist;
 
     }
-    public void addLikedSong(String songName){
-        db.addLikedSong(songName);
-    }
     public void removeLikedSong(String songName){
         db.removeLikedSong(songName);
     }
-    }
+    
     public void addLikedSong(Song song){
         db.addLikedSong(song);
     }
@@ -130,7 +126,7 @@ public class DatabaseQuery {
    public boolean checkLike(Song song){
        return db.inLike(song);
    }
-   public ArrayList<Song>getLikedList(){
+   public Playlist getLikedList(){
        return db.getLikedList();
    }
 }
