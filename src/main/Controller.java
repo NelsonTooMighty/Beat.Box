@@ -73,7 +73,7 @@ public class Controller {
         Playlist songs = model.getLikedList();
         int i = 1;
         for (Song song : songs){
-            String output = i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() +
+            String output = i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() + "\n \t" +
             song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n";
             screen.append(output);
         }

@@ -53,7 +53,7 @@ public class Database extends ArrayList<Playlist> { //add(Playlist), remove(Play
     public void removeLikedSong(String songName){
         likedPlaylist.remove(likedPlaylist.getSong(songName)); 
     }
-    
+
     public void addLikedSong(Song song){
         likedPlaylist.add(song); 
     }
@@ -61,14 +61,10 @@ public class Database extends ArrayList<Playlist> { //add(Playlist), remove(Play
         likedPlaylist.remove(song); 
     }
     public boolean inLike(String songName){
-        if(likedPlaylist.getSong(songName) != null){return true;}
-        else {return false;}
+        return likedPlaylist.getSong(songName) != null;
      }
     public boolean inLike(Song song){
-        if(likedPlaylist.contains(song)){
-            return true; 
-        }
-        else {return false;}
+        return likedPlaylist.contains(song);
     }
     public Playlist getLikedList(){  
         Playlist list = new Playlist();
