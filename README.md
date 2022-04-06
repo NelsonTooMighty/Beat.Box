@@ -222,6 +222,56 @@ Planned features:
           - export song info from Database to Spotify/Apple
           - unification of different classes above to run task
         
+## Sprint 2
+
+### Austin Sansing
+
+  - Work Done:
+    - Created A Way to Import Local Playlist & Display the Results in the GUI
+        - Commit [f685157](https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/f6851579291c5c0684a6bb631779c7a3c43f0b84)
+    - Created A DatabaseQuery Method to Return all Playlists When Called
+        - Commit [581b3d9](https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/581b3d9d4a114194c31b2203968e3d5b20592ecf)
+    - Created A Display that Shows these Songs are apart of "Favorite/Liked" 
+        - Commit [140bf5a](https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/140bf5ad858acfd2f7a6221da33bfff5f9bec192)
+    - Created A DatabaseQuery Method to Delete a Specific Playlist
+        - Commit [843a1a9](https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/843a1a9b30ef2371143618f17180e4d520cd24f4)
+
+  - Acknowledgements
+      - Still Need to do this section.
+
+  - Summary of Work Done:
+      - Created a method to be able to import local playlist utliziling our new controller implementation.
+      - Created a method that is the basis to my import local playlists function, allowing the controller to return all playlist found.
+      - Created a method that shows what songs are liked or favorites of the user.
+      - Created a method that allows the user to delete a specific playlist if it is no longer wanted.
+
+  - Status:
+      - Able to import local playlist that are saved on the computer and in return display the playlists on the GUI.
+      - Able to return all playlist that are found on the computer as well as a way to delete playlists as well.
+      - Able to visually see on the GUI, songs that are classified as liked or favorited by the user and storing these songs on a new playlist.
+
+  - Issues/ Needed Fixes:
+      - Need to find a more efficient way to designate liked or favorited songs. I could refactor the code to allow it to run faster utilizing SOLID principles.
+      - Need to work with Naomi on the next sprint to ensure back-end and front-end are functioning with no bugs that have not been seen yet.
+
+  - Sprint 3 Expectations:
+      - Work with Avery on the back-end to ensure the majority of the back-end methods and functionalites are following SOLID principles with helpful code documentation.
+      - Work on creating more tests for the overall program, to ensure bugs are not hiding within our code that we can't see currently.
+      - Complete or 3/4 fully functioning front-end to back-end functionality, while adding new features if time allows.
+
+### Template (Name goes here)
+
+  - Work Done:
+
+  - Acknowledgements:
+
+  - Summary of Work Done:
+
+  - Status:
+
+  - Issues/ Needed Fixes:
+
+  - Sprint 3 Expectations:
     
 ## Acknowledgements
 Give credit here.
