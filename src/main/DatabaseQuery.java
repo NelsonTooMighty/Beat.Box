@@ -110,13 +110,10 @@ public class DatabaseQuery {
         return artistPlaylist;
 
     }
-    public void addLikedSong(String songName){
-        db.addLikedSong(songName);
-    }
     public void removeLikedSong(String songName){
         db.removeLikedSong(songName);
     }
-
+    
     public void addLikedSong(Song song){
         db.addLikedSong(song);
     }
@@ -129,7 +126,7 @@ public class DatabaseQuery {
    public boolean checkLike(Song song){
        return db.inLike(song);
    }
-   public ArrayList<Song>getLikedList(){
+   public Playlist getLikedList(){
        return db.getLikedList();
    }
 }

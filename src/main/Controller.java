@@ -48,7 +48,7 @@ public class Controller {
             screen.append(output);
         }
     }
-    public void likeButtonEffects(JButton likeButton){
+   /* public void likeButtonEffects(JButton likeButton){
         Song currentSong;
         ImageIcon dislikeImage = new ImageIcon("src/resources/GreyBox.png"),
                 likeImage = new ImageIcon("../resources/Beat.Box.png");
@@ -68,9 +68,9 @@ public class Controller {
             }
         };
         likeButton.addActionListener(likeNow);
-    }
+    }*/
     public void displayLikedList(JTextArea screen){
-        ArrayList<Song> songs = model.getLikedList();
+        Playlist songs = model.getLikedList();
         int i = 1;
         for (Song song : songs){
             String output = i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() + "\n \t" +
