@@ -302,9 +302,9 @@ Planned features:
     
   - Summary of Work Done:
     - I worked on Both PLaylist and Arist Frame that used the controller to access the database and display the desired content of songs or artist songs based on the users input.
-    -    By doing this we are ensuring evey class is performing a specific task.     
+        -    By doing this I'm making sure the frames are following the solid principles.    
     - I also created functions for the controller and DatabaseQuery that Frames will be used to display the different contents of the database. 
-    -     The function displayArtistContents in controller takes in the users input that uses all other functions to gather all songs related to that artist in the database. 
+        -  The function displayArtistContents in controller takes in the users input that uses all other functions to gather all songs related to that artist in the database. 
     
   - Status:
     - As of right now both frames build and display. When the the userinput is processed it displaylist playlist not found. That is due to not having a database with any info. If anything else inserted that is not an interger on the playlist page it will show an error to reenter requested playlist.
@@ -312,12 +312,12 @@ Planned features:
 
   - Issues/ Needed Fixes:
     - There could be a possibile disscusion on if all the Frames/GUIs should have its own controller. As of right now there is only one controller between the artist and playlist frame and the controller class is already doing multiple tasks that are very similar. 
-    -      All the controllers could be a basic interface because they display the contents based off the users input, but differ in the information its displaying ex: arist, songs, playlist etc.
+        -   All the controllers could be a basic interface because they display the contents based off the users input, but differ in the information its displaying ex: arist, songs, playlist etc.
     
   - Sprint 3 Expectations:
       - For the next sprint All frames should be able to access and perform all the methods that allows the user to recieve information based on their input.
       - Want to create a button on every frame that could lead you to another frame based on what the user is wanting too access.
-      - testcase for all the Frames to insure the database is being accessed and displaying desired content correctly.
+      - Testcase for all the Frames to insure the database is being accessed and displaying desired content correctly.
 ### Template (Name goes here)
 
   - Work Done:
