@@ -35,7 +35,7 @@ public class Controller {
      * Songs: #
      * @param screen the screen to display artist lists to
      */
-    public void displayArtistList(JTextArea screen) {
+    public void displayAllArtistList(JTextArea screen) {
         ArrayList<String> artists = model.getAllArtists();
         int i = 1;
         for (String name : artists) {
@@ -43,7 +43,25 @@ public class Controller {
             screen.append(output);
         }
     }
-   /* public void likeButtonEffects(JButton likeButton){
+
+    //displaying all songs of the picked artist        //BB-55 Naomi
+    public void displayArtistContent (JTextArea screen, String artist_name) {
+        Playlist desiredPlaylist = model.getArtistSongList(artist_name);
+        int i = 1;
+        if (desiredPlaylist == null)
+            screen.append("Error: Artist Playlist not found!\n");
+        else
+            for(Song song : desiredPlaylist) {
+                String songMessage = i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() +
+                        song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n";
+                screen.append(songMessage);
+            }
+    }
+
+
+
+
+    /* public void likeButtonEffects(JButton likeButton){
         Song currentSong;
         ImageIcon dislikeImage = new ImageIcon("src/resources/GreyBox.png"),
                 likeImage = new ImageIcon("../resources/Beat.Box.png");

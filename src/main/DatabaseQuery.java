@@ -11,7 +11,7 @@ public class DatabaseQuery {
      * @param index the index of the playlist to get from the database
      * @return the playlist at the specified index, or null if out of bounds
      */
-    public Playlist getPlaylist_index(int index) {
+    public Playlist getPlaylist_index(int index) { //BB-16
 
 
         if (index <= db.size())
@@ -41,7 +41,7 @@ public class DatabaseQuery {
      * @param newName the new name Playlist will have
      * @return the renamed Playlist
      */
-    public Playlist renamePlaylist(int index, String newName) {
+    public Playlist renamePlaylist(int index, String newName) {  //BB-16
 
         Playlist temp = getPlaylist_index(index);
 
