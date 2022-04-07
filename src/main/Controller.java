@@ -15,7 +15,7 @@ public class Controller {
     }
 
     public void displayPlaylistContent(JTextArea screen, int playlistIndex) {
-        Playlist desiredPlaylist = model.getPlaylist(playlistIndex);
+        Playlist desiredPlaylist = model.getPlaylist_index(playlistIndex);
         int i = 1;
         if (desiredPlaylist == null)
             screen.append("Error: Playlist not found!\n");

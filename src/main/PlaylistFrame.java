@@ -30,7 +30,7 @@ public class PlaylistFrame {
             }
         };
         submitButton.addActionListener(submitChoice);
-        //userInput.addActionListener(submitChoice); should be unnecessary?
+
         }
 
 

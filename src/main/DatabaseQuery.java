@@ -11,10 +11,11 @@ public class DatabaseQuery {
      * @param index the index of the playlist to get from the database
      * @return the playlist at the specified index, or null if out of bounds
      */
-    public Playlist getPlaylist(int index) { // Create DatabaseQuery method to return a requested Playlist
-        //use db[index] to get the requested playlist
-        if (index < db.size())
-            return db.get(index);
+    public Playlist getPlaylist_index(int index) {
+
+
+        if (index <= db.size())
+            return db.get(index-1);
         else
             return null; //replace with a return with found playlist
     }
@@ -40,9 +41,13 @@ public class DatabaseQuery {
      * @param newName the new name Playlist will have
      * @return the renamed Playlist
      */
-    public Playlist renamePlaylist(int index, String newName) {return null;}
+    public Playlist renamePlaylist(int index, String newName) {
 
-        model.get(index).setPlaylistName(newName);
+
+
+   return null;
+
+
 
     }
 
