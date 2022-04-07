@@ -287,6 +287,34 @@ Planned features:
   - We'll mostly work on getting the GUI together and using the rest of the codebase, which will likely lead us to identify problems or missing functionality that we couldn't see before.
   - A good bit of refactoring and class diagrams for easier navigation
 
+### Naomi Padilla 
+
+  - Work Done:
+    - [BB-16]Created A DatabaseQuery Methods that deletes a playlist by its index and can rename a playlist
+        - Commit [a979eb7](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/a979eb730bbb2ea4867b5df5ceeb738d0c72ed9e)
+    - [BB-53]Created A Playlist Frame that works with the controller which displays playlist that are in the database. From the input of the user the GUI will then display the desired playlist contents. 
+        - Commit [db74d64](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/db74d64752fb1ae4a72c5f7b3a9f83802d358a45)
+    - [BB-54]Created A Artist Frame that works with the controller that displays all the artists that are in the database. From the input of the user the GUI will then display the desired artist songs. 
+        - Commit [e22b4c5](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/e22b4c56b489b54ddc314eafb0d197e07347f823)
+    - [BB-55]Created A Method in controller to Display all the songs for a request artist on the Artist Frame. 
+        - Commit [e22b4c5](https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/843a1a9b30ef2371143618f17180e4d520cd24f4)
+   
+
+  - Acknowledgements:
+    
+  - Summary of Work Done:
+    - I worked on Both PLaylist and Arist Frame that used the controller to access the database and display the desired content of songs or artist songs based on the users input.
+    -    By doing this we are ensuring evey class is performing a specific task.     
+    - I also created functions for the controller and DatabaseQuery that Frames will use to display the different contents of the database. 
+    -     The function displayArtistContents in controller takes in the users input that uses all other functions to gather all songs related to that artist in the database. 
+    
+  - Status:
+    - The Frame have the ability to access/connect with the database. There will need to have a basic database for the Frames to use to see if it connects with the database completely. As of right now both frames build. 
+    - The functions ---need to finish 
+  - Issues/ Needed Fixes:
+    - There could be a possibile disscusion on if all the Frames/GUIs 
+  - Sprint 3 Expectations:
+      - For the next sprint I for the GUIs to follow  
 ### Template (Name goes here)
 
   - Work Done:
@@ -300,7 +328,6 @@ Planned features:
   - Issues/ Needed Fixes:
 
   - Sprint 3 Expectations:
-    
     
 Nelson Uzoaru
     -Work Done: 
