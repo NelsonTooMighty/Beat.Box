@@ -4,26 +4,31 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class PlaylistFrame {
-   JTextField userInput = new JTextField(50);
-   JButton submitButton = new JButton("Submit");
-   JTextArea displayarea = new JTextArea(20, 40);
-   Controller myController;
-   JFrame jframe;
-   JPanel jPanel;
-    public PlaylistFrame(Controller myController){
+  private JTextField userInput = new JTextField(80); //from 50
+ private  JButton submitButton = new JButton("Submit");
+  private JTextArea displayarea = new JTextArea(40, 40);
+  private Controller myController;
+   private JFrame jframe;
+    private JPanel jPanel;
+    public PlaylistFrame(Controller Controller){
 
+        myController = Controller;
         jPanel = new JPanel();
         jframe = new JFrame();
-        jframe.add(jPanel, BorderLayout.CENTER);
+       jframe.add(jPanel, BorderLayout.CENTER);
 
-        jPanel.add(displayarea);
-        myController.displayAllPlaylists(displayarea);
+        JLabel small = new JLabel("Enter the index of desired playlist");
+        jPanel.add(small);
+
         jPanel.add(userInput);
         jPanel.add(submitButton);
+        jPanel.add(displayarea);
+        myController.displayAllPlaylists(displayarea);
+
 
         jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jframe.setTitle("PLayList page");
-        this.myController = myController;
+
         jframe.pack();
 
 
