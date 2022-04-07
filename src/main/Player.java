@@ -10,7 +10,7 @@ import java.io.IOException;
 public class Player  {
 
     public Player() throws Exception {
-        File file = new File ("C:\\Personal Projects\\beat.box\\demo local files\\Beethoven.wav");
+        File file = new File ("../demo local files/Beethoven.wav");
         AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
         Clip clip = AudioSystem.getClip();
         clip.open(audioStream);
