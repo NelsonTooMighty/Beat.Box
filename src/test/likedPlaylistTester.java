@@ -2,7 +2,7 @@
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import java.io.IOException;
+
 public class likedPlaylistTester {
     @Test
     @DisplayName("Test to see if liked Playlist exists")
@@ -23,9 +23,9 @@ public class likedPlaylistTester {
         storeTest.removeLikedSong(song2);
         storeTest.removeLikedSong("F.U.T.W");
         sampleLike = storeTest.getLikedList();
-        assertFalse(storeTest.inLike(song2));
-        assertTrue(storeTest.inLike("Ether"));
-        assertFalse(storeTest.inLike(song3));
+        assertFalse(storeTest.isLiked(song2));
+        assertTrue(storeTest.isLiked("Ether"));
+        assertFalse(storeTest.isLiked(song3));
 
         
     }

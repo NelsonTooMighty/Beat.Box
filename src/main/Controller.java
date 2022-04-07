@@ -4,12 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Controller {
-    private PlaylistFrame view;
     private final DatabaseQuery model = new DatabaseQuery();
-
-    public Controller(PlaylistFrame view) {
-        this.view = view;
-    }
 
     public void displayAllPlaylists (JTextArea screen) {
         ArrayList<Playlist> playlists = model.getAllPlaylists();

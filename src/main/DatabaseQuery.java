@@ -83,7 +83,7 @@ public class DatabaseQuery {
      * @return int count of Songs by the specified artist
      */
     public int getArtistSongCount(String artistName) {
-        return getArtistList(artistName).size();
+        return getArtistSongList(artistName).size();
     }
 
     /**
@@ -91,27 +91,18 @@ public class DatabaseQuery {
      * @param artistName name of specified artist to search for Songs with
      * @return Playlist with every song by the specified artist
      */
-    public Playlist getArtistList(String artistName){
-        /*for(Playlist currentPlaylist : db) {                              //check is existing artist playlist in database
-            String currentPlaylistName = currentPlaylist.getPlaylistName();
-            if (currentPlaylistName.equals(artistName)){
-                return currentPlaylist;
-            }
-        } //if it gets here, it was not found  */       //This doesn't work if there's new Songs
+    public Playlist getArtistSongList(String artistName){
         Playlist artistPlaylist = new Playlist();               // artists name stored in its class
         artistPlaylist.setPlaylistName(artistName);
         ArrayList<Playlist> playlists = getAllPlaylists();      //gets list of all playlists
         for (Playlist playlist : playlists){                    //loops through them
             for (Song song : playlist){                         //adds all songs by that Artist to the new playlist
-                if (artistName.equals(song.getArtistName()))
-                    artistPlaylist.add(song);
+                if (artistName.equals(song.getArtistName()))    //if the artist name matches
+                    artistPlaylist.add(song);                       //add that song
             }
         }
         return artistPlaylist;
 
-    }
-    public void removeLikedSong(String songName){
-        db.removeLikedSong(songName);
     }
     
     public void addLikedSong(Song song){
@@ -120,11 +111,14 @@ public class DatabaseQuery {
     public void removeLikedSong(Song song){
         db.removeLikedSong(song);
     }
+    public void removeLikedSong(String songName){
+        db.removeLikedSong(songName);
+    }
     public boolean checkLike(String songName){
-      return  db.inLike(songName);
+      return  db.isLiked(songName);
      }
    public boolean checkLike(Song song){
-       return db.inLike(song);
+       return db.isLiked(song);
    }
    public Playlist getLikedList(){
        return db.getLikedList();

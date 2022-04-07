@@ -5,7 +5,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 public class folderScanner {
-    public void songTitle(){
+    public Playlist scanFolder(String folderPath){
         // Scanner input = new Scanner(System.in);
         String songName;
         String []songArray;
@@ -13,7 +13,7 @@ public class folderScanner {
         Playlist currentPlaylist = new Playlist();
         Database currentDatabase = Database.getInstance();
 
-        Path path = Paths.get( String // Get for folder from Naomi);
+        Path path = Paths.get(folderPath); // Get folder path from GUI
         try (DirectoryStream<Path> ds = Files.newDirectoryStream(path)) // Edit path
         {
             for (Path p : ds) 
