@@ -21,7 +21,8 @@ public class Controller {
             screen.append("Error: Playlist not found!\n");
         else
             for(Song song : desiredPlaylist) {
-                String songMessage = i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() +
+                screen.append("Album: \n");
+                String songMessage = i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() + "\n\t" +
                         song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n";
                 screen.append(songMessage);
             }
