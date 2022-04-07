@@ -301,10 +301,13 @@ Planned features:
    
     
   - Summary of Work Done:
+     - I also did research on MVC (model, View, Control), to ensure our project is following the Single Responsibility. With gathering infomation about this design pattern as a group we were able to discuss on how we could write our program to efficiently access information without having our Frames do multiple tasks.  
+         
     - I worked on Both PLaylist and Arist Frame that used the controller to access the database and display the desired content of songs or artist songs based on the users input.
         -    By doing this I'm making sure the frames are following the solid principles.    
     - I also created functions for the controller and DatabaseQuery that Frames will be used to display the different contents of the database. 
         -  The function displayArtistContents in controller takes in the users input that uses all other functions to gather all songs related to that artist in the database. 
+    
     
   - Status:
     - As of right now both frames build and display. When the the userinput is processed it displaylist playlist not found. That is due to not having a database with any info. If anything else inserted that is not an interger on the playlist page it will show an error to reenter requested playlist.
