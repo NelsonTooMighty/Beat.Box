@@ -301,6 +301,13 @@ Planned features:
 
   - Sprint 3 Expectations:
     
+    
+Nelson Uzoaru
+    -Work Done: 
+      -[BB-57]: (https://cs3398s22romulans.atlassian.net/jira/software/projects/BB/boards/3?assignee=61e72f3209633b0069bfc5c0&selectedIssue=BB-57)Create DatabaseQuery method to return a requested Playlist
+      -Commit: [1b15ba2](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/1b15ba20eba15585ee5cc3389bd64be619d16ef0)
+      
+    
 ## Acknowledgements
 Give credit here.
 - This project was inspired by...
