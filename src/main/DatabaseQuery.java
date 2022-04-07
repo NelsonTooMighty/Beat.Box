@@ -43,12 +43,10 @@ public class DatabaseQuery {
      */
     public Playlist renamePlaylist(int index, String newName) {
 
+        Playlist temp = getPlaylist_index(index);
 
-
-   return null;
-
-
-
+        temp.setPlaylistName(newName);
+        return temp;
     }
 
     //input: index of a playlist
