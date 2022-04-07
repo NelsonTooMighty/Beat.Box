@@ -57,10 +57,10 @@ public class DatabaseQuery {
         return db.remove(desiredPlaylist);
     }
 
-    public boolean removePlaylist(int index) { // Part 2 BB-61
+    public boolean removePlaylist(int index) { // Part 2 BB-16
         boolean wasRemoved = false;
         if(index <= db.size()){
-            db.remove(index);
+            db.remove(index-1);
             wasRemoved = true;
         }
         return wasRemoved;

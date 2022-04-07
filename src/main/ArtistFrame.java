@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-//BB
+//BB 54
 public class ArtistFrame {
     private JTextField userInput = new JTextField(80); //from 50
     private  JButton submitButton = new JButton("Submit");
