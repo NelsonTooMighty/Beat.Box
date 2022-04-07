@@ -227,17 +227,17 @@ Planned features:
 ### Austin Sansing
 
   - Work Done:
-    - Created A Way to Import Local Playlist & Display the Results in the GUI
+    - Created A Way to Import Local Playlist & Display the Results in the GUI [BB-62](https://cs3398s22romulans.atlassian.net/browse/BB-62)
         - Commit [f685157](https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/f6851579291c5c0684a6bb631779c7a3c43f0b84)
-    - Created A DatabaseQuery Method to Return all Playlists When Called
+    - Created A DatabaseQuery Method to Return all Playlists When Called [BB-60](https://cs3398s22romulans.atlassian.net/browse/BB-60)
         - Commit [581b3d9](https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/581b3d9d4a114194c31b2203968e3d5b20592ecf)
-    - Created A Display that Shows these Songs are apart of "Favorite/Liked" 
+    - Created A Display that Shows these Songs are apart of "Favorite/Liked" [BB-26](https://cs3398s22romulans.atlassian.net/browse/BB-26)
         - Commit [140bf5a](https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/140bf5ad858acfd2f7a6221da33bfff5f9bec192)
-    - Created A DatabaseQuery Method to Delete a Specific Playlist
+    - Created A DatabaseQuery Method to Delete a Specific Playlist [BB-61](https://cs3398s22romulans.atlassian.net/browse/BB-61)
         - Commit [843a1a9](https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/843a1a9b30ef2371143618f17180e4d520cd24f4)
 
   - Acknowledgements
-      - Still Need to do this section.
+    - [Object-Oriented Design & Patterns 2nd Edition by Cay Horstmann](https://horstmann.com/design_and_patterns.html) for the refresher on Model-View-Controller architecture
 
   - Summary of Work Done:
       - Created a method to be able to import local playlist utliziling our new controller implementation.
