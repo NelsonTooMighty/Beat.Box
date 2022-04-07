@@ -299,22 +299,25 @@ Planned features:
     - [BB-55]Created A Method in controller to Display all the songs for a request artist on the Artist Frame. 
         - Commit [e22b4c5](https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/843a1a9b30ef2371143618f17180e4d520cd24f4)
    
-
-  - Acknowledgements:
     
   - Summary of Work Done:
     - I worked on Both PLaylist and Arist Frame that used the controller to access the database and display the desired content of songs or artist songs based on the users input.
     -    By doing this we are ensuring evey class is performing a specific task.     
-    - I also created functions for the controller and DatabaseQuery that Frames will use to display the different contents of the database. 
+    - I also created functions for the controller and DatabaseQuery that Frames will be used to display the different contents of the database. 
     -     The function displayArtistContents in controller takes in the users input that uses all other functions to gather all songs related to that artist in the database. 
     
   - Status:
-    - The Frame have the ability to access/connect with the database. There will need to have a basic database for the Frames to use to see if it connects with the database completely. As of right now both frames build. 
-    - The functions ---need to finish 
+    - As of right now both frames build and display. When the the userinput is processed it displaylist playlist not found. That is due to not having a database with any info. If anything else inserted that is not an interger on the playlist page it will show an error to reenter requested playlist.
+    - All methods I made are functioning, one of them is specifically working with the GUI to display the the songs of the artist given from the userinput.
+
   - Issues/ Needed Fixes:
-    - There could be a possibile disscusion on if all the Frames/GUIs 
+    - There could be a possibile disscusion on if all the Frames/GUIs should have its own controller. As of right now there is only one controller between the artist and playlist frame and the controller class is already doing multiple tasks that are very similar. 
+    -      All the controllers could be a basic interface because they display the contents based off the users input, but differ in the information its displaying ex: arist, songs, playlist etc.
+    
   - Sprint 3 Expectations:
-      - For the next sprint I for the GUIs to follow  
+      - For the next sprint All frames should be able to access and perform all the methods that allows the user to recieve information based on their input.
+      - Want to create a button on every frame that could lead you to another frame based on what the user is wanting too access.
+      - testcase for all the Frames to insure the database is being accessed and displaying desired content correctly.
 ### Template (Name goes here)
 
   - Work Done:
