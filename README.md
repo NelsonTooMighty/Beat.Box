@@ -259,6 +259,34 @@ Planned features:
       - Work on creating more tests for the overall program, to ensure bugs are not hiding within our code that we can't see currently.
       - Complete or 3/4 fully functioning front-end to back-end functionality, while adding new features if time allows.
 
+### Avery VanAusdal
+
+- Work Done:
+  - [BB-56](https://cs3398s22romulans.atlassian.net/browse/BB-56): Created a Controller class for MVC architecture/linking allowing the GUI access to the backend
+    - Commit: [119d9ed](https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/119d9ed057daa9969ac0fedfb98af1bd704a1e33)
+  - [BB-59](https://cs3398s22romulans.atlassian.net/browse/BB-59): Created a method for Controller to list all unique artists in the Database
+    - [Pull Request](https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/pull-requests/5), Commits: [ee1f31e](https://bitbucket.org/%7B%7D/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/ee1f31e169089e55185d822aef0794fd53452068), [805f04a](https://bitbucket.org/%7B%7D/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/805f04ac479128ea80a124d77ab585877d070bd2)
+  - [BB-69](https://cs3398s22romulans.atlassian.net/browse/BB-69): Created CloudPlaylistImporter interface for service decoupling
+    - Commits: [8ca5ab2](https://bitbucket.org/%7B%7D/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/8ca5ab2f1b8e083538293c389bbb280fcc8bded3), [b74469b](https://bitbucket.org/%7B%7D/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/b74469b413b7bea25d36f0fcb8d6874fde7ee63d)
+  - [BB-70](https://cs3398s22romulans.atlassian.net/browse/BB-70): Created SpotifyImporter class extending CloudPlaylistImporter which allows for entire Spotify playlists (by URL) to be converted to local Database objects
+    - [Pull Request](https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/pull-requests/6), Commits: [25d9b6c](https://bitbucket.org/%7B%7D/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/25d9b6ccdc13772b77c6741343a91255c6cf52b2), [4dc36d3](https://bitbucket.org/%7B%7D/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/4dc36d3e419c898660758ce43ce5b8cdb8b00ca2), [bf93adb](https://bitbucket.org/%7B%7D/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/bf93adb00cc4394f71e3b2305870b78105ee304b)
+
+- Acknowledgements:
+  - [Spotify Web API Java](https://github.com/spotify-web-api-java/spotify-web-api-java) for the massive help streamlining Spotify authentication and HTTPS requests
+  - [Object-Oriented Design & Patterns 2nd Edition by Cay Horstmann](https://horstmann.com/design_and_patterns.html) for the refresher on Model-View-Controller architecture
+- Summary of Work Done:
+  - Much of my time this sprint was focused on clear, seperated class responsibilities, such as creating the Controller class so the GUI will be updated, and moving some methods into a new class DatabaseQuery for operations more complicated than Database itself should be responsible for.
+  - The other half was spent laying the foundation for Spotify imports; the SpotifyImporter class is now ready to import playlists simply when provided the URL.
+- Status:
+  - From the lens of model-view-controller architecture, the model and controller are practically done. The view (GUI) is barebones but has most of what it needs to use from here on out.
+  - Currently, we have functionality for importing from local folders and Spotify, as well as the ability to store those playlists between app launches.
+- Issues/ Needed Fixes:
+  - Our Spotify authentication currently doesn't support an authorization level high enough for exporting, which will need to be added later
+  - May need user input validation soon
+- Sprint 3 Expectations:
+  - We'll mostly work on getting the GUI together and using the rest of the codebase, which will likely lead us to identify problems or missing functionality that we couldn't see before.
+  - A good bit of refactoring and class diagrams for easier navigation
+
 ### Template (Name goes here)
 
   - Work Done:
