@@ -16,7 +16,7 @@ public class TestDatabase {
         d.saveToFile(test, "src/resources/serialized_playlist_test");
         Playlist inTest = d.loadFromFile("src/resources/serialized_playlist_test");
         assertTrue("Vulfy".equals(inTest.getPlaylistName()));
-        assertTrue("Dean Town".equals(inTest.getFirst().getTrackTitle()));
+        assertTrue("Dean Town".equals(inTest.getFirst().getSongName()));
         assertTrue("Vulfpeck".equals(inTest.getFirst().getArtistName()));
         assertTrue("The Beautiful Game".equals(inTest.getFirst().getAlbumName()));
         assertTrue("2016".equals(inTest.getFirst().getReleaseDate()));
