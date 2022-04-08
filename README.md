@@ -340,7 +340,36 @@ Nelson Uzoaru
       -[BB-57]: (https://cs3398s22romulans.atlassian.net/jira/software/projects/BB/boards/3?assignee=61e72f3209633b0069bfc5c0&selectedIssue=BB-57)Create DatabaseQuery method to return a requested Playlist
       -Commit: [1b15ba2](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/1b15ba20eba15585ee5cc3389bd64be619d16ef0)
       
-    
+### Libin Koyikalathu
+
+  - Work Done:
+    - [BB-31](https://cs3398s22romulans.atlassian.net/browse/BB-31): Create a Test to see in favorite songs store inside favorite Playlist in Database
+        - Commit [0e36f12](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/0e36f1281dc9dabe569ed17e4289b89c979bea1f)
+        - Pull Request [f5c52d7](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/f5c52d738042bb383f56c0f164b2c98834174d66)
+    - [BB-63](https://cs3398s22romulans.atlassian.net/browse/BB-63): Create a function that returned a specific artists songs from Database to Database Query which can move to controller and be seen on gui
+        - Commit [036f5d9](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/036f5d92ebdce4b3e7a3fdf60ecabb19b3634683)
+        - Pull Request [1b4ab71](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/1b4ab7112ae08b1c925dae9265768729836ca495)
+    - [BB-64](https://cs3398s22romulans.atlassian.net/browse/BB-64): Created a function that would remove a song from specific artist playlist stored in database
+        - Commit [a16aeb0](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/a16aeb058c54b5cd36b6ae506535117c2e26ca61)
+        - Pull Request [39b3045](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/39b3045a9613f604d94121dd8fe5f25f21817a64)
+    - [BB-67](https://cs3398s22romulans.atlassian.net/browse/BB-67): Remake an already made java class of favorite playlist and fit into MVC architecture design
+        - Commit [7e68583](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/7e6858343f007a83ff8b523cfc0a1188b94508dc)
+  - Summary of Work Done:
+      - Collaborate on how to implement MVC and provide modularity for our gui and back end code
+      - Made code that allowed gui limited access to information through controller and Database Query
+      - Refactor and existing class already created
+  - Status:
+      - Have a working MVC model
+      - Almost all back end work of music player done
+
+  - Issues/ Needed Fixes:
+      - Discuss with teammates on how actual music files are gonna be store and actually store the mp3 or wav files on user end so when open they can see
+      - A more visually appealing and efficient gui
+  - Sprint 3 Expectations:
+      - Ensure all functions of music player are working and connected
+      - A finished and complete gui
+     
+
 ## Acknowledgements
 Give credit here.
 - This project was inspired by...
