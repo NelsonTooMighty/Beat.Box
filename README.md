@@ -337,9 +337,22 @@ Planned features:
     
 Nelson Uzoaru
     -Work Done: 
-      -[BB-57]: (https://cs3398s22romulans.atlassian.net/jira/software/projects/BB/boards/3?assignee=61e72f3209633b0069bfc5c0&selectedIssue=BB-57)Create DatabaseQuery method to return a requested Playlist
+    -  [BB-57]: (https://cs3398s22romulans.atlassian.net/jira/software/projects/BB/boards/3?assignee=61e72f3209633b0069bfc5c0&selectedIssue=BB-57)Create DatabaseQuery method to return a requested Playlist
       -Commit: [1b15ba2](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/1b15ba20eba15585ee5cc3389bd64be619d16ef0)
+      -Pull request [4fbc0f8] (https://bitbucket.org/cs3398-s22-romulans/beat.box/pull-requests/4/bb-57)
+    - [BB-66]: (https://cs3398s22romulans.atlassian.net/jira/software/projects/BB/boards/3?assignee=61e72f3209633b0069bfc5c0&selectedIssue=BB-66) Create a DatabaseQuery method for renaming a specified Playlist
+      -Commit: [f15c8b4] (https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/f15c8b451f133b07fbfae73f700704768c5357d5)
       
+    - Summary of work done:
+      -creating methods that allow to pull playlists from the database
+      -creating a method to allow renaming desire playlist from database
+      
+    - Status:
+      - Completed backend work to front end
+    -Issues/Needed Fixes:
+      - Discuss with teammates how we are going to approach display of playlist onto the front end of the app
+    - Spring 3 Expectations:
+    - Finish and complete GUI
 ### Libin Koyikalathu
 
   - Work Done:
