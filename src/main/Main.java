@@ -10,6 +10,11 @@ public class Main {
 
         Database db = Database.getInstance();
         {
+            Playlist test = new Playlist();
+            test.setPlaylistName("Daft Punk");
+            test.add(new Song("Robot Rock", "Daft Punk", "Robot Rock", "2010", "https://f4.bcbits.com/img/a1702319957_16.jpg"));
+            db.saveToFile(test, "demo local files/serialized_playlist_demo_2");
+
             Playlist demo = new Playlist();
             demo.setPlaylistName("The Beautiful Game");
             demo.add(new Song("The Sweet Science", "Vulfpeck", "The Beautiful Game", "2016", "https://f4.bcbits.com/img/a1702319957_16.jpg"));
