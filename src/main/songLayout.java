@@ -1,4 +1,4 @@
-package layout;
+
 
 public class songLayout extends javax.swing.JFrame {
     public songLayout() {

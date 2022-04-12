@@ -1,4 +1,3 @@
-package layout;
 
 public class ArtistJFrame extends javax.swing.JFrame {
     public ArtistJFrame() {

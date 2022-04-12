@@ -1,4 +1,4 @@
-package layout;
+
 
 public class LayoutFrame extends javax.swing.JFrame {
     /**
