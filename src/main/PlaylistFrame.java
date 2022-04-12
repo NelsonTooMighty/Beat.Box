@@ -10,9 +10,9 @@ public class PlaylistFrame {
   private Controller myController;
    private JFrame jframe;
     private JPanel jPanel;
-    public PlaylistFrame(Controller Controller){
+    public PlaylistFrame(Controller controller){
 
-        myController = Controller;
+        myController = controller;
         jPanel = new JPanel();
         jframe = new JFrame();
        jframe.add(jPanel, BorderLayout.CENTER);
