@@ -227,17 +227,17 @@ Planned features:
 ### Austin Sansing
 
   - Work Done:
-    - Created A Way to Import Local Playlist & Display the Results in the GUI
+    - Created A Way to Import Local Playlist & Display the Results in the GUI [BB-62](https://cs3398s22romulans.atlassian.net/browse/BB-62)
         - Commit [f685157](https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/f6851579291c5c0684a6bb631779c7a3c43f0b84)
-    - Created A DatabaseQuery Method to Return all Playlists When Called
+    - Created A DatabaseQuery Method to Return all Playlists When Called [BB-60](https://cs3398s22romulans.atlassian.net/browse/BB-60)
         - Commit [581b3d9](https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/581b3d9d4a114194c31b2203968e3d5b20592ecf)
-    - Created A Display that Shows these Songs are apart of "Favorite/Liked" 
+    - Created A Display that Shows these Songs are apart of "Favorite/Liked" [BB-26](https://cs3398s22romulans.atlassian.net/browse/BB-26)
         - Commit [140bf5a](https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/140bf5ad858acfd2f7a6221da33bfff5f9bec192)
-    - Created A DatabaseQuery Method to Delete a Specific Playlist
+    - Created A DatabaseQuery Method to Delete a Specific Playlist [BB-61](https://cs3398s22romulans.atlassian.net/browse/BB-61)
         - Commit [843a1a9](https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/843a1a9b30ef2371143618f17180e4d520cd24f4)
 
   - Acknowledgements
-      - Still Need to do this section.
+    - [Object-Oriented Design & Patterns 2nd Edition by Cay Horstmann](https://horstmann.com/design_and_patterns.html) for the refresher on Model-View-Controller architecture
 
   - Summary of Work Done:
       - Created a method to be able to import local playlist utliziling our new controller implementation.
@@ -287,6 +287,40 @@ Planned features:
   - We'll mostly work on getting the GUI together and using the rest of the codebase, which will likely lead us to identify problems or missing functionality that we couldn't see before.
   - A good bit of refactoring and class diagrams for easier navigation
 
+### Naomi Padilla 
+
+  - Work Done:
+    - [BB-16]Created A DatabaseQuery Methods that deletes a playlist by its index and can rename a playlist
+        - Commit [a979eb7](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/a979eb730bbb2ea4867b5df5ceeb738d0c72ed9e)
+    - [BB-53]Created A Playlist Frame that works with the controller which displays playlist that are in the database. From the input of the user the GUI will then display the desired playlist contents. 
+        - Commit [db74d64](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/db74d64752fb1ae4a72c5f7b3a9f83802d358a45)
+    - [BB-54]Created A Artist Frame that works with the controller that displays all the artists that are in the database. From the input of the user the GUI will then display the desired artist songs. 
+        - Commit [e22b4c5](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/e22b4c56b489b54ddc314eafb0d197e07347f823)
+    - [BB-55]Created A Method in controller to Display all the songs for a request artist on the Artist Frame. 
+        - Commit [e22b4c5](https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/843a1a9b30ef2371143618f17180e4d520cd24f4)
+   
+    
+  - Summary of Work Done:
+     - I also did research on MVC (model, View, Control), to ensure our project is following the Single Responsibility. With gathering infomation about this design pattern as a group we were able to discuss on how we could write our program to efficiently access information without having our Frames do multiple tasks.  
+         
+    - I worked on Both PLaylist and Arist Frame that used the controller to access the database and display the desired content of songs or artist songs based on the users input.
+        -    By doing this I'm making sure the frames are following the solid principles.    
+    - I also created functions for the controller and DatabaseQuery that Frames will be used to display the different contents of the database. 
+        -  The function displayArtistContents in controller takes in the users input that uses all other functions to gather all songs related to that artist in the database. 
+    
+    
+  - Status:
+    - As of right now both frames build and display. When the the userinput is processed it displaylist playlist not found. That is due to not having a database with any info. If anything else inserted that is not an interger on the playlist page it will show an error to reenter requested playlist.
+    - All methods I made are functioning, one of them is specifically working with the GUI to display the the songs of the artist given from the userinput.
+
+  - Issues/ Needed Fixes:
+    - There could be a possibile disscusion on if all the Frames/GUIs should have its own controller. As of right now there is only one controller between the artist and playlist frame and the controller class is already doing multiple tasks that are very similar. 
+        -   All the controllers could be a basic interface because they display the contents based off the users input, but differ in the information its displaying ex: arist, songs, playlist etc.
+    
+  - Sprint 3 Expectations:
+      - For the next sprint All frames should be able to access and perform all the methods that allows the user to recieve information based on their input.
+      - Want to create a button on every frame that could lead you to another frame based on what the user is wanting too access.
+      - Testcase for all the Frames to insure the database is being accessed and displaying desired content correctly.
 ### Template (Name goes here)
 
   - Work Done:
@@ -301,13 +335,54 @@ Planned features:
 
   - Sprint 3 Expectations:
     
-    
 Nelson Uzoaru
     -Work Done: 
-      -[BB-57]: (https://cs3398s22romulans.atlassian.net/jira/software/projects/BB/boards/3?assignee=61e72f3209633b0069bfc5c0&selectedIssue=BB-57)Create DatabaseQuery method to return a requested Playlist
+    -  [BB-57]: (https://cs3398s22romulans.atlassian.net/jira/software/projects/BB/boards/3?assignee=61e72f3209633b0069bfc5c0&selectedIssue=BB-57)Create DatabaseQuery method to return a requested Playlist
       -Commit: [1b15ba2](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/1b15ba20eba15585ee5cc3389bd64be619d16ef0)
+      -Pull request [4fbc0f8] (https://bitbucket.org/cs3398-s22-romulans/beat.box/pull-requests/4/bb-57)
+    - [BB-66]: (https://cs3398s22romulans.atlassian.net/jira/software/projects/BB/boards/3?assignee=61e72f3209633b0069bfc5c0&selectedIssue=BB-66) Create a DatabaseQuery method for renaming a specified Playlist
+      -Commit: [f15c8b4] (https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/f15c8b451f133b07fbfae73f700704768c5357d5)
       
-    
+    - Summary of work done:
+      -creating methods that allow to pull playlists from the database
+      -creating a method to allow renaming desire playlist from database
+      
+    - Status:
+      - Completed backend work to front end
+    -Issues/Needed Fixes:
+      - Discuss with teammates how we are going to approach display of playlist onto the front end of the app
+    - Spring 3 Expectations:
+    - Finish and complete GUI
+### Libin Koyikalathu
+
+  - Work Done:
+    - [BB-31](https://cs3398s22romulans.atlassian.net/browse/BB-31): Create a Test to see in favorite songs store inside favorite Playlist in Database
+        - Commit [0e36f12](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/0e36f1281dc9dabe569ed17e4289b89c979bea1f)
+        - Pull Request [f5c52d7](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/f5c52d738042bb383f56c0f164b2c98834174d66)
+    - [BB-63](https://cs3398s22romulans.atlassian.net/browse/BB-63): Create a function that returned a specific artists songs from Database to Database Query which can move to controller and be seen on gui
+        - Commit [036f5d9](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/036f5d92ebdce4b3e7a3fdf60ecabb19b3634683)
+        - Pull Request [1b4ab71](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/1b4ab7112ae08b1c925dae9265768729836ca495)
+    - [BB-64](https://cs3398s22romulans.atlassian.net/browse/BB-64): Created a function that would remove a song from specific artist playlist stored in database
+        - Commit [a16aeb0](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/a16aeb058c54b5cd36b6ae506535117c2e26ca61)
+        - Pull Request [39b3045](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/39b3045a9613f604d94121dd8fe5f25f21817a64)
+    - [BB-67](https://cs3398s22romulans.atlassian.net/browse/BB-67): Remake an already made java class of favorite playlist and fit into MVC architecture design
+        - Commit [7e68583](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/7e6858343f007a83ff8b523cfc0a1188b94508dc)
+  - Summary of Work Done:
+      - Collaborate on how to implement MVC and provide modularity for our gui and back end code
+      - Made code that allowed gui limited access to information through controller and Database Query
+      - Refactor and existing class already created
+  - Status:
+      - Have a working MVC model
+      - Almost all back end work of music player done
+
+  - Issues/ Needed Fixes:
+      - Discuss with teammates on how actual music files are gonna be store and actually store the mp3 or wav files on user end so when open they can see
+      - A more visually appealing and efficient gui
+  - Sprint 3 Expectations:
+      - Ensure all functions of music player are working and connected
+      - A finished and complete gui
+     
+
 ## Acknowledgements
 Give credit here.
 - This project was inspired by...
