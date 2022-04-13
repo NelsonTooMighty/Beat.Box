@@ -81,6 +81,12 @@ public class LayoutFrame extends javax.swing.JFrame {
         listButton.setBackground(new java.awt.Color(153, 153, 153));
         listButton.setFont(new java.awt.Font("PT Mono", 0, 15)); // NOI18N
         listButton.setLabel("Playlists");
+        //adding a action to the button
+        listButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -209,6 +215,7 @@ public class LayoutFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
 
 
+
     }
     private void albumButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
@@ -229,6 +236,12 @@ public class LayoutFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         new songLayout().setVisible(true);
         this.setVisible(false);
+    }
+
+    //playlist action
+    private void listButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+        controller.displayAllPlaylists(DisplayPanel);
     }
 
     /**
@@ -282,4 +295,7 @@ public class LayoutFrame extends javax.swing.JFrame {
     private javax.swing.JButton playButton;
     private javax.swing.JSlider volumeSlider;
     // End of variables declaration
+
+    //adding a controller variable to connect to the database
+    Controller controller = new Controller();
 }

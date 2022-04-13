@@ -6,11 +6,13 @@ import java.awt.event.ActionListener;
 public class Controller {
     private final DatabaseQuery model = new DatabaseQuery();
 
-    public void displayAllPlaylists (JTextArea screen) {
+    //JtextArea to Jpanel to help
+    public void displayAllPlaylists (JPanel screen) {
         ArrayList<Playlist> playlists = model.getAllPlaylists();
         int i = 1;
-        for (Playlist playlist : playlists) {                                // gets each playlist in index order and shows it in a gui's
-            screen.append(i++ + ". " + playlist.getPlaylistName() + "\n");   // text area
+        for (Playlist playlist : playlists) {    // gets each playlist in index order and shows it in a gui's
+            JButton newButton = new JButton(i++ + ". " + playlist.getPlaylistName() + "\n");
+            screen.add(newButton);   // text area
         }
     }
 
