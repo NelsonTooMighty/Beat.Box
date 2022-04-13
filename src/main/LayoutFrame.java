@@ -126,6 +126,7 @@ public class LayoutFrame extends javax.swing.JFrame {
 
         javax.swing.GroupLayout DisplayPanelLayout = new javax.swing.GroupLayout(DisplayPanel);
         DisplayPanel.setLayout(DisplayPanelLayout);
+        DisplayPanel.setBackground(Color.blue);
         DisplayPanelLayout.setHorizontalGroup(
                 DisplayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(DisplayPanelLayout.createSequentialGroup()

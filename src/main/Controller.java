@@ -12,6 +12,7 @@ public class Controller {
         int i = 1;
         for (Playlist playlist : playlists) {    // gets each playlist in index order and shows it in a gui's
             JButton newButton = new JButton(i++ + ". " + playlist.getPlaylistName() + "\n");
+            newButton.setVisible(true);
             screen.add(newButton);   // text area
         }
     }
