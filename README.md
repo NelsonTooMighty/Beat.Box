@@ -227,17 +227,18 @@ Planned features:
 ### Austin Sansing
 
   - Work Done:
-    - Created A Way to Import Local Playlist & Display the Results in the GUI [BB-62](https://cs3398s22romulans.atlassian.net/browse/BB-62)
+    - [BB-62](https://cs3398s22romulans.atlassian.net/browse/BB-62) Created A Way to Import Local Playlist & Display the Results in the GUI 
         - Commit [f685157](https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/f6851579291c5c0684a6bb631779c7a3c43f0b84)
-    - Created A DatabaseQuery Method to Return all Playlists When Called [BB-60](https://cs3398s22romulans.atlassian.net/browse/BB-60)
+    - [BB-60](https://cs3398s22romulans.atlassian.net/browse/BB-60) Created A DatabaseQuery Method to Return all Playlists When Called 
         - Commit [581b3d9](https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/581b3d9d4a114194c31b2203968e3d5b20592ecf)
-    - Created A Display that Shows these Songs are apart of "Favorite/Liked" [BB-26](https://cs3398s22romulans.atlassian.net/browse/BB-26)
+    - [BB-26](https://cs3398s22romulans.atlassian.net/browse/BB-26) Created A Display that Shows these Songs are apart of "Favorite/Liked" 
         - Commit [140bf5a](https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/140bf5ad858acfd2f7a6221da33bfff5f9bec192)
-    - Created A DatabaseQuery Method to Delete a Specific Playlist [BB-61](https://cs3398s22romulans.atlassian.net/browse/BB-61)
+    - [BB-61](https://cs3398s22romulans.atlassian.net/browse/BB-61) Created A DatabaseQuery Method to Delete a Specific Playlist 
         - Commit [843a1a9](https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/843a1a9b30ef2371143618f17180e4d520cd24f4)
 
   - Acknowledgements
-    - [Object-Oriented Design & Patterns 2nd Edition by Cay Horstmann](https://horstmann.com/design_and_patterns.html) for the refresher on Model-View-Controller architecture
+      - [Object-Oriented Design & Patterns 2nd Edition by Cay Horstmann](https://horstmann.com/design_and_patterns.html) for the refresher on Model-View-Controller architecture
+
 
   - Summary of Work Done:
       - Created a method to be able to import local playlist utliziling our new controller implementation.
@@ -336,23 +337,22 @@ Planned features:
   - Sprint 3 Expectations:
     
 Nelson Uzoaru
-    -Work Done: 
-    -  [BB-57]: (https://cs3398s22romulans.atlassian.net/jira/software/projects/BB/boards/3?assignee=61e72f3209633b0069bfc5c0&selectedIssue=BB-57)Create DatabaseQuery method to return a requested Playlist
-      -Commit: [1b15ba2](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/1b15ba20eba15585ee5cc3389bd64be619d16ef0)
-      -Pull request [4fbc0f8] (https://bitbucket.org/cs3398-s22-romulans/beat.box/pull-requests/4/bb-57)
-    - [BB-66]: (https://cs3398s22romulans.atlassian.net/jira/software/projects/BB/boards/3?assignee=61e72f3209633b0069bfc5c0&selectedIssue=BB-66) Create a DatabaseQuery method for renaming a specified Playlist
-      -Commit: [f15c8b4] (https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/f15c8b451f133b07fbfae73f700704768c5357d5)
-      
-    - Summary of work done:
-      -creating methods that allow to pull playlists from the database
-      -creating a method to allow renaming desire playlist from database
-      
-    - Status:
-      - Completed backend work to front end
-    -Issues/Needed Fixes:
-      - Discuss with teammates how we are going to approach display of playlist onto the front end of the app
-    - Spring 3 Expectations:
-    - Finish and complete GUI
+
+- Work Done: 
+  - [BB-57]: (https://cs3398s22romulans.atlassian.net/jira/software/projects/BB/boards/3?assignee=61e72f3209633b0069bfc5c0&selectedIssue=BB-57)Create DatabaseQuery method to return a requested Playlist
+       - Commit: [1b15ba2](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/1b15ba20eba15585ee5cc3389bd64be619d16ef0)
+       - Pull request [4fbc0f8] (https://bitbucket.org/cs3398-s22-romulans/beat.box/pull-requests/4/bb-57)
+  - [BB-66]: (https://cs3398s22romulans.atlassian.net/jira/software/projects/BB/boards/3?assignee=61e72f3209633b0069bfc5c0&selectedIssue=BB-66) Create a DatabaseQuery method for renaming a specified Playlist
+    - Commit: [f15c8b4] (https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/f15c8b451f133b07fbfae73f700704768c5357d5)
+- Summary of work done:
+  - creating methods that allow to pull playlists from the database
+  - creating a method to allow renaming desire playlist from database
+- Status:
+  - Completed backend work to front end
+- Issues/Needed Fixes:
+  - Discuss with teammates how we are going to approach display of playlist onto the front end of the app
+- Spring 3 Expectations:
+  - Finish and complete GUI
 ### Libin Koyikalathu
 
   - Work Done:
