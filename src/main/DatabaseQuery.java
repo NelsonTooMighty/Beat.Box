@@ -3,11 +3,11 @@ import java.util.ArrayList;
 public class DatabaseQuery {
     private final Database db = Database.getInstance();
     
-
     public DatabaseQuery() {}
 
     /**
      * Gets the playlist at the specified index from the Database.
+     * 
      * @param index the index of the playlist to get from the database
      * @return the playlist at the specified index, or null if out of bounds
      */
@@ -22,6 +22,7 @@ public class DatabaseQuery {
 
     /**
      * Gets the playlist with the specified name from the Database.
+     * 
      * @param playlistName the name of the playlist to get from the database
      * @return the playlist with the specified name, or null if not found
      */
@@ -34,7 +35,6 @@ public class DatabaseQuery {
         return null;
     }
 
-<<<<<<< HEAD
     //Input: index of a playlist, new name to set the playlist to
     //Output: renamed playlist object
     public Playlist renamePlaylist(int index, String newName) { // Create a DatabaseQuery method for renaming a specified Playlist
@@ -42,10 +42,12 @@ public class DatabaseQuery {
         temp.setPlaylistName(newName);
         return temp;
     }
-=======
     //This one can use getPlaylist(index) and then use the Playlist's own methods to rename (Playlist.java)
     /**
      * Renames the Playlist at the specified index.
+     * This one can use getPlaylist(index) and then use the 
+     * Playlist's own methods to rename (Playlist.java)
+     * 
      * @param index the index of the Playlist to be renamed
      * @param newName the new name Playlist will have
      * @return the renamed Playlist
@@ -63,9 +65,16 @@ public class DatabaseQuery {
     }
 >>>>>>> master
 
-    //input: index of a playlist
-    //remove playlist from Database/db
-    //output: if the object was found and removed
+    /**
+     * The two funtions below are used to remove a specified playlist 
+     * from the GUI.
+     * The first function removes the playlist and cross checks it with a boolean
+     * value and the second function double checks that the playlist was acutally 
+     * removed from the list. 
+     * 
+     * @param playlistName to pull from the playlist name from the database
+     * @return returns the "wasRemoved" variable indicating successful fuction execution
+     */
     public boolean removePlaylist(String playlistName) {  // Part 1 BB-61
         Playlist desiredPlaylist = getPlaylist(playlistName);
         return db.remove(desiredPlaylist);
@@ -80,13 +89,19 @@ public class DatabaseQuery {
         return wasRemoved;
     }
 
-    //output: list of all Playlist objects from database
+    /**
+     * This function returns all the playlist that are locally stored on the machine,
+     * appointing them to a new ArrayList<> with the database (db)
+     * 
+     * @return returns the new ArrayList<> to the database (db)
+     */
     public ArrayList<Playlist> getAllPlaylists() {
         return new ArrayList<>(db);
     }
 
     /**
      * Returns a list of all unique Artists that have songs in the Database.
+     * 
      * @return ArrayList of artist names
      */
     public ArrayList<String> getAllArtists() {
@@ -100,6 +115,7 @@ public class DatabaseQuery {
 
     /**
      * Gets a count of how many Songs by the specified artist are in the Database.
+     * 
      * @param artistName name of specified artist whose Songs will be searched for
      * @return int count of Songs by the specified artist
      */
@@ -109,17 +125,22 @@ public class DatabaseQuery {
 
     /**
      * Gets a Playlist with every song by the specified artist from the Database.
+     * Artists name stored in its own class then it 
+     * gets list of all playlists and then loops through them.
+     * Then adds all songs by that Artist to the new playlist
+     * if the artist name matches the sond is added.
+     * 
      * @param artistName name of specified artist to search for Songs with
      * @return Playlist with every song by the specified artist
      */
     public Playlist getArtistSongList(String artistName){
-        Playlist artistPlaylist = new Playlist();               // artists name stored in its class
+        Playlist artistPlaylist = new Playlist();               
         artistPlaylist.setPlaylistName(artistName);
-        ArrayList<Playlist> playlists = getAllPlaylists();      //gets list of all playlists
-        for (Playlist playlist : playlists){                    //loops through them
-            for (Song song : playlist){                         //adds all songs by that Artist to the new playlist
-                if (artistName.equals(song.getArtistName()))    //if the artist name matches
-                    artistPlaylist.add(song);                       //add that song
+        ArrayList<Playlist> playlists = getAllPlaylists();      
+        for (Playlist playlist : playlists){                    
+            for (Song song : playlist){                         
+                if (artistName.equals(song.getArtistName()))    
+                    artistPlaylist.add(song);                       
             }
         }
         return artistPlaylist;
