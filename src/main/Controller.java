@@ -18,8 +18,10 @@ public class Controller {
     public void displayAllPlaylists (JTextArea screen) {
         ArrayList<Playlist> playlists = model.getAllPlaylists();
         int i = 1;
-        for (Playlist playlist : playlists) {                                // gets each playlist in index order and shows it in a gui's
-            screen.append(i++ + ". " + playlist.getPlaylistName() + "\n");   // text area
+        for (Playlist playlist : playlists) {    // gets each playlist in index order and shows it in a gui's
+            JButton newButton = new JButton(i++ + ". " + playlist.getPlaylistName() + "\n");
+            newButton.setVisible(true);
+            screen.add(newButton);   // text area
         }
     }
 
