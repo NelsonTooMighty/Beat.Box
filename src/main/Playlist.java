@@ -4,9 +4,11 @@ import java.util.LinkedList;
 public class Playlist extends LinkedList<Song> implements Serializable {
     String playlistName;
 
+
     public String getPlaylistName() {
         return playlistName;
     }
+
 
     public void setPlaylistName(String playlistName) {
         this.playlistName = playlistName;
@@ -45,4 +47,5 @@ public class Playlist extends LinkedList<Song> implements Serializable {
             return this.remove(index) != null; //true if removed (not null), false if not removed (null)
         return false;
     }
+    
 }

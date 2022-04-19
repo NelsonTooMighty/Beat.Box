@@ -3,13 +3,13 @@ import java.io.Serializable;
 import java.net.URL;
 
 public class Song implements Serializable { //API documentation: https://developer.spotify.com/documentation/web-api/reference/#/operations/get-track, https://developer.apple.com/documentation/musickit/track/
-    String songName;
-    String artistName;
-    String albumName;
-    String releaseDate;
-    String albumArtLocation;
-    boolean isLocal;
-    String localPath;
+    private String songName;
+    private String artistName;
+    private String albumName;
+    private String releaseDate;
+    private String albumArtLocation;
+    private boolean isLocal;
+    private String localPath;
 
     public Song() {
     }

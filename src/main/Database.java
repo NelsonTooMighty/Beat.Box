@@ -7,7 +7,8 @@ import java.io.*;
 
 public class Database extends ArrayList<Playlist> { //add(Playlist), remove(Playlist), etc
     private static final Database singleton = new Database();
-    private final String localLibrary = "../playlists/";
+    private final String localLibrary = "playlists/";
+    private final Playlist likedPlaylist = new Playlist();
 
     private Database() {boot();}
 
@@ -47,5 +48,26 @@ public class Database extends ArrayList<Playlist> { //add(Playlist), remove(Play
         out.writeObject(pl);
         out.close();
         fileOut.close();
+    }
+
+    public void addLikedSong(Song song){
+        likedPlaylist.add(song);
+    }
+    public void removeLikedSong(Song song){
+        likedPlaylist.remove(song); 
+    }
+    public void removeLikedSong(String songName){
+        likedPlaylist.remove(likedPlaylist.getSong(songName));
+    }
+    public boolean isLiked(String songName){
+        return likedPlaylist.getSong(songName) != null;
+     }
+    public boolean isLiked(Song song){
+        return likedPlaylist.contains(song);
+    }
+    public Playlist getLikedList(){  
+        Playlist list = new Playlist();
+        list.addAll(likedPlaylist);
+        return list;
     }
 }
