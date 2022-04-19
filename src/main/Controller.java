@@ -6,6 +6,15 @@ import java.awt.event.ActionListener;
 public class Controller {
     private final DatabaseQuery model = new DatabaseQuery();
 
+    /** 
+     * Displays all playlists within the local directory of the computer the user 
+     * is running the program on.
+     * 
+     * Does this by getting each playlist in index order and shows it 
+     * by text area in the GUI.
+     * 
+     * @param screen the screen to display AllPlaylist to
+     */
     public void displayAllPlaylists (JTextArea screen) {
         ArrayList<Playlist> playlists = model.getAllPlaylists();
         int i = 1;
@@ -14,6 +23,31 @@ public class Controller {
         }
     }
 
+    /** 
+     * Appends the a list of songs that have been flaged as "liked" by the user
+     * resulting in a similar structure to the displayPlaylistContent above.
+     * 
+     * @param screen the scrren to display Liked Lists to
+     */
+    public void displayLikedList(JTextArea screen){
+        Playlist songs = model.getLikedList();
+        int i = 1;
+        for (Song song : songs){
+            String output = i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() + "\n \t" +
+            song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n";
+            screen.append(output);
+        }
+    }
+
+    /**
+     * Appends the content of the playlist's once they are located on the local machine
+     * 
+     * The function utilizes string and append methods to pull the song name, artist name,
+     * album name and album release date
+     * 
+     * @param screen the screen to display the PlaylistContent to
+     * @param playlistIndex the index that iterates through local files and fills itself
+     */
     public void displayPlaylistContent(JTextArea screen, int playlistIndex) {
         Playlist desiredPlaylist = model.getPlaylist_index(playlistIndex);
         int i = 1;
@@ -46,7 +80,14 @@ public class Controller {
         }
     }
 
-    //displaying all songs of the picked artist        //BB-55 Naomi
+    /** 
+     * Appends the content of the Artist within the given playlist
+     * providing the song name, artist name, album name and release date
+     * for the specified Artist.
+     * 
+     * @param screen the screen to display the artist details
+     * @param artist_name variable used to hold the information about the specific artist
+     */
     public void displayArtistContent (JTextArea screen, String artist_name) {
         Playlist desiredPlaylist = model.getArtistSongList(artist_name);
         int i = 1;
@@ -59,11 +100,16 @@ public class Controller {
                 screen.append(songMessage);
             }
     }
-
-
-
-
-    /* public void likeButtonEffects(JButton likeButton){
+   /** 
+     * Used boolean, action listener and images to give a clean UI of 
+     * like and dislike buttons.
+     * 
+     * As well as takes off or adds songs to specified playlist depending on 
+     * user actions
+     * 
+     * @param likeButton the button that places and takes off songs from the LikedList
+     * 
+     * public void likeButtonEffects(JButton likeButton){
         Song currentSong;
         ImageIcon dislikeImage = new ImageIcon("src/resources/GreyBox.png"),
                 likeImage = new ImageIcon("../resources/Beat.Box.png");
@@ -83,14 +129,8 @@ public class Controller {
             }
         };
         likeButton.addActionListener(likeNow);
-    }*/
-    public void displayLikedList(JTextArea screen){
-        Playlist songs = model.getLikedList();
-        int i = 1;
-        for (Song song : songs){
-            String output = i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() + "\n \t" +
-            song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n";
-            screen.append(output);
-        }
     }
+    */
+
+
 }
