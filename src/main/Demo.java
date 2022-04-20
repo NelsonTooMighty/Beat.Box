@@ -12,13 +12,15 @@ public class Demo {
     private JPanel mainPanel;
     private JTextArea Input;
     private final Controller ctr = new Controller();
-
+/*
     public Demo() {
         //ctr.displayAllPlaylists(List);
         button1.addActionListener(e -> {
             ctr.displayPlaylistContent(List, parseInt(Input.getText()) - 1);
         });
     }
+
+ */
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Demo");

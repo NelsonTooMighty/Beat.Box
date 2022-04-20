@@ -1,3 +1,10 @@
+
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
 
@@ -6,6 +13,7 @@ import java.awt.*;
  * @author naomipadilla
  */
 public class LayoutFrame extends javax.swing.JFrame {
+    Controller controller;
 
 
     private final Controller controller = new Controller();
@@ -51,6 +59,8 @@ public class LayoutFrame extends javax.swing.JFrame {
 
         MainScreenPanel.setLayout(new BoxLayout(MainScreenPanel, BoxLayout.Y_AXIS)); //https://stackoverflow.com/questions/13510641/add-controls-vertically-instead-of-horizontally-using-flow-layout
         jMenuItem1.setText("jMenuItem1");
+
+
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 153, 153));
@@ -184,7 +194,16 @@ public class LayoutFrame extends javax.swing.JFrame {
         jButton2.getAccessibleContext().setAccessibleName("PlayButton");
         jButton3.getAccessibleContext().setAccessibleName("ForwardButton");
 
-        jTextField1.setText("jTextField1");
+        //gather input from user to recieve the file path to transfer a playlist to the data base
+       jTextField1.setText("Enter Path");
+       ActionListener input = new ActionListener() {
+           @Override
+           public void actionPerformed(ActionEvent e) {
+             controller.inputScanner(jTextField1.getText());
+             jTextField1.setText("");
+           }
+       };
+
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);

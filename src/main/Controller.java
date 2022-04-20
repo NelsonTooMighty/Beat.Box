@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 public class Controller {
     private final DatabaseQuery model = new DatabaseQuery();
+    private folderScanner scanner = new folderScanner();
 
     /** 
      * Displays all playlists within the local directory of the computer the user 
@@ -19,9 +20,13 @@ public class Controller {
         ArrayList<Playlist> playlists = model.getAllPlaylists();
         int i = 1;
         for (Playlist playlist : playlists) {    // gets each playlist in index order and shows it in a gui's
+
             JButton newButton = new JButton(i++ + ". " + playlist.getPlaylistName() + "\n");
-            newButton.setVisible(true);
-            screen.add(newButton);   // text area
+            screen.add(newButton);// text area
+
+
+
+
         }
     }
 
@@ -101,6 +106,12 @@ public class Controller {
                         song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n";
                 screen.append(songMessage);
             }
+    }
+
+    public void inputScanner(String input){
+        Playlist reqplaylist = scanner.scanFolder(input);
+
+
     }
    /** 
      * Used boolean, action listener and images to give a clean UI of 
