@@ -1,12 +1,5 @@
-
-
-import java.io.IOException;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
-import java.io.IOException.*;
 
 /**
  *
@@ -15,6 +8,7 @@ import java.io.IOException.*;
 public class LayoutFrame extends javax.swing.JFrame {
 
 
+    private final Controller controller = new Controller();
 
     /**
      * Creates new form LayoutFrame
@@ -45,7 +39,8 @@ public class LayoutFrame extends javax.swing.JFrame {
         albumButton = new javax.swing.JButton();
         listButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        MainScreenPanel = new javax.swing.JScrollPane();
+        MainScreenPanel = new javax.swing.JPanel();
+        MainScreenScroller = new javax.swing.JScrollPane(MainScreenPanel);
         MusicPlayerPanel = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -54,6 +49,7 @@ public class LayoutFrame extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         SidePanel = new javax.swing.JScrollPane();
 
+        MainScreenPanel.setLayout(new BoxLayout(MainScreenPanel, BoxLayout.Y_AXIS)); //https://stackoverflow.com/questions/13510641/add-controls-vertically-instead-of-horizontally-using-flow-layout
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -228,7 +224,7 @@ public class LayoutFrame extends javax.swing.JFrame {
                                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                 .addGap(0, 46, Short.MAX_VALUE))
-                                                        .addComponent(MainScreenPanel))))
+                                                        .addComponent(MainScreenScroller))))
                                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -240,7 +236,7 @@ public class LayoutFrame extends javax.swing.JFrame {
                                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(MainScreenPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(MainScreenScroller, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(MusicPlayerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -268,6 +264,9 @@ public class LayoutFrame extends javax.swing.JFrame {
     }
     private void listButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        MainScreenPanel.removeAll(); //clear off the main panel
+        controller.displayAllPlaylists(MainScreenPanel); //add the buttons for each playlist
+        MainScreenPanel.revalidate(); //update the panel (needed)
     }
 
     private void albumButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -322,7 +321,8 @@ public class LayoutFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify
-    private javax.swing.JScrollPane MainScreenPanel;
+    private JPanel MainScreenPanel;
+    private javax.swing.JScrollPane MainScreenScroller;
     private javax.swing.JPanel MusicPlayerPanel;
     private javax.swing.JScrollPane SidePanel;
     private javax.swing.JButton Songs;

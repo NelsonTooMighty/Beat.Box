@@ -15,7 +15,7 @@ public class Controller {
      * 
      * @param screen the screen to display AllPlaylist to
      */
-    public void displayAllPlaylists (JTextArea screen) {
+    public void displayAllPlaylists (JPanel screen) {
         ArrayList<Playlist> playlists = model.getAllPlaylists();
         int i = 1;
         for (Playlist playlist : playlists) {    // gets each playlist in index order and shows it in a gui's

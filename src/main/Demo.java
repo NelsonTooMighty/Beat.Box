@@ -14,7 +14,7 @@ public class Demo {
     private final Controller ctr = new Controller();
 
     public Demo() {
-        ctr.displayAllPlaylists(List);
+        //ctr.displayAllPlaylists(List);
         button1.addActionListener(e -> {
             ctr.displayPlaylistContent(List, parseInt(Input.getText()) - 1);
         });
