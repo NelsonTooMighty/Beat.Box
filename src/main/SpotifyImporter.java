@@ -11,20 +11,22 @@ import java.io.IOException;
  * and allows Spotify playlist URLs to be imported with {@link #importPlaylist(String url)}.
  */
 public class SpotifyImporter implements CloudPlaylistImporter { //with reference to https://github.com/spotify-web-api-java/spotify-web-api-java/blob/develop/examples/authorization/client_credentials/ClientCredentialsExample.java
+    SpotifyAuth spotifyAuth = SpotifyAuth.getInstance();
 
     /**
      * Takes the URL of a Spotify playlist, retrieves it, parses it into songs, and returns a Playlist.
      * @param url the url of a public Spotify playlist to be imported
-     * @return a Playlist object constructed from the Spotify playlist
+     * @return a Playlist object constructed from the Spotify playlist; null if {@link SpotifyAuth} is not yet authorized
      */
     @Override
     public Playlist importPlaylist(String url) {
-        Playlist newPlaylist = new Playlist();
+        if (!spotifyAuth.isAuthorized()) return null; //if not authorized, return null
 
-        SpotifyAuth.refreshClientCredentials();
+        Playlist newPlaylist = new Playlist();
+        spotifyAuth.refreshAuthorization();
 
         String playlistID = url.split("[/?]")[4]; //grabs the ID part and ignores any tracker at the end (?si=)
-        final GetPlaylistRequest getPlaylistRequest = SpotifyAuth.spotifyApi.getPlaylist(playlistID).build(); //sets up playlist request
+        final GetPlaylistRequest getPlaylistRequest = spotifyAuth.spotifyApi.getPlaylist(playlistID).build(); //sets up playlist request
         se.michaelthelin.spotify.model_objects.specification.Playlist importedPlaylist = null;    //readies receiving variable
 
         try {
