@@ -13,6 +13,8 @@ import java.io.IOException;
 public class SpotifyImporter implements CloudPlaylistImporter { //with reference to https://github.com/spotify-web-api-java/spotify-web-api-java/blob/develop/examples/authorization/client_credentials/ClientCredentialsExample.java
     SpotifyAuth spotifyAuth = SpotifyAuth.getInstance();
 
+    public SpotifyImporter(){}
+    
     /**
      * Takes the URL of a Spotify playlist, retrieves it, parses it into songs, and returns a Playlist.
      * @param url the url of a public Spotify playlist to be imported
