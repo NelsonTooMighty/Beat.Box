@@ -291,12 +291,19 @@ public class LayoutFrame extends javax.swing.JFrame {
 
     private void albumButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        MainScreenPanel.removeAll(); //clear off the main panel
+        controller.displayAllAlbumList(MainScreenPanel); //add the buttons for each playlist
+        MainScreenPanel.revalidate(); //update the panel (needed)
+        MainScreenPanel.repaint();
     }
 
     private void SongsActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        new songLayout().setVisible(true);
-        this.setVisible(false);
+        MainScreenPanel.removeAll();
+        MainScreenPanel.repaint();
+        controller.displayAllSongs(MainScreenPanel);
+        MainScreenPanel.revalidate();
+
     }
 
     private void artistButtonActionPerformed(java.awt.event.ActionEvent evt) {

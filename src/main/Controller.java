@@ -37,8 +37,36 @@ public class Controller {
 
         }
     }
+    //BB-89
+    public void displayAllSongs(JPanel screen){
+        ArrayList<String> songs = model.getAllSongs();
+        int i = 1;
+        for (String name : songs) {
+            JButton newButton = new JButton(i++ + ". " + name);
+            screen.add(newButton);
+        }
+    }
+//BB-89
+    public void displayAllAlbumList(JPanel screen){
+        ArrayList<String> albums = model.getAllAlbums();
+        int i = 1;
+        for (String name : albums) {
+            JButton newButton = new JButton(i++ + ". " + name);
+            int index = i - 1;
+            newButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    displayAlbumContent(screen, name);
+                }
+            });
 
 
+
+            screen.add(newButton);
+        }
+
+
+    }
 
     /** 
      * Appends the a list of songs that have been flaged as "liked" by the user
@@ -80,6 +108,21 @@ public class Controller {
 
 
             }
+    }
+//#BB-89
+    public void displayAlbumContent(JPanel screen, String album_name){
+        screen.removeAll();
+        screen.revalidate();
+        screen.repaint();
+        Playlist desiredPlaylist = model.getAlbumSongList(album_name);
+        int i = 1;
+
+        for(Song song : desiredPlaylist) {
+            JButton newButton = new JButton(i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() +
+                    song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n");
+            screen.add(newButton);
+        }
+
     }
 
 
