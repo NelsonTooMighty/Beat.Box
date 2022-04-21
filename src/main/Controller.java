@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,12 +23,49 @@ public class Controller {
         for (Playlist playlist : playlists) {    // gets each playlist in index order and shows it in a gui's
 
             JButton newButton = new JButton(i++ + ". " + playlist.getPlaylistName() + "\n");
+            int index = i-1;
+            newButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    displayPlaylistContent(screen, index);
+                }
+            });
             screen.add(newButton);// text area
 
 
 
 
         }
+    }
+    //BB-89
+    public void displayAllSongs(JPanel screen){
+        ArrayList<String> songs = model.getAllSongs();
+        int i = 1;
+        for (String name : songs) {
+            JButton newButton = new JButton(i++ + ". " + name);
+            screen.add(newButton);
+        }
+    }
+//BB-89
+    public void displayAllAlbumList(JPanel screen){
+        ArrayList<String> albums = model.getAllAlbums();
+        int i = 1;
+        for (String name : albums) {
+            JButton newButton = new JButton(i++ + ". " + name);
+            int index = i - 1;
+            newButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    displayAlbumContent(screen, name);
+                }
+            });
+
+
+
+            screen.add(newButton);
+        }
+
+
     }
 
     /** 
@@ -55,20 +93,39 @@ public class Controller {
      * @param screen the screen to display the PlaylistContent to
      * @param playlistIndex the index that iterates through local files and fills itself
      */
-    public void displayPlaylistContent(JTextArea screen, int playlistIndex) {
+    public void displayPlaylistContent(JPanel screen, int playlistIndex) {
+        screen.removeAll();
+        screen.revalidate();
+        screen.repaint();
         Playlist desiredPlaylist = model.getPlaylist_index(playlistIndex);
         int i = 1;
-        if (desiredPlaylist == null)
-            screen.append("Error: Playlist not found!\n");
-        else {
-            screen.append(desiredPlaylist.getPlaylistName() + ": \n");
             for (Song song : desiredPlaylist) {
-                String songMessage = i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() + "\n\t" +
-                        song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n";
-                screen.append(songMessage);
+                JButton newButton = new JButton(i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() + "\n\t" +
+                        song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n");
+                //song - will have a clip to the player
+                //
+                screen.add(newButton);
+
+
             }
-        }
     }
+//#BB-89
+    public void displayAlbumContent(JPanel screen, String album_name){
+        screen.removeAll();
+        screen.revalidate();
+        screen.repaint();
+        Playlist desiredPlaylist = model.getAlbumSongList(album_name);
+        int i = 1;
+
+        for(Song song : desiredPlaylist) {
+            JButton newButton = new JButton(i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() +
+                    song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n");
+            screen.add(newButton);
+        }
+
+    }
+
+
 
     /**
      * Appends a list of all unique artists with songs in the Database,
@@ -78,12 +135,21 @@ public class Controller {
      * Songs: #
      * @param screen the screen to display artist lists to
      */
-    public void displayAllArtistList(JTextArea screen) {
+    public void displayAllArtistList(JPanel screen) {
+        screen.removeAll();
+        screen.revalidate();
         ArrayList<String> artists = model.getAllArtists();
         int i = 1;
         for (String name : artists) {
-            String output = i++ + ". " + name + "\tSongs: " + model.getArtistSongCount(name) + "\n";
-            screen.append(output);
+            JButton newButton = new JButton(i++ + ". " + name + "\tSongs: " + model.getArtistSongCount(name) + "\n");
+            newButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    displayArtistContent(screen, name);
+                }
+            });
+
+            screen.add(newButton);
         }
     }
 
@@ -95,16 +161,17 @@ public class Controller {
      * @param screen the screen to display the artist details
      * @param artist_name variable used to hold the information about the specific artist
      */
-    public void displayArtistContent (JTextArea screen, String artist_name) {
+    public void displayArtistContent (JPanel screen, String artist_name) {
+        screen.removeAll();
+        screen.revalidate();
+        screen.repaint();
         Playlist desiredPlaylist = model.getArtistSongList(artist_name);
         int i = 1;
-        if (desiredPlaylist == null)
-            screen.append("Error: Artist Playlist not found!\n");
-        else
+
             for(Song song : desiredPlaylist) {
-                String songMessage = i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() +
-                        song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n";
-                screen.append(songMessage);
+                JButton newButton = new JButton(i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() +
+                        song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n");
+                screen.add(newButton);
             }
     }
 
