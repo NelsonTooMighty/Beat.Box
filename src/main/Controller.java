@@ -38,6 +38,8 @@ public class Controller {
         }
     }
 
+
+
     /** 
      * Appends the a list of songs that have been flaged as "liked" by the user
      * resulting in a similar structure to the displayPlaylistContent above.
@@ -97,6 +99,12 @@ public class Controller {
         int i = 1;
         for (String name : artists) {
             JButton newButton = new JButton(i++ + ". " + name + "\tSongs: " + model.getArtistSongCount(name) + "\n");
+            newButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    displayArtistContent(screen, name);
+                }
+            });
 
             screen.add(newButton);
         }
@@ -110,16 +118,17 @@ public class Controller {
      * @param screen the screen to display the artist details
      * @param artist_name variable used to hold the information about the specific artist
      */
-    public void displayArtistContent (JTextArea screen, String artist_name) {
+    public void displayArtistContent (JPanel screen, String artist_name) {
+        screen.removeAll();
+        screen.revalidate();
+        screen.repaint();
         Playlist desiredPlaylist = model.getArtistSongList(artist_name);
         int i = 1;
-        if (desiredPlaylist == null)
-            screen.append("Error: Artist Playlist not found!\n");
-        else
+
             for(Song song : desiredPlaylist) {
-                String songMessage = i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() +
-                        song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n";
-                screen.append(songMessage);
+                JButton newButton = new JButton(i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() +
+                        song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n");
+                screen.add(newButton);
             }
     }
 
