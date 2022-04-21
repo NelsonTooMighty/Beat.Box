@@ -66,6 +66,7 @@ public class Controller {
     public void displayPlaylistContent(JPanel screen, int playlistIndex) {
         screen.removeAll();
         screen.revalidate();
+        screen.repaint();
         Playlist desiredPlaylist = model.getPlaylist_index(playlistIndex);
         int i = 1;
             for (Song song : desiredPlaylist) {
@@ -74,6 +75,7 @@ public class Controller {
                 //song - will have a clip to the player
                 //
                 screen.add(newButton);
+
 
             }
     }
