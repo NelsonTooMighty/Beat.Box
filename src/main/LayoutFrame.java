@@ -297,8 +297,9 @@ public class LayoutFrame extends javax.swing.JFrame {
 
     private void artistButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        new ArtistJFrame().setVisible(true);
-        this.setVisible(false);
+        MainScreenPanel.removeAll();
+        controller.displayAllArtistList(MainScreenPanel);
+        MainScreenPanel.revalidate();
     }
 
     /**
