@@ -25,7 +25,6 @@ public class SpotifyAuth {
     public SpotifyApi spotifyApi; //Importers and Exporters can use this authorized object
     private static final SpotifyAuth singleton = new SpotifyAuth();
     private final String clientId = "0eeae725ca604326b3939e91ecc18c71"; //Avery's Beat Box Spotify App ID, not secret
-    private static String clientSecret = "";
     private long expireTime = 0; //time of token expiry in milliseconds; updated with System.currentTimeMillis()
     final int PORT = 8888; //port the CallbackListener will listen to
     final boolean verbose = true; //console output
@@ -53,6 +52,7 @@ public class SpotifyAuth {
     public void clientAuthorize() {
         Path path = FileSystems.getDefault().getPath("credentials.config");
         BufferedReader reader = null;
+        String clientSecret = "";
         try {
             reader = Files.newBufferedReader(path);
             reader.readLine(); //skip client ID line
