@@ -114,5 +114,10 @@ public class Song implements Serializable { //API documentation: https://develop
         this.localPath = localPath;
     }
 
-
+    public String toString() {
+        return "Song(name=" + songName + ", artist=" + artistName
+                + ", album=" + albumName + ", date=" + releaseDate
+                + ", art=" + albumArtLocation + ", isLocal=" + isLocal
+                + ", path=" + localPath + ")";
+    }
 }
