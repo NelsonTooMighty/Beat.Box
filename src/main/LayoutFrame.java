@@ -13,9 +13,6 @@ import java.awt.*;
  * @author naomipadilla
  */
 public class LayoutFrame extends javax.swing.JFrame {
-    Controller controller;
-
-
     private final Controller controller = new Controller();
 
     /**
