@@ -1,10 +1,3 @@
-
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
 
@@ -13,7 +6,6 @@ import java.awt.*;
  * @author naomipadilla
  */
 public class LayoutFrame extends javax.swing.JFrame {
-    Controller controller;
 
 
     private final Controller controller = new Controller();
@@ -60,8 +52,6 @@ public class LayoutFrame extends javax.swing.JFrame {
         MainScreenPanel.setLayout(new BoxLayout(MainScreenPanel, BoxLayout.Y_AXIS)); //https://stackoverflow.com/questions/13510641/add-controls-vertically-instead-of-horizontally-using-flow-layout
         jMenuItem1.setText("jMenuItem1");
 
-
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 153, 153));
 
@@ -84,7 +74,7 @@ public class LayoutFrame extends javax.swing.JFrame {
 
         Songs.setBackground(new java.awt.Color(153, 153, 153));
         Songs.setFont(new java.awt.Font("PT Mono", 0, 15)); // NOI18N
-        Songs.setLabel("Songs");
+        Songs.setText("Songs");
         Songs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SongsActionPerformed(evt);
@@ -93,16 +83,15 @@ public class LayoutFrame extends javax.swing.JFrame {
 
         albumButton.setBackground(new java.awt.Color(153, 153, 153));
         albumButton.setFont(new java.awt.Font("PT Mono", 0, 15)); // NOI18N
-        albumButton.setLabel("Albums");
+        albumButton.setText("Albums");
         albumButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 albumButtonActionPerformed(evt);
             }
         });
-
+        listButton.setText("Playlists");
         listButton.setBackground(new java.awt.Color(153, 153, 153));
         listButton.setFont(new java.awt.Font("PT Mono", 0, 15)); // NOI18N
-        listButton.setLabel("Playlists");
         listButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listButtonActionPerformed(evt);
@@ -152,20 +141,20 @@ public class LayoutFrame extends javax.swing.JFrame {
         Image back = backimage.getImage();
         jButton1.setIcon(backimage); // NOI18N
         jButton1.setActionCommand("BackButton");
-        jButton1.setLabel("");
+        jButton1.setText("");
 
         jButton2.setBackground(new java.awt.Color(0, 0, 0));
         ImageIcon playimage = new ImageIcon("src/resources/buttonDesign/play.png");
         Image play = backimage.getImage();
         jButton2.setIcon(playimage); // NOI18N
-        jButton2.setLabel("");
+        jButton2.setText("");
         jButton2.setMaximumSize(new java.awt.Dimension(80, 90));
         jButton2.setMinimumSize(new java.awt.Dimension(80, 90));
 
         ImageIcon forwardimage = new ImageIcon("src/resources/buttonDesign/foward.png");
         Image forward = backimage.getImage();
         jButton3.setIcon(forwardimage); // NOI18N
-        jButton3.setLabel("");
+        jButton3.setText("");
 
         javax.swing.GroupLayout MusicPlayerPanelLayout = new javax.swing.GroupLayout(MusicPlayerPanel);
         MusicPlayerPanel.setLayout(MusicPlayerPanelLayout);
@@ -194,16 +183,7 @@ public class LayoutFrame extends javax.swing.JFrame {
         jButton2.getAccessibleContext().setAccessibleName("PlayButton");
         jButton3.getAccessibleContext().setAccessibleName("ForwardButton");
 
-        //gather input from user to recieve the file path to transfer a playlist to the data base
-       jTextField1.setText("Enter Path");
-       ActionListener input = new ActionListener() {
-           @Override
-           public void actionPerformed(ActionEvent e) {
-             controller.inputScanner(jTextField1.getText());
-             jTextField1.setText("");
-           }
-       };
-
+        jTextField1.setText("jTextField1");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);

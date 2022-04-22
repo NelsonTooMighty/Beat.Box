@@ -6,14 +6,38 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.LinkedList;
+
 
 public class Player  {
+    private Clip currentClip;
+    private LinkedList<Clip> clipList;
+
+    public void setClip(Clip newClip){
+        this.currentClip = newClip;
+    }
+    public void setCliplist(Playlist playlist){
+        for(Song song: playlist){
+            clipList.add(song.getClip()); //TODO only add here if it's local
+        }
+    }
+    public void play(){
+        currentClip.start();
+    }
+    public void pause(){
+        currentClip.stop();
+    }
+    public void restart(){
+        currentClip.setMicrosecondPosition(0);
+        currentClip.start();
+    }
 
     public Player() throws Exception {
         File file = new File ("demo local files/Beethoven.wav");
         AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
         Clip clip = AudioSystem.getClip();
         clip.open(audioStream);
+
 
 /* Temp way to read local files to play song on gui (Austin's Input for local file reading)
         
