@@ -13,7 +13,7 @@ public class LayoutFrame extends javax.swing.JFrame {
     /**
      * Creates new form LayoutFrame
      */
-    public LayoutFrame()  {
+    public LayoutFrame() throws Exception {
         initComponents();
 
 
@@ -314,7 +314,11 @@ public class LayoutFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LayoutFrame().setVisible(true);
+                try {
+                    new LayoutFrame().setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
     }

@@ -12,6 +12,9 @@ public class Demo {
     private JPanel mainPanel;
     private JTextArea Input;
     private final Controller ctr = new Controller();
+
+    public Demo() throws Exception {
+    }
 /*
     public Demo() {
         //ctr.displayAllPlaylists(List);
