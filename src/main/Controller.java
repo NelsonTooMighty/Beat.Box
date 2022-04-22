@@ -3,8 +3,15 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Controller {
+public class Controller  {
     private final DatabaseQuery model = new DatabaseQuery();
+    private final Player songPlayer = new Player();
+    private JPanel mainScreen;
+    private JPanel sideScreen;
+
+
+    public Controller() throws Exception {
+    }
 
     /** 
      * Displays all playlists within the local directory of the computer the user 
@@ -31,13 +38,16 @@ public class Controller {
      * 
      * @param screen the scrren to display Liked Lists to
      */
-    public void displayLikedList(JTextArea screen){
+    public void displayLikedList(JPanel screen){
+        screen.removeAll();
+        screen.repaint();
+        screen.revalidate();
         Playlist songs = model.getLikedList();
         int i = 1;
         for (Song song : songs){
-            String output = i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() + "\n \t" +
-            song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n";
-            screen.append(output);
+            JButton output = new JButton(i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() + "\n \t" +
+            song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n");
+            screen.add(output);
         }
     }
 
@@ -64,6 +74,20 @@ public class Controller {
             }
         }
     }
+   /* public void displayPlaylistContent(JPanel screen, Playlist playlist){
+        screen.removeAll();
+        screen.repaint();
+        screen.revalidate();
+        for (Song song : playlist){
+            JButton output = new JButton(song.getAlbumArtImageIcon());
+            String songMessage = i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() + "\n\t" +
+                    song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n";
+            output.setText(songMessage);   // got code from https://www.tutorialspoint.com/swingexamples/create_button_with_icon_text.htm
+            output.setVerticalTextPosition(AbstractButton.CENTER);
+            output.setHorizontalTextPosition(AbstractButton.RIGHT);
+            output.addActionListener(
+        }
+    }*/
 
     /**
      * Appends a list of all unique artists with songs in the Database,
@@ -102,6 +126,98 @@ public class Controller {
                 screen.append(songMessage);
             }
     }
+    public void currentSongImage(JPanel mainScreen,Song song){           // as the song changes the image and info should change
+        mainScreen.removeAll();
+        mainScreen.repaint();
+        mainScreen.revalidate();
+
+        JLabel songImage = new JLabel();
+        songImage.setIcon(song.getAlbumArtImageIcon());
+        String songMessage = song.getSongName() + "\n \t" + song.getArtistName() +
+                song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n";
+        JLabel songLabel = new JLabel(songMessage);
+
+
+        mainScreen.add(songImage);
+        mainScreen.add(songLabel);
+        mainScreen.revalidate();
+
+    }
+    public void SongButtonAction(JButton song, JPanel mainScreen, JPanel sideScreen) throws Exception { //if in playlist
+
+        ActionListener playSong = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Playlist songPlaylist =song.getPlaylist();
+                int playlistIndex = songPlaylist.indexOf(song.getSong());
+                // displayPlaylistContent(sideScreen,songPlaylist);
+                songPlayer.setClip(songPlaylist);
+                try {
+                    songPlayer.play(playlistIndex);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        };
+        song.addActionListener(playSong);
+    }
+    public void nextSong(JButton next,JPanel mainScreen){
+        ActionListener nextSong = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    songPlayer.next();
+                    currentSongImage(mainScreen, songPlayer.getCurrentSong()); //changes image on main screen
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        };
+        next.addActionListener(nextSong);
+    }
+    public void playButton(JButton play){
+        ActionListener playSong = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(songPlayer.loadedClip() && !songPlayer.isRunning()){ // check to see if available and running
+                    try {
+                        songPlayer.play();
+                        ImageIcon playImage = new ImageIcon("src/resources/buttonDesign/play.png");
+                        play.setIcon(playImage);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+                else{
+                    songPlayer.pause();
+                    ImageIcon pauseImage = new ImageIcon("src/resources/buttonDesign/pause.png");
+                    play.setIcon(pauseImage);
+                }
+            }
+        };
+        play.addActionListener(playSong);
+    }
+    public void previousSong(JButton back, JPanel mainScreen) {
+
+        ActionListener goBack = new ActionListener() {
+            int click = 0;
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                click++;
+                if ((click % 2) == 0) {             // clicked back button twice should go back
+                    try {
+                        songPlayer.back();
+                        currentSongImage(mainScreen, songPlayer.getCurrentSong()); //changes song image on main screen
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                } else {
+                    songPlayer.restart();
+                }
+            }
+        };
+    }
+
    /** 
      * Used boolean, action listener and images to give a clean UI of 
      * like and dislike buttons.

@@ -6,114 +6,105 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.LinkedList;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 
 public class Player  {
     private Clip currentClip;
-    private LinkedList<Clip> clipList;
+    private Playlist currentPlaylist;
+    private Song currentSong;
+    private AudioInputStream audioStream;
+    private ListIterator<Song> nowPlaying = currentPlaylist.listIterator(); // used to allow changes of traversal of LinkedList can
+                                                                // can be changed to for loop if easier
 
-    public void setClip(Clip newClip){
-        this.currentClip = newClip;
-    }
-    public void setCliplist(Playlist playlist){
-        for(Song song: playlist){
-            clipList.add(song.getClip()); //TODO only add here if it's local
+    public void setClip(Clip newClip) throws LineUnavailableException, IOException {
+        if(!currentPlaylist.isEmpty()){
+            currentPlaylist.clear();   // supposed to make linked list empty
         }
+        this.currentClip = newClip;
+        currentClip.open(audioStream);
     }
-    public void play(){
-        currentClip.start();
+    public void setClip(Song song) throws Exception {
+
+        if(!currentPlaylist.isEmpty()){
+            currentPlaylist.clear();   // supposed to make playlist empty
+        }
+        this.currentClip = makeClip(song.getLocalPath());
+        currentClip.open(audioStream);
+    }
+    public void setClip(Playlist playlist){
+        this.currentPlaylist = playlist;
+    }
+    public void play() throws Exception {
+         currentClip.start();                                        // plays immediately stored song
+        while (nowPlaying.hasNext()) {                                  // checks to see if list is not empty
+            currentSong = nowPlaying.next();
+            currentClip = makeClip(currentSong.getLocalPath());      // uses string to find song and makes it into playable clip
+            play();                                                  // recursive play onwards
+        }
+
+    }
+    public void play(int index) throws Exception {
+        for(int i = 0;i != index;i++){nowPlaying.next();}            //makes counter go to indexed position
+        currentSong = currentPlaylist.get(index);
+        currentClip = makeClip(currentSong.getLocalPath());
+        play();
+
+
     }
     public void pause(){
-        currentClip.stop();
+            currentClip.stop();
+    }
+    public void next() throws Exception {
+        if (nowPlaying.hasNext()) {                       // checks to see if list is not empty
+
+            currentClip = makeClip(nowPlaying.next().getLocalPath());    // uses string to find song and makes it into playable clip
+            play();
+        }
     }
     public void restart(){
         currentClip.setMicrosecondPosition(0);
         currentClip.start();
     }
 
-    public Player() throws Exception {
-        File file = new File ("demo local files/Beethoven.wav");
-        AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
-        Clip clip = AudioSystem.getClip();
-        clip.open(audioStream);
-
-
-/* Temp way to read local files to play song on gui (Austin's Input for local file reading)
-        
-        
-        public class Player {
-            public static void main(String[] args) {
-            Player player = new Player();
-            List<song> playlist = player.makeMusicList();
-
-            for(int i =0; i < 4; i++){
-                player.play(playlist);
+    public void back() throws Exception {                 // goes back on playlist if there are previous songs
+        if(nowPlaying.hasPrevious()){
+            currentSong = nowPlaying.previous()
+           currentClip = makeClip(currentSong.getLocalPath());
+           play();
+        }
+        else{                                             // else just repeats the song
+            restart();
         }
     }
-        public List<song> makeMusicList() {
-            List<song> musicBucket = new ArrayList<song>();
-            musicBucket.add(new song("Song Name", "PathToMusicFile"));
-            musicBucket.add(new song("Song Name", "PathToMusicFile"));
-            musicBucket.add(new song("Song Name", "PathToMusicFile"));
-            musicBucket.add(new song("Song Name", "PathToMusicFile"));
-            musicBucket.add(new song("Song Name", "PathToMusicFile"));
-                return musicBucket;
+    public Song getCurrentSong(){
+        return currentSong;
     }
-}
-*/
-
-        JFrame frame = new JFrame();
-        JLabel SongName = new JLabel();
-
-        JButton playButton = new JButton("Play");
-        playButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                clip.start();
-                //SongName.setText(" Playing Be Fine by Drake");
-
-
-            }
-        });
-        JButton pauseButton = new JButton("Pause");
-        pauseButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                clip.stop();
-              //  SongName.setText("Paused Be Fine by Drake");
-            }
-        });
-        JButton restartButton = new JButton("Restart");
-        restartButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                clip.setMicrosecondPosition(0);
-                clip.start();
-              //  SongName.setText(" Playing Be Fine by Drake");
-
-            }
-        });
-        JPanel panel = new JPanel();
-
-        panel.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
-        panel.setLayout(new GridLayout(0, 3));
-        panel.add(SongName);
-        panel.add(playButton);
-        panel.add(pauseButton);
-        panel.add(restartButton);
-
-        panel.add(SongName);
-        frame.add(panel, BorderLayout.CENTER);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setTitle("Music Player");
-        frame.pack();
-        frame.setVisible(true);
+    public boolean loadedClip(){
+        if(currentClip.isOpen()){return true;}
+        else {return false;}
+    }
+    public boolean isRunning(){
+        return currentClip.isRunning();
+    }
+    public String getSongTime (){
+        long lengthInms = currentClip.getMicrosecondLength();
+        long lengthInMin = TimeUnit.MICROSECONDS.toMinutes(lengthInms);
+        long remainder =(TimeUnit.MICROSECONDS.toSeconds(lengthInms) % 60);
+        return (String) (lengthInMin + ":"+ remainder);
+    }
+    public long getCurrentTime(){
+        return currentClip.getMicrosecondPosition();
     }
 
-
+    private Clip makeClip(String filePath) throws Exception{
+        File file = new File ("filePath");
+        audioStream = AudioSystem.getAudioInputStream(file);
+        Clip songClip = AudioSystem.getClip();
+        songClip.open(audioStream);
+        return songClip;
+    }
 
 
 }

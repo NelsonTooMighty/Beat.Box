@@ -13,7 +13,6 @@ public class Song implements Serializable { //API documentation: https://develop
     private String albumArtLocation;
     private boolean isLocal;
     private String localPath;
-    private Clip songClip;
     private ImageIcon albumIcon;
 
     public Song() {
@@ -40,7 +39,7 @@ public class Song implements Serializable { //API documentation: https://develop
 
         }
         this.albumArtLocation = null; //Todo: check isLocal, find albumArtLocation
-        this.songClip = makeClip(localPath);
+
     }
     public Song(String songName, String artistName, String albumName, String releaseDate, String localPath, boolean isLocal,String albumArtLocation) throws Exception {
         this.songName = songName;
@@ -51,7 +50,7 @@ public class Song implements Serializable { //API documentation: https://develop
         this.isLocal = isLocal;
         this.albumArtLocation = albumArtLocation; //Todo: check isLocal, find albumArtLocation
         this.albumIcon = getAlbumArtImageIcon();
-        this.songClip = makeClip(localPath);
+
     }
     
     public ImageIcon getAlbumArtImageIcon() { //returns ImageIcon object for GUI purposes, regardless of online/offline
@@ -130,16 +129,7 @@ public class Song implements Serializable { //API documentation: https://develop
     public void setLocalPath(String localPath) {
         this.localPath = localPath;
     }
-    private Clip makeClip(String filePath) throws Exception{
-        File file = new File ("filePath");
-        AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
-        Clip clip = AudioSystem.getClip();
-        clip.open(audioStream);
-        return clip;
-    }
-    public Clip getClip(){
-        return this.songClip;
-    }
+
 
 
 }
