@@ -99,7 +99,7 @@ public class Player  {
     }
 
     private Clip makeClip(String filePath) throws Exception{
-        File file = new File ("filePath");
+        File file = new File (filePath);
         audioStream = AudioSystem.getAudioInputStream(file);
         Clip songClip = AudioSystem.getClip();
         songClip.open(audioStream);
