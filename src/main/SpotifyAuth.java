@@ -3,10 +3,17 @@ import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.SpotifyHttpManager;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.credentials.AuthorizationCodeCredentials;
+import se.michaelthelin.spotify.model_objects.credentials.ClientCredentials;
+import se.michaelthelin.spotify.requests.authorization.client_credentials.ClientCredentialsRequest;
+
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -21,6 +28,7 @@ public class SpotifyAuth {
     private long expireTime = 0; //time of token expiry in milliseconds; updated with System.currentTimeMillis()
     final int PORT = 8888; //port the CallbackListener will listen to
     final boolean verbose = true; //console output
+    private ClientCredentialsRequest clientCredentialsRequest;
     private final URI redirectUri = SpotifyHttpManager.makeUri("http://localhost:8888/callback"); //the URI spotify will redirect the user to after authorization
     private String codeChallenge = null; //challenge to be exchanged with Spotify for the URI
     private String codeVerifier = null; //verifier to be exchanged alongside the code with Spotify for the access tokens; generateCodes()
@@ -35,12 +43,41 @@ public class SpotifyAuth {
         } catch (UnsupportedEncodingException | NoSuchAlgorithmException e) {
             System.out.println("\nCould not generate security keys!:\n" + e.getMessage());
         }
+        clientAuthorize();
+    }
+
+    /**
+     * A lower level of authorization that doesn't require user input, but does require the client secret to be in credentials.config in the source directory. Will do nothing if credentials.config is not found.
+     */
+    public void clientAuthorize() {
+        Path path = FileSystems.getDefault().getPath("credentials.config");
+        BufferedReader reader = null;
+        String clientSecret = "";
+        try {
+            reader = Files.newBufferedReader(path);
+            reader.readLine(); //skip client ID line
+            clientSecret = reader.readLine(); //get clientSecret
+        } catch (IOException e) {
+            System.out.println("\nCould not find valid credentials.config file in base directory. All Spotify operations will require PKCE authorization.\n");
+            return;
+        }
+        spotifyApi = new SpotifyApi.Builder()
+                .setClientId(clientId)
+                .setClientSecret(clientSecret)
+                .build(); //sets clientID and secret
+        clientCredentialsRequest = spotifyApi.clientCredentials()
+                .build(); //readies request for refreshing
+        try {
+            ClientCredentials clientCredentials = clientCredentialsRequest.execute();
+            spotifyApi.setAccessToken(clientCredentials.getAccessToken());
+            expireTime = System.currentTimeMillis() + (clientCredentials.getExpiresIn() * 1000);
+        } catch (IOException | SpotifyWebApiException | ParseException e) {
+            System.out.println("\nClient Credential Authorization failed. All Spotify operations will require PKCE authorization:\n" + e.getMessage());
+        }
     }
 
     /**
      * Generates the cryptographically random code challenge and verification codes to be used in the PKCE OAuth authorization scheme.
-     * @throws UnsupportedEncodingException
-     * @throws NoSuchAlgorithmException
      */
     private void generateCodes() throws UnsupportedEncodingException, NoSuchAlgorithmException { // made using https://www.appsdeveloperblog.com/pkce-code-verifier-and-code-challenge-in-java/
         SecureRandom secureRandom = new SecureRandom();
@@ -57,10 +94,10 @@ public class SpotifyAuth {
 
     /**
      * Sets the redirect URI return code from Spotify to be used for generating access tokens
-     * @param setcode Pre-trimmed Spotify redirect code to be used for authorization
+     * @param newCode Pre-trimmed Spotify redirect code to be used for authorization
      */
-    public void setCode(String setcode) {
-        code = setcode;
+    public void setCode(String newCode) {
+        code = newCode;
     }
 
     //TODO automatic link opening: https://stackoverflow.com/questions/5226212/how-to-open-the-default-webbrowser-using-java
@@ -82,7 +119,6 @@ public class SpotifyAuth {
      */
     private void captureRedirect() {
         try {
-            // we listen until user halts server execution
             //while (true) {
                 CallbackListener myServer = new CallbackListener(PORT, singleton);
                 if (verbose)
@@ -129,21 +165,34 @@ public class SpotifyAuth {
     public void refreshAuthorization() {
         if(System.currentTimeMillis() > expireTime / 2.0) //if credentials are expiring
         {
-            try {
-                //uses refresh token to request fresh credentials from Spotify
-                AuthorizationCodeCredentials credentials = spotifyApi.authorizationCodePKCERefresh()
-                        .build()
-                        .execute();
-                //update expireTime
-                expireTime = System.currentTimeMillis() + (credentials.getExpiresIn() * 1000);
-                // Set access and refresh tokens for further "spotifyApi" object usage
-                spotifyApi.setAccessToken(credentials.getAccessToken());
-                spotifyApi.setRefreshToken(credentials.getRefreshToken());
-                if(verbose)
-                    System.out.println("Authorization expires in " + credentials.getExpiresIn() + " seconds.");
-            } catch (IOException | ParseException | SpotifyWebApiException e) {
-                System.out.println("\nError refreshing authorization!:\n" + e.getMessage());
+            long expiresIn = 0;
+            if(code == null && clientCredentialsRequest != null) {  //aka using Client Credentials
+                try {
+                    ClientCredentials clientCredentials = clientCredentialsRequest.execute();
+                    spotifyApi.setAccessToken(clientCredentials.getAccessToken());
+                    expiresIn = clientCredentials.getExpiresIn(); //update expireTime
+                } catch (IOException | ParseException | SpotifyWebApiException e) {
+                    System.out.println("\nError refreshing Client Credentials authorization!:\n" + e.getMessage());
+                }
             }
+            else if (code != null) { //aka using PKCE Code and code has already been acquired
+                try {
+                    //uses refresh token to request fresh credentials from Spotify
+                    AuthorizationCodeCredentials credentials = spotifyApi.authorizationCodePKCERefresh()
+                            .build()
+                            .execute();
+                    // Set access and refresh tokens for further "spotifyApi" object usage
+                    spotifyApi.setAccessToken(credentials.getAccessToken());
+                    spotifyApi.setRefreshToken(credentials.getRefreshToken());
+                    expiresIn = credentials.getExpiresIn(); //update expireTime
+                } catch (IOException | ParseException | SpotifyWebApiException e) {
+                    System.out.println("\nError refreshing Authorization Code authorization!:\n" + e.getMessage());
+                }
+            }
+            //update expireTime
+            expireTime = System.currentTimeMillis() + (expiresIn * 1000);
+            if (verbose && expiresIn != 0)
+                System.out.println("Authorization expires in " + expiresIn + " seconds.");
         }
     }
 
