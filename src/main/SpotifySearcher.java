@@ -8,11 +8,10 @@ import java.io.IOException;
 
 /**
  * Searches require either: credentials.config in the top level of the project; or the user has done a PKCE authorization.
+ * {@code new SpotifySearcher().searchSong("songName");}
  */
 public class SpotifySearcher {
     SpotifyAuth spotifyAuth = SpotifyAuth.getInstance();
-
-    public SpotifySearcher(){}
 
     /**
      * Searches Spotify for a given song name and returns the top result.
