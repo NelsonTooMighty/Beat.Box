@@ -30,6 +30,18 @@ public class Controller  {
             newButton.setVisible(true);
             screen.add(newButton);   // text area
         }
+        Playlist pl = new Playlist();
+        try {
+            pl.add(new Song("","","","","demo local files/Beethoven.wav", true));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        songPlayer.setClip(pl);
+        try {
+            songPlayer.play(0);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     /** 
@@ -148,15 +160,10 @@ public class Controller  {
         ActionListener playSong = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Playlist songPlaylist =song.getPlaylist();
-                int playlistIndex = songPlaylist.indexOf(song.getSong());
+                //Playlist songPlaylist =song.getPlaylist();
+                //int playlistIndex = songPlaylist.indexOf(song.getSong());
                 // displayPlaylistContent(sideScreen,songPlaylist);
-                songPlayer.setClip(songPlaylist);
-                try {
-                    songPlayer.play(playlistIndex);
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
+
             }
         };
         song.addActionListener(playSong);

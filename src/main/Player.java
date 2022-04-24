@@ -15,8 +15,12 @@ public class Player  {
     private Playlist currentPlaylist;
     private Song currentSong;
     private AudioInputStream audioStream;
-    private ListIterator<Song> nowPlaying = currentPlaylist.listIterator(); // used to allow changes of traversal of LinkedList can
+    private ListIterator<Song> nowPlaying;// = currentPlaylist.listIterator(); // used to allow changes of traversal of LinkedList can
                                                                 // can be changed to for loop if easier
+
+    public Player() {
+
+    }
 
     public void setClip(Clip newClip) throws LineUnavailableException, IOException {
         if(!currentPlaylist.isEmpty()){
@@ -24,6 +28,8 @@ public class Player  {
         }
         this.currentClip = newClip;
         currentClip.open(audioStream);
+        if (currentPlaylist != null)
+            nowPlaying = currentPlaylist.listIterator();
     }
     public void setClip(Song song) throws Exception {
 
@@ -38,7 +44,7 @@ public class Player  {
     }
     public void play() throws Exception {
          currentClip.start();                                        // plays immediately stored song
-        while (nowPlaying.hasNext()) {                                  // checks to see if list is not empty
+        while (nowPlaying != null && nowPlaying.hasNext()) {                                  // checks to see if list is not empty
             currentSong = nowPlaying.next();
             currentClip = makeClip(currentSong.getLocalPath());      // uses string to find song and makes it into playable clip
             play();                                                  // recursive play onwards
@@ -70,7 +76,7 @@ public class Player  {
 
     public void back() throws Exception {                 // goes back on playlist if there are previous songs
         if(nowPlaying.hasPrevious()){
-            currentSong = nowPlaying.previous()
+            currentSong = nowPlaying.previous();
            currentClip = makeClip(currentSong.getLocalPath());
            play();
         }

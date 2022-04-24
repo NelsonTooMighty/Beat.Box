@@ -13,7 +13,7 @@ public class Main {
             Playlist test = new Playlist();
             test.setPlaylistName("Daft Punk");
             test.add(new Song("Robot Rock", "Daft Punk", "Robot Rock", "2010", "https://f4.bcbits.com/img/a1702319957_16.jpg"));
-            db.saveToFile(test, "demo local files/serialized_playlist_demo_2");
+            db.saveToFile(test, "demo local files/daft punk playlist demo");
 
             Playlist demo = new Playlist();
             demo.setPlaylistName("The Beautiful Game");
@@ -23,12 +23,12 @@ public class Main {
             demo.add(new Song("Conscious Club", "Vulfpeck", "The Beautiful Game", "2016", "https://f4.bcbits.com/img/a1702319957_16.jpg"));
             demo.add(new Song("Aunt Leslie", "Vulfpeck", "The Beautiful Game", "2016", "https://f4.bcbits.com/img/a1702319957_16.jpg"));
             demo.add(new Song("Cory Wong", "Vulfpeck", "The Beautiful Game", "2016", "https://f4.bcbits.com/img/a1702319957_16.jpg"));
-            db.saveToFile(demo, "demo local files/serialized playlist demo");
+            db.saveToFile(demo, "demo local files/vulfpeck playlist demo");
 
 
             int i = 1;
             System.out.println("\n\n-------Contents of serialized playlist:--------");
-            Playlist demoIn = db.loadFromFile("demo local files/serialized playlist demo");
+            Playlist demoIn = db.loadFromFile("demo local files/vulfpeck playlist demo");
             for (Song s : demoIn)
                 System.out.println(i++ + ". " + s.getSongName());
             System.out.println("-----------------------------------------------\n");
