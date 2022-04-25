@@ -35,14 +35,6 @@ public class DatabaseQuery {
         return null;
     }
 
-    //Input: index of a playlist, new name to set the playlist to
-    //Output: renamed playlist object
-    public Playlist renamePlaylist(int index, String newName) { // Create a DatabaseQuery method for renaming a specified Playlist
-        Playlist temp = getPlaylist(index);
-        temp.setPlaylistName(newName);
-        return temp;
-    }
-    //This one can use getPlaylist(index) and then use the Playlist's own methods to rename (Playlist.java)
     /**
      * Renames the Playlist at the specified index.
      * This one can use getPlaylist(index) and then use the 
@@ -52,10 +44,6 @@ public class DatabaseQuery {
      * @param newName the new name Playlist will have
      * @return the renamed Playlist
      */
-<<<<<<< HEAD
-    public Playlist renamePlaylist(int index, String newName) {return null;}
->>>>>>> master
-=======
     public Playlist renamePlaylist(int index, String newName) {  //BB-16
 
         Playlist temp = getPlaylist_index(index);
@@ -63,7 +51,6 @@ public class DatabaseQuery {
         temp.setPlaylistName(newName);
         return temp;
     }
->>>>>>> master
 
     /**
      * The two funtions below are used to remove a specified playlist 
