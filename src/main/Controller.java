@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 public class Controller {
     private final DatabaseQuery model = new DatabaseQuery();
     private final Player songPlayer = new Player();
+    private final folderScanner scanner = new folderScanner();
 
 
     public Controller() throws Exception {
