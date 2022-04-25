@@ -110,8 +110,8 @@ public class Controller {
      * @param screen the screen to display the Playlist content on
      * @param playlistIndex the index of the desired Playlist
      */
-    public void displayPlaylistContent(JPanel screen, int playlistIndex) {
-        displayPlaylistContent(screen, model.getPlaylist_index(playlistIndex));
+    public void displayPlaylistContent(JPanel mainScreen, int playlistIndex, JPanel sideScreen) {
+        displayPlaylistContent(mainScreen, model.getPlaylist_index(playlistIndex),sideScreen);
     }
 
     /**
