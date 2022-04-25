@@ -102,28 +102,41 @@ public class Controller {
     }
 
     /**
-     * Appends the content of the playlist's once they are located on the local machine
-     * <p>
+     * Appends the content of the playlists once they are located on the local machine <br>
+     * 
      * The function utilizes string and append methods to pull the song name, artist name,
      * album name and album release date
-     *
-     * @param screen        the screen to display the PlaylistContent to
-     * @param playlistIndex the index that iterates through local files and fills itself
+     * 
+     * @param screen the screen to display the Playlist content on
+     * @param playlistIndex the index of the desired Playlist
      */
     public void displayPlaylistContent(JPanel screen, int playlistIndex) {
+        displayPlaylistContent(screen, model.getPlaylist_index(playlistIndex));
+    }
+
+    /**
+     * Appends the content of the playlists once they are located on the local machine <br>
+     *
+     * The function utilizes string and append methods to pull the song name, artist name,
+     * album name and album release date
+     * @param screen the screen to display the Playlist content on
+     * @param playlist the desired Playlist
+     */
+    public void displayPlaylistContent(JPanel screen, Playlist playlist) {
         screen.removeAll();
         screen.revalidate();
         screen.repaint();
-        Playlist desiredPlaylist = model.getPlaylist_index(playlistIndex);
+
         int i = 1;
-        for (Song song : desiredPlaylist) {
-            JButton newButton = new JButton(i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() + "\n\t" +
-                    song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n");
+        for (Song song : playlist) {
+            String text = i++ + ". " + song.getSongName();
+            if(song.getArtistName() != null) text += " " + song.getArtistName();
+            if(song.getAlbumName() != null) text += " " + song.getAlbumName();
+            if(song.getReleaseDate() != null) text += " " + song.getReleaseDate();
+            JButton newButton = new JButton(text);
             //song - will have a clip to the player
             //
             screen.add(newButton);
-
-
         }
     }
 
@@ -204,27 +217,11 @@ public void inputScanner(String input, JPanel screen){
         mainScreen.repaint();
         mainScreen.revalidate();
 
-        JLabel songImage = new JLabel();
-        songImage.setIcon(song.getAlbumArtImageIcon());
-        String songMessage = song.getSongName() + "\n \t" + song.getArtistName() +
-                song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n";
-        JLabel songLabel = new JLabel(songMessage);
-
-
-        mainScreen.add(songImage);
-        mainScreen.add(songLabel);
-        mainScreen.revalidate();
-
-    }
-    public void highlightMyMusic(JButton Song,JPanel sideScreen, Playlist desiredPlaylist,int index){
-        sideScreen.removeAll();
-        sideScreen.repaint();
-        sideScreen.revalidate();
-
-
-        int i = 1;
-        for (Song song : desiredPlaylist) {
-            JButton newButton = new JButton(i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() + "\n\t" +
+        displayPlaylistContent(screen, reqplaylist);
+        /*
+        int i =0;
+        for(Song song : reqplaylist) {
+            JButton newButton = new JButton(i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() +
                     song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n");
 
             if (i == index){
@@ -234,21 +231,26 @@ public void inputScanner(String input, JPanel screen){
             //
             sideScreen.add(newButton);
         }
+        */
+
 
     }
 
-    public void SongButtonAction(JButton song, JPanel mainScreen, JPanel sideScreen) throws Exception { //if in playlist
-
-        //Playlist songPlaylist =song.getPlaylist();
-        //int playlistIndex = songPlaylist.indexOf(song.getSong());
-
-        //songPlayer.play(playlistIndex);
-        currentSongImage(mainScreen, song.getSong());
-    }
-
-
-    public void nextSong(JButton next, JPanel mainScreen) {
-        ActionListener nextSong = new ActionListener() {
+   /** 
+     * Used boolean, action listener and images to give a clean UI of 
+     * like and dislike buttons.
+     * 
+     * As well as takes off or adds songs to specified playlist depending on 
+     * user actions
+     * 
+     * @param likeButton the button that places and takes off songs from the LikedList
+     * 
+     * public void likeButtonEffects(JButton likeButton){
+        Song currentSong;
+        ImageIcon dislikeImage = new ImageIcon("src/resources/GreyBox.png"),
+                likeImage = new ImageIcon("../resources/Beat.Box.png");
+        boolean inLike = model.checkLike(currentSong);
+        ActionListener likeNow = new ActionListener() { // supposed to react when user clicks the icon
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
