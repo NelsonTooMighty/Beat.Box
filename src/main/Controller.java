@@ -1,12 +1,11 @@
 import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Controller {
     private final DatabaseQuery model = new DatabaseQuery();
-    private folderScanner scanner = new folderScanner();
+    private FolderScanner scanner = new FolderScanner();
 
     /** 
      * Displays all playlists within the local directory of the computer the user 
@@ -138,8 +137,6 @@ public class Controller {
 
     }
 
-
-
     /**
      * Appends a list of all unique artists with songs in the Database,
      * with their Song count, in the following format:
@@ -190,21 +187,7 @@ public class Controller {
 
     public void inputScanner(String input, JPanel screen){
         Playlist reqplaylist = scanner.scanFolder(input);
-        screen.removeAll();
-        screen.revalidate();
-        screen.repaint();
-
         displayPlaylistContent(screen, reqplaylist);
-        /*
-        int i =0;
-        for(Song song : reqplaylist) {
-            JButton newButton = new JButton(i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() +
-                    song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n");
-            screen.add(newButton);
-        }
-        */
-
-
     }
 
    /** 

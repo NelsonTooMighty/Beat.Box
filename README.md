@@ -183,7 +183,7 @@ Planned features:
       - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/SpotifyMusicOpener.c
       - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/AppleMusicOpener.c
       - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/main/FavoritePlaylistCreator.java
-      - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/main/folderScanner.java
+      - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/main/FolderScanner.java
       - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/Website%20Layout.png
   - Acknowledgements:
       - The design of the website template sketch is based on by [Pandora],[Spotify] and a tutorial from [Satori Graphics] from youtube.
@@ -212,7 +212,7 @@ Planned features:
  - Issues/Needed Fixes:
     -  Trouble Accessing Apples's and Spotify's toolbar to begin transfer of files for users
     - Liked Playlist is missing a tester class
-    - folderScanner class missing a test
+    - FolderScanner class missing a test
  - Sprint 2 Expectations:
     - A finished detailed outline of GUI that is presentable 
     - Have finish java classes that can
