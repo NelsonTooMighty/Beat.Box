@@ -175,9 +175,18 @@ public class Controller {
             }
     }
 
-    public void inputScanner(String input){
+    public void inputScanner(String input, JPanel screen){
         Playlist reqplaylist = scanner.scanFolder(input);
+        screen.removeAll();
+        screen.revalidate();
+        screen.repaint();
 
+        int i =0;
+        for(Song song : reqplaylist) {
+            JButton newButton = new JButton(i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() +
+                    song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n");
+            screen.add(newButton);
+        }
 
     }
    /** 
