@@ -17,7 +17,7 @@ public class Player  {
     private AudioInputStream audioStream;
     private ListIterator<Song> nowPlaying;// = currentPlaylist.listIterator(); // used to allow changes of traversal of LinkedList can
                                                                 // can be changed to for loop if easier
-
+    private int songIndex;
     public Player() {
 
     }
@@ -44,7 +44,7 @@ public class Player  {
     }
     public void play() throws Exception {
          currentClip.start();                                        // plays immediately stored song
-        while (nowPlaying != null && nowPlaying.hasNext()) {                                  // checks to see if list is not empty
+        while (nowPlaying != null && nowPlaying.hasNext()) {         // checks to see if list is not empty
             currentSong = nowPlaying.next();
             currentClip = makeClip(currentSong.getLocalPath());      // uses string to find song and makes it into playable clip
             play();                                                  // recursive play onwards
@@ -55,7 +55,9 @@ public class Player  {
         for(int i = 0;i != index;i++){nowPlaying.next();}            //makes counter go to indexed position
         currentSong = currentPlaylist.get(index);
         currentClip = makeClip(currentSong.getLocalPath());
+        songIndex = index;
         play();
+
 
 
     }
@@ -63,10 +65,12 @@ public class Player  {
             currentClip.stop();
     }
     public void next() throws Exception {
-        if (nowPlaying.hasNext()) {                       // checks to see if list is not empty
-
-            currentClip = makeClip(nowPlaying.next().getLocalPath());    // uses string to find song and makes it into playable clip
+        if (nowPlaying.hasNext()) {                                // checks to see if list is not empty
+            currentSong = nowPlaying.next();                       // gets next song
+            songIndex = currentPlaylist.indexOf(currentSong);
+            currentClip = makeClip(currentSong.getLocalPath());    // uses string to find song and makes it into playable clip
             play();
+
         }
     }
     public void restart(){
@@ -77,6 +81,7 @@ public class Player  {
     public void back() throws Exception {                 // goes back on playlist if there are previous songs
         if(nowPlaying.hasPrevious()){
             currentSong = nowPlaying.previous();
+            songIndex = currentPlaylist.indexOf(currentSong);
            currentClip = makeClip(currentSong.getLocalPath());
            play();
         }
@@ -110,6 +115,9 @@ public class Player  {
         Clip songClip = AudioSystem.getClip();
         songClip.open(audioStream);
         return songClip;
+    }
+    public int getSongIndex(){
+        return songIndex;
     }
 
 
