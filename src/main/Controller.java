@@ -182,12 +182,12 @@ public class Controller {
         }
 
     }
-public void inputScanner(String input, JPanel screen){
+public void inputScanner(String input, JPanel mainscreen,JPanel sideScreen){
         Playlist reqplaylist = scanner.scanFolder(input);
-        screen.removeAll();
-        screen.revalidate();
-        screen.repaint();
-        displayPlaylistContent(screen, reqplaylist);
+        mainscreen.removeAll();
+        mainscreen.revalidate();
+        mainscreen.repaint();
+        displayPlaylistContent(mainscreen, reqplaylist,sideScreen);
 }
 
     /**
