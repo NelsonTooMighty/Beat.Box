@@ -78,16 +78,26 @@ public class Controller {
      *
      * @param screen the scrren to display Liked Lists to
      */
-    public void displayLikedList(JPanel screen) {
-        screen.removeAll();
-        screen.repaint();
-        screen.revalidate();
+    public void displayLikedList(JPanel mainScreen,JPanel sideScreen) {
+        mainScreen.removeAll();
+        mainScreen.repaint();
+        mainScreen.revalidate();
         Playlist songs = model.getLikedList();
         int i = 1;
         for (Song song : songs) {
             JButton output = new JButton(i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() + "\n \t" +
                     song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n");
-            screen.add(output);
+            output.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    try {
+                        songButtonAction(output,mainScreen,sideScreen);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            });
+            mainScreen.add(output);
         }
     }
 
@@ -112,36 +122,63 @@ public class Controller {
      * @param screen the screen to display the Playlist content on
      * @param playlist the desired Playlist
      */
-    public void displayPlaylistContent(JPanel screen, Playlist playlist) {
-        screen.removeAll();
-        screen.revalidate();
-        screen.repaint();
+    public void displayPlaylistContent(JPanel mainScreen, Playlist playlist,JPanel sideScreen) {
+        mainScreen.removeAll();
+        mainScreen.revalidate();
+        mainScreen.repaint();
 
         int i = 1;
         for (Song song : playlist) {
+            JButton newButton = new JButton(song.getAlbumArtImageIcon());
             String text = i++ + ". " + song.getSongName();
             if(song.getArtistName() != null) text += " " + song.getArtistName();
             if(song.getAlbumName() != null) text += " " + song.getAlbumName();
             if(song.getReleaseDate() != null) text += " " + song.getReleaseDate();
-            JButton newButton = new JButton(text);
+
+            newButton.setText(text);   // got code from https://www.tutorialspoint.com/swingexamples/create_button_with_icon_text.htm
+            newButton.setVerticalTextPosition(AbstractButton.CENTER);
+            newButton.setHorizontalTextPosition(AbstractButton.RIGHT);
+            newButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    try {
+                        songButtonAction(newButton,mainScreen,sideScreen);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            });
+
+
+
             //song - will have a clip to the player
             //
-            screen.add(newButton);
+            mainScreen.add(newButton);
         }
     }
 
     //#BB-89
-    public void displayAlbumContent(JPanel screen, String album_name) {
-        screen.removeAll();
-        screen.revalidate();
-        screen.repaint();
+    public void displayAlbumContent(JPanel mainScreen, String album_name,JPanel sideScreen) {
+        mainScreen.removeAll();
+        mainScreen.revalidate();
+        mainScreen.repaint();
         Playlist desiredPlaylist = model.getAlbumSongList(album_name);
         int i = 1;
 
         for (Song song : desiredPlaylist) {
             JButton newButton = new JButton(i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() +
                     song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n");
-            screen.add(newButton);
+            newButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    try {
+                        songButtonAction(newButton,mainScreen,sideScreen);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            });
+            mainScreen.add(newButton);
         }
 
     }
@@ -162,9 +199,9 @@ public void inputScanner(String input, JPanel screen){
      *
      * @param screen the screen to display artist lists to
      */
-    public void displayAllArtistList(JPanel screen) {
-        screen.removeAll();
-        screen.revalidate();
+    public void displayAllArtistList(JPanel mainScreen,JPanel sideScreen) {
+        mainScreen.removeAll();
+        mainScreen.revalidate();
         ArrayList<String> artists = model.getAllArtists();
         int i = 1;
         for (String name : artists) {
@@ -172,11 +209,11 @@ public void inputScanner(String input, JPanel screen){
             newButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    displayArtistContent(screen, name);
+                    displayArtistContent(mainScreen, name, sideScreen);
                 }
             });
 
-            screen.add(newButton);
+            mainScreen.add(newButton);
         }
     }
 
@@ -188,17 +225,27 @@ public void inputScanner(String input, JPanel screen){
      * @param screen      the screen to display the artist details
      * @param artist_name variable used to hold the information about the specific artist
      */
-    public void displayArtistContent(JPanel screen, String artist_name) {
-        screen.removeAll();
-        screen.revalidate();
-        screen.repaint();
+    public void displayArtistContent(JPanel mainScreen, String artist_name, JPanel sideScreen) {
+        mainScreen.removeAll();
+        mainScreen.revalidate();
+        mainScreen.repaint();
         Playlist desiredPlaylist = model.getArtistSongList(artist_name);
         int i = 1;
 
         for (Song song : desiredPlaylist) {
             JButton newButton = new JButton(i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() +
                     song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n");
-            screen.add(newButton);
+            newButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    try {
+                        songButtonAction(newButton,mainScreen,sideScreen);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            });
+            mainScreen.add(newButton);
         }
     }
 
@@ -282,7 +329,20 @@ public void inputScanner(String input, JPanel screen){
             songPlayer.restart();
         }
     }
-
+    public void nextSong(JButton next, JPanel mainScreen) {
+        ActionListener nextSong = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    songPlayer.next();
+                    currentSongImage(mainScreen, songPlayer.getCurrentSong()); //changes image on main screen
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        };
+        next.addActionListener(nextSong);
+    }
     /**
      * Used boolean, action listener and images to give a clean UI of
      * like and dislike buttons.
