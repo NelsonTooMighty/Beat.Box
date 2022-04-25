@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 public class Controller {
     private final DatabaseQuery model = new DatabaseQuery();
-    private folderScanner scanner = new folderScanner();
+    private FolderScanner scanner = new FolderScanner();
 
     /** 
      * Displays all playlists within the local directory of the computer the user 
@@ -22,12 +22,49 @@ public class Controller {
         for (Playlist playlist : playlists) {    // gets each playlist in index order and shows it in a gui's
 
             JButton newButton = new JButton(i++ + ". " + playlist.getPlaylistName() + "\n");
+            int index = i-1;
+            newButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    displayPlaylistContent(screen, index);
+                }
+            });
             screen.add(newButton);// text area
 
 
 
 
         }
+    }
+    //BB-89
+    public void displayAllSongs(JPanel screen){
+        ArrayList<String> songs = model.getAllSongs();
+        int i = 1;
+        for (String name : songs) {
+            JButton newButton = new JButton(i++ + ". " + name);
+            screen.add(newButton);
+        }
+    }
+//BB-89
+    public void displayAllAlbumList(JPanel screen){
+        ArrayList<String> albums = model.getAllAlbums();
+        int i = 1;
+        for (String name : albums) {
+            JButton newButton = new JButton(i++ + ". " + name);
+            int index = i - 1;
+            newButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    displayAlbumContent(screen, name);
+                }
+            });
+
+
+
+            screen.add(newButton);
+        }
+
+
     }
 
     /** 
@@ -47,27 +84,57 @@ public class Controller {
     }
 
     /**
-     * Appends the content of the playlist's once they are located on the local machine
+     * Appends the content of the playlists once they are located on the local machine <br>
      * 
      * The function utilizes string and append methods to pull the song name, artist name,
      * album name and album release date
      * 
-     * @param screen the screen to display the PlaylistContent to
-     * @param playlistIndex the index that iterates through local files and fills itself
+     * @param screen the screen to display the Playlist content on
+     * @param playlistIndex the index of the desired Playlist
      */
-    public void displayPlaylistContent(JTextArea screen, int playlistIndex) {
-        Playlist desiredPlaylist = model.getPlaylist_index(playlistIndex);
+    public void displayPlaylistContent(JPanel screen, int playlistIndex) {
+        displayPlaylistContent(screen, model.getPlaylist_index(playlistIndex));
+    }
+
+    /**
+     * Appends the content of the playlists once they are located on the local machine <br>
+     *
+     * The function utilizes string and append methods to pull the song name, artist name,
+     * album name and album release date
+     * @param screen the screen to display the Playlist content on
+     * @param playlist the desired Playlist
+     */
+    public void displayPlaylistContent(JPanel screen, Playlist playlist) {
+        screen.removeAll();
+        screen.revalidate();
+        screen.repaint();
+
         int i = 1;
-        if (desiredPlaylist == null)
-            screen.append("Error: Playlist not found!\n");
-        else {
-            screen.append(desiredPlaylist.getPlaylistName() + ": \n");
-            for (Song song : desiredPlaylist) {
-                String songMessage = i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() + "\n\t" +
-                        song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n";
-                screen.append(songMessage);
-            }
+        for (Song song : playlist) {
+            String text = i++ + ". " + song.getSongName();
+            if(song.getArtistName() != null) text += " " + song.getArtistName();
+            if(song.getAlbumName() != null) text += " " + song.getAlbumName();
+            if(song.getReleaseDate() != null) text += " " + song.getReleaseDate();
+            JButton newButton = new JButton(text);
+            //song - will have a clip to the player
+            //
+            screen.add(newButton);
         }
+    }
+//#BB-89
+    public void displayAlbumContent(JPanel screen, String album_name){
+        screen.removeAll();
+        screen.revalidate();
+        screen.repaint();
+        Playlist desiredPlaylist = model.getAlbumSongList(album_name);
+        int i = 1;
+
+        for(Song song : desiredPlaylist) {
+            JButton newButton = new JButton(i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() +
+                    song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n");
+            screen.add(newButton);
+        }
+
     }
 
     /**
@@ -78,12 +145,21 @@ public class Controller {
      * Songs: #
      * @param screen the screen to display artist lists to
      */
-    public void displayAllArtistList(JTextArea screen) {
+    public void displayAllArtistList(JPanel screen) {
+        screen.removeAll();
+        screen.revalidate();
         ArrayList<String> artists = model.getAllArtists();
         int i = 1;
         for (String name : artists) {
-            String output = i++ + ". " + name + "\tSongs: " + model.getArtistSongCount(name) + "\n";
-            screen.append(output);
+            JButton newButton = new JButton(i++ + ". " + name + "\tSongs: " + model.getArtistSongCount(name) + "\n");
+            newButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    displayArtistContent(screen, name);
+                }
+            });
+
+            screen.add(newButton);
         }
     }
 
@@ -95,24 +171,25 @@ public class Controller {
      * @param screen the screen to display the artist details
      * @param artist_name variable used to hold the information about the specific artist
      */
-    public void displayArtistContent (JTextArea screen, String artist_name) {
+    public void displayArtistContent (JPanel screen, String artist_name) {
+        screen.removeAll();
+        screen.revalidate();
+        screen.repaint();
         Playlist desiredPlaylist = model.getArtistSongList(artist_name);
         int i = 1;
-        if (desiredPlaylist == null)
-            screen.append("Error: Artist Playlist not found!\n");
-        else
+
             for(Song song : desiredPlaylist) {
-                String songMessage = i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() +
-                        song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n";
-                screen.append(songMessage);
+                JButton newButton = new JButton(i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() +
+                        song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n");
+                screen.add(newButton);
             }
     }
 
-    public void inputScanner(String input){
+    public void inputScanner(String input, JPanel screen){
         Playlist reqplaylist = scanner.scanFolder(input);
-
-
+        displayPlaylistContent(screen, reqplaylist);
     }
+
    /** 
      * Used boolean, action listener and images to give a clean UI of 
      * like and dislike buttons.
