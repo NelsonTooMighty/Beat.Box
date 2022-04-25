@@ -8,6 +8,7 @@ public class Controller {
     private final DatabaseQuery model = new DatabaseQuery();
     private final Player songPlayer = new Player();
     private final folderScanner scanner = new folderScanner();
+    private int click = 0;
 
 
     public Controller() throws Exception {
@@ -36,20 +37,8 @@ public class Controller {
             });
             screen.add(newButton);// text area
 
+        }
 
-        }
-        Playlist pl = new Playlist();
-        try {
-            pl.add(new Song("", "", "", "", "demo local files/Beethoven.wav", true));
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        songPlayer.setClip(pl);
-        try {
-            songPlayer.play(0);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
     }
 
     //BB-89
@@ -218,23 +207,15 @@ public void inputScanner(String input, JPanel screen){
         mainScreen.repaint();
         mainScreen.revalidate();
 
-        displayPlaylistContent(screen, reqplaylist);
-        /*
-        int i =0;
-        for(Song song : reqplaylist) {
-            JButton newButton = new JButton(i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() +
-                    song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n");
+        JButton output = new JButton(song.getAlbumArtImageIcon());
+        String songMessage = song.getSongName() + "\n \t" + song.getArtistName() + "\n\t" +
+                song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n";
+        output.setText(songMessage);   // got code from https://www.tutorialspoint.com/swingexamples/create_button_with_icon_text.htm
+        output.setVerticalTextPosition(AbstractButton.BOTTOM);
+        output.setHorizontalTextPosition(AbstractButton.CENTER);
 
-            if (i == index){
-                newButton.setForeground(Color.getHSBColor(255, 22, 22));
-            }
-            //song - will have a clip to the player
-            //
-            sideScreen.add(newButton);
-        }
-        */
-
-
+        mainScreen.add(output);
+        mainScreen.revalidate();
     }
 
    /** 
@@ -245,8 +226,9 @@ public void inputScanner(String input, JPanel screen){
      * user actions
      * 
      * @param likeButton the button that places and takes off songs from the LikedList
-     * 
-     * public void likeButtonEffects(JButton likeButton){
+     */
+   /*
+      public void likeButtonEffects(JButton likeButton){
         Song currentSong;
         ImageIcon dislikeImage = new ImageIcon("src/resources/GreyBox.png"),
                 likeImage = new ImageIcon("../resources/Beat.Box.png");
@@ -264,7 +246,7 @@ public void inputScanner(String input, JPanel screen){
         };
         next.addActionListener(nextSong);
     }
-
+*/
     public void playButton(JButton play) {
         ActionListener playSong = new ActionListener() {
             @Override
@@ -287,26 +269,18 @@ public void inputScanner(String input, JPanel screen){
         play.addActionListener(playSong);
     }
 
-    public void previousSong(JButton back, JPanel mainScreen) {
-
-        ActionListener goBack = new ActionListener() {
-            int click = 0;
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                click++;
-                if ((click % 2) == 0) {             // clicked back button twice should go back
-                    try {
-                        songPlayer.back();
-                        currentSongImage(mainScreen, songPlayer.getCurrentSong()); //changes song image on main screen
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
-                } else {
-                    songPlayer.restart();
-                }
+    public void previousSong( JPanel mainScreen) {
+        click++;
+        if ((click % 2) == 0) {             // clicked back button twice should go back
+            try {
+                songPlayer.back();
+                currentSongImage(mainScreen, songPlayer.getCurrentSong()); //changes song image on main screen
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
-        };
+        } else {
+            songPlayer.restart();
+        }
     }
 
     /**
@@ -339,30 +313,36 @@ public void inputScanner(String input, JPanel screen){
      * likeButton.addActionListener(likeNow);
      * }
      */
-    public void displayPlaylistContent(JPanel mainScreen, Playlist playlist, JPanel sideScreen) throws Exception {
-        mainScreen.removeAll();
-        mainScreen.repaint();
-        mainScreen.revalidate();
-        int i = 1;
-        for (Song song : playlist) {
-            JButton output = new JButton(song.getAlbumArtImageIcon());
-            String songMessage = i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() + "\n\t" +
-                    song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n";
-            output.setText(songMessage);   // got code from https://www.tutorialspoint.com/swingexamples/create_button_with_icon_text.htm
-            output.setVerticalTextPosition(AbstractButton.CENTER);
-            output.setHorizontalTextPosition(AbstractButton.RIGHT);
-            ActionListener playSong = new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    try {
-                        SongButtonAction(output, mainScreen, sideScreen); // adds action listener to each button
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
-                }
+ public void songButtonAction( JButton currentSong, JPanel mainScreen, JPanel sideScreen) throws Exception {
+     Playlist currentplaylist = currentSong.getPlaylist();
+     songPlayer.setClip(currentplaylist);
+     int index = currentplaylist.indexOf(currentSong.getSong());
+     songPlayer.play(index);
+     highlightMyMusic(currentSong,sideScreen,currentplaylist,index);
+     currentSongImage(mainScreen, currentSong.getSong());
+ }
 
-            };
-            output.addActionListener(playSong);
+
+
+public void highlightMyMusic(JButton Song,JPanel sideScreen, Playlist desiredPlaylist,int index){
+        sideScreen.removeAll();
+        sideScreen.repaint();
+        sideScreen.revalidate();
+
+        int i =1;
+        for(Song song : desiredPlaylist) {
+            JButton newButton = new JButton(i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() +
+                    song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n");
+
+            if (i == index){
+                newButton.setForeground(Color.getHSBColor(255, 22, 22));
+            }
+            //song - will have a clip to the player
+            //
+            sideScreen.add(newButton);
         }
-    }
-}
+
+
+
+
+        }
