@@ -99,6 +99,9 @@ public class DatabaseQuery {
         return new ArrayList<>(db);
     }
 
+
+
+
     /**
      * Returns a list of all unique Artists that have songs in the Database.
      * 
@@ -111,6 +114,25 @@ public class DatabaseQuery {
                 if(!artists.contains(song.getArtistName())) //if the playlist doesn't have an artist name
                     artists.add(song.getArtistName()); //add it to the list
         return artists; //when done
+    }
+//BB-89
+    public ArrayList<String> getAllAlbums(){
+        ArrayList<String> albums = new ArrayList<>();
+        for(Playlist playlist : db) //for every playlist
+            for(Song song : playlist) //for every song in every playlist
+                if(!albums.contains(song.getAlbumName())) //if the playlist doesn't have an artist name
+                    albums.add(song.getAlbumName()); //add it to the list
+        return albums;
+    }
+
+    //BB-89
+    public ArrayList<String> getAllSongs() {
+        ArrayList<String> songs = new ArrayList<>();
+        for(Playlist playlist : db) //for every playlist
+            for(Song song : playlist) //for every song in every playlist
+                if(!songs.contains(song.getSongName()))
+                    songs.add (song.getSongName());//add it to the list
+        return songs;
     }
 
     /**
@@ -144,6 +166,20 @@ public class DatabaseQuery {
             }
         }
         return artistPlaylist;
+
+    }
+
+    public  Playlist getAlbumSongList(String albumTitle){
+        Playlist albumPlaylist = new Playlist();
+        albumPlaylist.setPlaylistName(albumTitle);
+        ArrayList<Playlist> playlists = getAllPlaylists();
+        for (Playlist playlist : playlists){
+            for (Song song : playlist){
+                if (albumTitle.equals(song.getAlbumName()))
+                    albumPlaylist.add(song);
+            }
+        }
+        return albumPlaylist;
 
     }
     

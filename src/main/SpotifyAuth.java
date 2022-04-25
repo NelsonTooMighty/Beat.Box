@@ -6,6 +6,7 @@ import se.michaelthelin.spotify.model_objects.credentials.AuthorizationCodeCrede
 import se.michaelthelin.spotify.model_objects.credentials.ClientCredentials;
 import se.michaelthelin.spotify.requests.authorization.client_credentials.ClientCredentialsRequest;
 
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -21,6 +22,11 @@ import java.util.Base64;
 import java.util.Date;
 
 // relies heavily on spotify-web-api-java dependency: https://github.com/spotify-web-api-java/spotify-web-api-java/tree/8fa8ae77e23e68507872cfadc4fe38321f5b86cc
+
+/**
+ * Singleton that stores the authorization details, access codes, etc. To use, simply run the following:
+ * {@code SpotifyAuth.getInstance().fullyAuthorize();}
+ */
 public class SpotifyAuth {
     public SpotifyApi spotifyApi; //Importers and Exporters can use this authorized object
     private static final SpotifyAuth singleton = new SpotifyAuth();
@@ -47,12 +53,28 @@ public class SpotifyAuth {
     }
 
     /**
+     * Fully authorizes by opening a Spotify link in the default browser and waiting for the user to authorize the application.
+     * @return true if successful, false if the link could not be opened
+     */
+    public boolean fullyAuthorize() {
+        URI uri = getURI(); //generates the authorization URI
+        try {
+            Desktop.getDesktop().browse(uri); //opens Spotify auth URI in browser
+        } catch (IOException e) {
+            System.out.println("\nError: failed to open URL (" + uri + ") in the browser!:\n" + e.getMessage());
+            return false;
+        }
+        authorize(); //captures the return code
+        return true;
+    }
+
+    /**
      * A lower level of authorization that doesn't require user input, but does require the client secret to be in credentials.config in the source directory. Will do nothing if credentials.config is not found.
      */
     public void clientAuthorize() {
         Path path = FileSystems.getDefault().getPath("credentials.config");
-        BufferedReader reader = null;
-        String clientSecret = "";
+        BufferedReader reader;
+        String clientSecret;
         try {
             reader = Files.newBufferedReader(path);
             reader.readLine(); //skip client ID line
@@ -100,7 +122,6 @@ public class SpotifyAuth {
         code = newCode;
     }
 
-    //TODO automatic link opening: https://stackoverflow.com/questions/5226212/how-to-open-the-default-webbrowser-using-java
     /**
      * Gets URI needed to authenticate the Spotify user. Once link has been provided to user, should be followed up with {@link #authorize()}.
      * @return Spotify OAuth URI to be opened by the user
@@ -111,7 +132,7 @@ public class SpotifyAuth {
                 .setClientId(clientId)
                 .setRedirectUri(redirectUri)
                 .build();
-        return spotifyApi.authorizationCodePKCEUri(codeChallenge).build().execute();
+        return spotifyApi.authorizationCodePKCEUri(codeChallenge).scope("playlist-modify-private").build().execute();
     }
 
     /**
@@ -152,7 +173,7 @@ public class SpotifyAuth {
             spotifyApi.setAccessToken(authorizationCodeCredentials.getAccessToken());
             spotifyApi.setRefreshToken(authorizationCodeCredentials.getRefreshToken());
             if (verbose)
-                System.out.println("Authorization complete. Expires in: " + authorizationCodeCredentials.getExpiresIn());
+                System.out.println("PKCE Authorization complete. Expires in: " + authorizationCodeCredentials.getExpiresIn());
         } catch (IOException | SpotifyWebApiException | ParseException e) {
             System.out.println("\nError authorizing with redirect code!:\n" + e.getMessage());
         }
@@ -202,21 +223,27 @@ public class SpotifyAuth {
     }
 
     /**
-     * Checks if the object is authorized yet.
+     * Checks if the object is authorized at all, whether via Client Credentials or Authorization Code.
      * @return true if an access token exists and is not expired yet; otherwise false
      */
     public boolean isAuthorized() {
+        refreshAuthorization();
         return spotifyApi.getAccessToken() != null && System.currentTimeMillis() < expireTime;
+    }
+
+    /**
+     * Checks if the object is fully authorized via Authorization Code.
+     * @return true if PKCE code was returned and the access token isn't expired yet
+     */
+    public boolean isFullyAuthorized() {
+        refreshAuthorization();
+        return code != null && spotifyApi.getAccessToken() != null && System.currentTimeMillis() < expireTime;
     }
 
     /*  //driver test/example
     public static void main(String[] args) {
-        SpotifyAuth spotifyAuth = SpotifyAuth.getInstance();
-
-        System.out.println(spotifyAuth.getURI());
-        spotifyAuth.authorize();
-
+        SpotifyAuth.getInstance().fullyAuthorize();
     }
-    */
 
+     */
 }
