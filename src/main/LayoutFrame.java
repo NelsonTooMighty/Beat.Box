@@ -45,9 +45,11 @@ public class LayoutFrame extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
-        SidePanel = new javax.swing.JScrollPane();
+        SidePanel = new javax.swing.JPanel();
+        sidePanelScroller = new javax.swing.JScrollPane(SidePanel);
 
         MainScreenPanel.setLayout(new BoxLayout(MainScreenPanel, BoxLayout.Y_AXIS)); //https://stackoverflow.com/questions/13510641/add-controls-vertically-instead-of-horizontally-using-flow-layout
+        SidePanel.setLayout(new BoxLayout(SidePanel, BoxLayout.Y_AXIS));
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -181,7 +183,20 @@ public class LayoutFrame extends javax.swing.JFrame {
         jButton2.getAccessibleContext().setAccessibleName("PlayButton");
         jButton3.getAccessibleContext().setAccessibleName("ForwardButton");
 
-        jTextField1.setText("jTextField1");
+        //gather input from user to recieve the file path to transfer a playlist to the data base
+       jTextField1.setText("Enter Path");
+        ActionListener input = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SidePanel.removeAll();
+                controller.inputScanner(jTextField1.getText(), SidePanel);
+                jTextField1.setText("");
+                SidePanel.revalidate();
+            }
+        };
+       jTextField1.addActionListener(input);
+
+
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -190,7 +205,7 @@ public class LayoutFrame extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(SidePanel)
+                                        .addComponent(sidePanelScroller)
                                         .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE))
                                 .addContainerGap())
         );
@@ -200,7 +215,7 @@ public class LayoutFrame extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(SidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
+                                .addComponent(sidePanelScroller, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
                                 .addContainerGap())
         );
 
@@ -336,7 +351,8 @@ public class LayoutFrame extends javax.swing.JFrame {
     private JPanel MainScreenPanel;
     private javax.swing.JScrollPane MainScreenScroller;
     private javax.swing.JPanel MusicPlayerPanel;
-    private javax.swing.JScrollPane SidePanel;
+    private JPanel SidePanel;
+    private javax.swing.JScrollPane sidePanelScroller;
     private javax.swing.JButton Songs;
     private javax.swing.JButton albumButton;
     private javax.swing.JButton artistButton;
