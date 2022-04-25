@@ -17,7 +17,7 @@ public class SpotifySearcher {
     /**
      * Searches Spotify for a given song name and returns the top result.
      * @param name String name of the song to be searched for
-     * @return top result in Song form
+     * @return top result in {@link Song} form
      */
     public Song searchSong(String name) {
         SearchResult sr = search(name, "track");
@@ -28,6 +28,19 @@ public class SpotifySearcher {
             else {
                 System.out.println("No results found!");
             }
+        }
+        return null;
+    }
+
+    /**
+     * Searches Spotify for a given song name and returns the URI of the top result.
+     * @param name String name of the song to be searched for
+     * @return top result's URI in String form
+     */
+    public String searchSongURI(String name) {
+        SearchResult sr = search(name, "track");
+        if (sr != null) {
+            return sr.getTracks().getItems()[0].getUri();
         }
         return null;
     }
