@@ -198,15 +198,17 @@ public class LayoutFrame extends javax.swing.JFrame {
 
         //gather input from user to recieve the file path to transfer a playlist to the data base
        jTextField1.setText("Enter Path");
-       ActionListener input = new ActionListener() {
-           @Override
-           public void actionPerformed(ActionEvent e) {
-               SidePanel.removeAll();
-             controller.inputScanner(jTextField1.getText(), SidePanel);
-             jTextField1.setText("");
-             SidePanel.revalidate();
-           }
-       };
+        ActionListener input = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SidePanel.removeAll();
+                controller.inputScanner(jTextField1.getText(), SidePanel);
+                jTextField1.setText("");
+                SidePanel.revalidate();
+            }
+        };
+       jTextField1.addActionListener(input);
+
 
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
