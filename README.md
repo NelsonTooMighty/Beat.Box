@@ -183,7 +183,7 @@ Planned features:
       - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/SpotifyMusicOpener.c
       - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/AppleMusicOpener.c
       - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/main/FavoritePlaylistCreator.java
-      - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/main/folderScanner.java
+      - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/src/main/FolderScanner.java
       - https://bitbucket.org/cs3398-s22-romulans/beat.box/src/master/Website%20Layout.png
   - Acknowledgements:
       - The design of the website template sketch is based on by [Pandora],[Spotify] and a tutorial from [Satori Graphics] from youtube.
@@ -212,7 +212,7 @@ Planned features:
  - Issues/Needed Fixes:
     -  Trouble Accessing Apples's and Spotify's toolbar to begin transfer of files for users
     - Liked Playlist is missing a tester class
-    - folderScanner class missing a test
+    - FolderScanner class missing a test
  - Sprint 2 Expectations:
     - A finished detailed outline of GUI that is presentable 
     - Have finish java classes that can
@@ -381,7 +381,30 @@ Nelson Uzoaru
   - Sprint 3 Expectations:
       - Ensure all functions of music player are working and connected
       - A finished and complete gui
-     
+
+###   Sprint #3
+
+### Naomi Padilla
+
+  - Work Done:
+      - [BB-84] and [BB-90] Accepting user input of a string that would be passed to the folder Scanner and creating a side Panel to display up coming songs that are buttons
+            - commit [98415ed]: https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/98415ed1e7c3dd58b6e041700efd20d52c605f80
+    - [BB_89] All functions in the controller dynamically create Buttons for Artist, album, playlist, songs tabs
+        commit[1319884]: https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/1319884c98cc4ff75a59d26ea84cf19eaeda6907
+    - [BB-93] Add Icons made for the player to the GUI
+        -commit : [19557dd]: https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/19557dd6cddbafa2a4bf3c3c8bb97db9eda8b6d2
+
+  - Acknowledgements:
+
+  - Summary of Work Done:
+     -  [BB-89] Got all Four Main buttons to work by displaying all needed content that is in the database. When the buttons are pressed in the mainPanel it can display its own contents for albums, playlist and artist. This is all done dynamically. 
+    - [BB-84] and [BB-90]From the side JtextArea when the path is entered for a folder of desired content. It sends this input through the controller and sends to the function folderscanner to put the playlist just read and puts it into the database and displays it to the side panel for the user to see what they just transferred.  
+    - [BB-93] Incorporated the artwork made by another partner to be used for the buttons on the music player. These icons work as buttons, so when pressed they will perfom an action. 
+  - Status:
+
+  - Issues/ Needed Fixes:
+    - [BB-93] Finally getting the Icons to appear we ran into the issue of when it came to resizing the images, they began disorting the image. 
+  
 
 ## Acknowledgements
 Give credit here.
