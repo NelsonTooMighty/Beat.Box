@@ -20,7 +20,7 @@ public class SpotifyExporter {
      */
     public boolean exportPlaylist(Playlist playlist) {
         if (!spotifyAuth.isFullyAuthorized()) { //if not fully authorized, fully authorize
-            System.out.println("Not authorized yet, authorizing now!");
+            System.out.println("Not fully authorized yet, authorizing now!");
             spotifyAuth.fullyAuthorize();
         }
         User user = null;

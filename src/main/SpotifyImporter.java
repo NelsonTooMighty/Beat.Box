@@ -56,9 +56,9 @@ public class SpotifyImporter implements CloudPlaylistImporter { //with reference
         return new Song(
                 track.getName(),
                 track.getArtists()[0].getName(),
-                track.getAlbum().toString(),
+                track.getAlbum().getName(),
                 track.getAlbum().getReleaseDate(),
-                track.getAlbum().getImages()[0].getUrl()
+                track.getAlbum().getImages() == null ? track.getAlbum().getImages()[0].getUrl() : null
                 );
     }
 }

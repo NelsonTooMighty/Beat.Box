@@ -1,8 +1,5 @@
 import com.google.api.services.youtube.YouTube;
-import com.google.api.services.youtube.model.PlaylistItem;
-import com.google.api.services.youtube.model.PlaylistItemContentDetails;
-import com.google.api.services.youtube.model.PlaylistItemListResponse;
-import com.google.api.services.youtube.model.PlaylistItemSnippet;
+import com.google.api.services.youtube.model.*;
 import se.michaelthelin.spotify.model_objects.specification.PlaylistTrack;
 import se.michaelthelin.spotify.model_objects.specification.Track;
 
@@ -41,6 +38,15 @@ public class YTMusicImporter {
         if (response == null) return null;
         Playlist playlist = new Playlist();
         List<PlaylistItem> items = response.getItems();
+
+        try {
+            YouTube.Playlists.List plreq = auth.getYoutubeService().playlists().list(List.of("snippet"));
+            PlaylistListResponse plresponse = plreq.setId(List.of(id)).execute();
+            playlist.setPlaylistName(plresponse.getItems().get(0).getSnippet().getTitle());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         for (PlaylistItem pi : items)
             playlist.add(snippetParser(pi.getSnippet()));
         return playlist;
@@ -50,7 +56,7 @@ public class YTMusicImporter {
         if (snippet == null) return null;
         return new Song(
                 snippet.getTitle(),
-                snippet.getChannelTitle(),
+                snippet.getVideoOwnerChannelTitle(),
                 null,
                 snippet.getPublishedAt().toStringRfc3339().split("-")[0],
                 snippet.getThumbnails().getDefault().getUrl()

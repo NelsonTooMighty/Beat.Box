@@ -46,7 +46,7 @@ public class FolderScanner {
         {
             e.printStackTrace();
         }
-        currentDatabase.add(currentPlaylist);
+        //currentDatabase.add(currentPlaylist);
 
         return currentPlaylist;
        
