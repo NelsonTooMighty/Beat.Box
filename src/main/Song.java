@@ -28,7 +28,7 @@ public class Song implements Serializable { //API documentation: https://develop
         localPath = null;
     }
 
-    public Song(String songName, String artistName, String albumName, String releaseDate, String localPath, boolean isLocal) throws Exception {
+    public Song(String songName, String artistName, String albumName, String releaseDate, String localPath, boolean isLocal) {
         this.songName = songName;
         this.artistName = artistName;
         this.albumName = albumName;

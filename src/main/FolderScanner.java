@@ -8,12 +8,10 @@ import java.nio.file.Paths;
 import java.util.*;
 public class FolderScanner {
     public Playlist scanFolder(String folderPath){
-        Database currentDatabase = Database.getInstance();
-        String []pathArray;
         Playlist currentPlaylist = new Playlist();
         String albumArtPath = null;
 
-        pathArray = folderPath.split("\\\\");
+        String []pathArray = folderPath.split("\\\\");
         currentPlaylist.setPlaylistName(pathArray[pathArray.length - 1]); //gets folder name
 
         Path path = Paths.get(folderPath); // Get folder path from GUI
@@ -42,15 +40,11 @@ public class FolderScanner {
                 currentPlaylist.add(currentSong);
             }
             
-        } catch (IOException e) 
-        {
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        //currentDatabase.add(currentPlaylist);
 
         return currentPlaylist;
-       
-        // input.close();
     }
 
 }
