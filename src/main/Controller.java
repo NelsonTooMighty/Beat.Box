@@ -26,6 +26,29 @@ public class Controller {
         this.sideScreen = sideScreen;
     }
 
+    public JPanel displayPlaylist(Playlist playlist, String label) {
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setVisible(true);
+        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
+        buttonPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        PlaylistButton playlistButton = new PlaylistButton(label);
+        JButton saveButton = new JButton(new ImageIcon(new ImageIcon("src/resources/DL.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT)));
+        JButton exportButton = new JButton(new ImageIcon(new ImageIcon("src/resources/Spotify_Logo.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT)));
+
+        playlistButton.setPlaylist(playlist);
+        playlistButton.addActionListener(e -> displayPlaylistContent(playlist));
+        saveButton.addActionListener(e -> Database.getInstance().saveToFile(playlist));
+        exportButton.addActionListener(e -> new SpotifyExporter().exportPlaylist(playlist));
+
+        buttonPanel.add(playlistButton);// text area
+        buttonPanel.add(saveButton);
+        buttonPanel.add(exportButton);
+        buttonPanel.revalidate();
+        mainScreen.add(buttonPanel);
+        return buttonPanel;
+    }
+
     /**
      * Displays all playlists within the local directory of the computer the user
      * is running the program on.
@@ -37,26 +60,19 @@ public class Controller {
         ArrayList<Playlist> playlists = model.getAllPlaylists();
         int i = 1;
         for (Playlist playlist : playlists) {    // gets each playlist in index order and shows it in a gui's
-            JPanel buttonPanel = new JPanel();
-            buttonPanel.setVisible(true);
-            buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
-            buttonPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
-
-            PlaylistButton playlistButton = new PlaylistButton(i++ + ". " + playlist.getPlaylistName() + "\n");
-            JButton saveButton = new JButton(new ImageIcon(new ImageIcon("src/resources/DL.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT)));
-            JButton exportButton = new JButton(new ImageIcon(new ImageIcon("src/resources/Spotify_Logo.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT)));
-
-            int index = i - 1;
-            playlistButton.setPlaylist(playlist);
-            playlistButton.addActionListener(e -> displayPlaylistContent(index));
-            saveButton.addActionListener(e -> Database.getInstance().saveToFile(playlist));
-            exportButton.addActionListener(e -> new SpotifyExporter().exportPlaylist(playlist));
-
-            buttonPanel.add(playlistButton);// text area
-            buttonPanel.add(saveButton);
-            buttonPanel.add(exportButton);
-            buttonPanel.revalidate();
-            mainScreen.add(buttonPanel);
+            JPanel buttonPanel = null;
+            if (playlist != null) {
+                buttonPanel = displayPlaylist(playlist, i++ + ". " + playlist.getPlaylistName() + "\n");
+                JButton deleteButton = new JButton(new ImageIcon(new ImageIcon("src/resources/delete.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT)));
+                deleteButton.addActionListener(e -> {
+                    Database.getInstance().remove(playlist);
+                    mainScreen.removeAll();
+                    mainScreen.repaint();
+                    displayAllPlaylists();
+                    mainScreen.revalidate();
+                });
+                buttonPanel.add(deleteButton);
+            }
         }
     }
 
@@ -79,19 +95,7 @@ public class Controller {
         ArrayList<String> albums = model.getAllAlbums();
         int i = 1;
         for (String name : albums) {
-            Playlist playlist = model.getAlbumSongList(name);
-            SongButton newButton = new SongButton(i++ + ". " + name);
-            newButton.setSong(model.getSong(name));
-            newButton.setPlaylist(playlist);
-            newButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    displayPlaylistContent(playlist);
-                }
-            });
-
-
-            mainScreen.add(newButton);
+            displayPlaylist(model.getAlbumSongList(name), i++ + ". " + name);
         }
 
 
@@ -209,16 +213,7 @@ public class Controller {
         ArrayList<String> artists = model.getAllArtists();
         int i = 1;
         for (String name : artists) {
-            PlaylistButton newButton = new PlaylistButton(i++ + ". " + name + "  Songs: " + model.getArtistSongCount(name) + "\n");
-            Playlist artistPlaylist = model.getArtistSongList(name);
-            newButton.setPlaylist(artistPlaylist);
-            newButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    displayPlaylistContent(artistPlaylist);
-                }
-            });
-            mainScreen.add(newButton);
+            displayPlaylist(model.getArtistSongList(name), i++ + ". " + name + "  Songs: " + model.getArtistSongCount(name));
         }
     }
 
@@ -417,6 +412,7 @@ public class Controller {
             reqPlaylist = new YTMusicImporter().importPlaylist(input);
         else
             reqPlaylist = scanner.scanFolder(input);
+        if(reqPlaylist == null) return;
         Database.getInstance().add(reqPlaylist);
         displayPlaylistContent(reqPlaylist);
     }
