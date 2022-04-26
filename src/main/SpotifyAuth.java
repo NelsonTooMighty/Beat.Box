@@ -1,5 +1,6 @@
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.SpotifyApi;
+import se.michaelthelin.spotify.SpotifyHttpManager;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.credentials.AuthorizationCodeCredentials;
 import se.michaelthelin.spotify.model_objects.credentials.ClientCredentials;
@@ -128,7 +129,7 @@ public class SpotifyAuth {
         System.out.println(clientId);
         spotifyApi = new SpotifyApi.Builder()
                 .setClientId(clientId)
-                .setClientSecret(clientSecret)
+                .setRedirectUri(redirectUri)
                 .build();
         return spotifyApi.authorizationCodePKCEUri(codeChallenge).scope("playlist-modify-private").build().execute();
     }

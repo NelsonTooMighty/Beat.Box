@@ -2,15 +2,22 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Color;
 
 public class Controller {
     private final DatabaseQuery model = new DatabaseQuery();
     private final Player songPlayer = new Player();
-    private final folderScanner scanner = new folderScanner();
+    private final FolderScanner scanner = new FolderScanner();
     private int click = 0;
+    private JPanel mainScreen = new JPanel();
+    private JPanel sideScreen = new JPanel();
 
 
     public Controller() throws Exception {
+    }
+    public Controller(JPanel mainPanel,JPanel sidePanel){
+        this.mainScreen = mainPanel;
+        this.sideScreen = sidePanel;
     }
 
     /**
@@ -22,7 +29,7 @@ public class Controller {
      *
      * @param screen the screen to display AllPlaylist to
      */
-    public void displayAllPlaylists(JPanel screen) {
+    public void displayAllPlaylists(JPanel mainScreen, JPanel sideScreen) {
         ArrayList<Playlist> playlists = model.getAllPlaylists();
         int i = 1;
         for (Playlist playlist : playlists) {    // gets each playlist in index order and shows it in a gui's
@@ -31,10 +38,10 @@ public class Controller {
             newButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    displayPlaylistContent(screen, index);
+                    displayPlaylistContent(index);
                 }
             });
-            screen.add(newButton);// text area
+            mainScreen.add(newButton);// text area
 
         }
 
@@ -51,7 +58,7 @@ public class Controller {
     }
 
     //BB-89
-    public void displayAllAlbumList(JPanel screen) {
+    public void displayAllAlbumList(JPanel mainScreen, JPanel sideScreen) {
         ArrayList<String> albums = model.getAllAlbums();
         int i = 1;
         for (String name : albums) {
@@ -60,12 +67,12 @@ public class Controller {
             newButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    displayAlbumContent(screen, name);
+                    displayAlbumContent(mainScreen, name, sideScreen);
                 }
             });
 
 
-            screen.add(newButton);
+            mainScreen.add(newButton);
         }
 
 
@@ -77,7 +84,7 @@ public class Controller {
      *
      * @param screen the scrren to display Liked Lists to
      */
-    public void displayLikedList(JPanel mainScreen,JPanel sideScreen) {
+    public void displayLikedList() {
         mainScreen.removeAll();
         mainScreen.repaint();
         mainScreen.revalidate();
@@ -90,7 +97,7 @@ public class Controller {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     try {
-                        songButtonAction(output,mainScreen,sideScreen);
+                        songButtonAction(output);
                     } catch (Exception ex) {
                         ex.printStackTrace();
                     }
@@ -109,8 +116,8 @@ public class Controller {
      * @param screen the screen to display the Playlist content on
      * @param playlistIndex the index of the desired Playlist
      */
-    public void displayPlaylistContent(JPanel mainScreen, int playlistIndex, JPanel sideScreen) {
-        displayPlaylistContent(mainScreen, model.getPlaylist_index(playlistIndex),sideScreen);
+    public void displayPlaylistContent( int playlistIndex) {
+        displayPlaylistContent( model.getPlaylist_index(playlistIndex));
     }
 
     /**
@@ -121,7 +128,7 @@ public class Controller {
      * @param screen the screen to display the Playlist content on
      * @param playlist the desired Playlist
      */
-    public void displayPlaylistContent(JPanel mainScreen, Playlist playlist,JPanel sideScreen) {
+    public void displayPlaylistContent(Playlist playlist) {
         mainScreen.removeAll();
         mainScreen.revalidate();
         mainScreen.repaint();
@@ -141,7 +148,7 @@ public class Controller {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     try {
-                        songButtonAction(newButton,mainScreen,sideScreen);
+                        songButtonAction(newButton);
                     } catch (Exception ex) {
                         ex.printStackTrace();
                     }
@@ -171,7 +178,7 @@ public class Controller {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     try {
-                        songButtonAction(newButton,mainScreen,sideScreen);
+                        songButtonAction(newButton);
                     } catch (Exception ex) {
                         ex.printStackTrace();
                     }
@@ -181,12 +188,12 @@ public class Controller {
         }
 
     }
-public void inputScanner(String input, JPanel mainscreen,JPanel sideScreen){
+public void inputScanner(String input){
         Playlist reqplaylist = scanner.scanFolder(input);
-        mainscreen.removeAll();
-        mainscreen.revalidate();
-        mainscreen.repaint();
-        displayPlaylistContent(mainscreen, reqplaylist,sideScreen);
+        mainScreen.removeAll();
+        mainScreen.revalidate();
+        mainScreen.repaint();
+        displayPlaylistContent(reqplaylist);
 }
 
     /**
@@ -238,7 +245,7 @@ public void inputScanner(String input, JPanel mainscreen,JPanel sideScreen){
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     try {
-                        songButtonAction(newButton,mainScreen,sideScreen);
+                        songButtonAction(newButton);
                     } catch (Exception ex) {
                         ex.printStackTrace();
                     }
@@ -264,9 +271,9 @@ public void inputScanner(String input, JPanel mainscreen,JPanel sideScreen){
         mainScreen.revalidate();
             }
 
-    public void inputScanner(String input, JPanel screen){
+    public void inputScanner(String input, JPanel mainScreen){
         Playlist reqplaylist = scanner.scanFolder(input);
-        displayPlaylistContent(screen, reqplaylist);
+        displayPlaylistContent(reqplaylist);
     }
 
    /** 
@@ -377,13 +384,13 @@ public void inputScanner(String input, JPanel mainscreen,JPanel sideScreen){
      * likeButton.addActionListener(likeNow);
      * }
      */
- public void songButtonAction( JButton currentSong, JPanel mainScreen, JPanel sideScreen) throws Exception {
-     Playlist currentplaylist = currentSong.getPlaylist();
+ public void songButtonAction(JButton currentSong) throws Exception {
+     /*Playlist currentplaylist = currentSong.getPlaylist();
      songPlayer.setClip(currentplaylist);
      int index = currentplaylist.indexOf(currentSong.getSong());
      songPlayer.play(index);
      highlightMyMusic(currentSong,sideScreen,currentplaylist,index);
-     currentSongImage(mainScreen, currentSong.getSong());
+     currentSongImage(mainScreen, currentSong.getSong());*/
  }
 
 
@@ -409,4 +416,4 @@ public void highlightMyMusic(JButton Song,JPanel sideScreen, Playlist desiredPla
 
 
 
-        }
+        }}

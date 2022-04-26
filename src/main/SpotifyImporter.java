@@ -21,7 +21,7 @@ public class SpotifyImporter implements CloudPlaylistImporter { //with reference
     public Playlist importPlaylist(String url) {
         Playlist newPlaylist = new Playlist();
 
-        SpotifyAuth.refreshClientCredentials();
+        SpotifyAuth.getInstance().refreshAuthorization();
 
         String playlistID = url.split("[/?]")[4]; //grabs the ID part and ignores any tracker at the end (?si=)
         final GetPlaylistRequest getPlaylistRequest = SpotifyAuth.spotifyApi.getPlaylist(playlistID).build(); //sets up playlist request
