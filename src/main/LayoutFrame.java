@@ -1,12 +1,7 @@
-
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -18,7 +13,7 @@ public class LayoutFrame extends javax.swing.JFrame {
     /**
      * Creates new form LayoutFrame
      */
-    public LayoutFrame()  {
+    public LayoutFrame() throws Exception {
         initComponents();
 
 
@@ -54,12 +49,12 @@ public class LayoutFrame extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         SidePanel = new javax.swing.JPanel();
         sidePanelScroller = new javax.swing.JScrollPane(SidePanel);
+        controller.setMainPanel(MainScreenPanel);
+        controller.setsidePanel(SidePanel);
 
         MainScreenPanel.setLayout(new BoxLayout(MainScreenPanel, BoxLayout.Y_AXIS)); //https://stackoverflow.com/questions/13510641/add-controls-vertically-instead-of-horizontally-using-flow-layout
         SidePanel.setLayout(new BoxLayout(SidePanel, BoxLayout.Y_AXIS));
         jMenuItem1.setText("jMenuItem1");
-
-
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 153, 153));
@@ -83,7 +78,7 @@ public class LayoutFrame extends javax.swing.JFrame {
 
         Songs.setBackground(new java.awt.Color(153, 153, 153));
         Songs.setFont(new java.awt.Font("PT Mono", 0, 15)); // NOI18N
-        Songs.setLabel("Songs");
+        Songs.setText("Songs");
         Songs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SongsActionPerformed(evt);
@@ -92,16 +87,15 @@ public class LayoutFrame extends javax.swing.JFrame {
 
         albumButton.setBackground(new java.awt.Color(153, 153, 153));
         albumButton.setFont(new java.awt.Font("PT Mono", 0, 15)); // NOI18N
-        albumButton.setLabel("Albums");
+        albumButton.setText("Albums");
         albumButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 albumButtonActionPerformed(evt);
             }
         });
-
+        listButton.setText("Playlists");
         listButton.setBackground(new java.awt.Color(153, 153, 153));
         listButton.setFont(new java.awt.Font("PT Mono", 0, 15)); // NOI18N
-        listButton.setLabel("Playlists");
         listButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listButtonActionPerformed(evt);
@@ -151,20 +145,28 @@ public class LayoutFrame extends javax.swing.JFrame {
         Image back = backimage.getImage();
         jButton1.setIcon(backimage); // NOI18N
         jButton1.setActionCommand("BackButton");
-        jButton1.setLabel("");
+        jButton1.setText("");
+        jButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.previousSong();
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(0, 0, 0));
         ImageIcon playimage = new ImageIcon("src/resources/buttonDesign/play.png");
         Image play = backimage.getImage();
         jButton2.setIcon(playimage); // NOI18N
-        jButton2.setLabel("");
+        jButton2.setText("");
         jButton2.setMaximumSize(new java.awt.Dimension(80, 90));
         jButton2.setMinimumSize(new java.awt.Dimension(80, 90));
+        controller.playButton(jButton2); // add functionality to play button
 
         ImageIcon forwardimage = new ImageIcon("src/resources/buttonDesign/foward.png");
         Image forward = backimage.getImage();
         jButton3.setIcon(forwardimage); // NOI18N
-        jButton3.setLabel("");
+        jButton3.setText("");
+        controller.nextSong(jButton3);
 
         javax.swing.GroupLayout MusicPlayerPanelLayout = new javax.swing.GroupLayout(MusicPlayerPanel);
         MusicPlayerPanel.setLayout(MusicPlayerPanelLayout);
@@ -287,7 +289,7 @@ public class LayoutFrame extends javax.swing.JFrame {
     private void listButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         MainScreenPanel.removeAll(); //clear off the main panel
-        controller.displayAllPlaylists(MainScreenPanel); //add the buttons for each playlist
+        controller.displayAllPlaylists(MainScreenPanel, SidePanel); //add the buttons for each playlist
         MainScreenPanel.revalidate(); //update the panel (needed)
         MainScreenPanel.repaint();
     }
@@ -295,7 +297,7 @@ public class LayoutFrame extends javax.swing.JFrame {
     private void albumButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         MainScreenPanel.removeAll(); //clear off the main panel
-        controller.displayAllAlbumList(MainScreenPanel); //add the buttons for each playlist
+        controller.displayAllAlbumList(MainScreenPanel, SidePanel); //add the buttons for each playlist
         MainScreenPanel.revalidate(); //update the panel (needed)
         MainScreenPanel.repaint();
     }
@@ -313,7 +315,7 @@ public class LayoutFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         MainScreenPanel.removeAll();
         MainScreenPanel.repaint();
-        controller.displayAllArtistList(MainScreenPanel);
+        controller.displayAllArtistList(MainScreenPanel,SidePanel);
         MainScreenPanel.revalidate();
 
     }
@@ -348,7 +350,11 @@ public class LayoutFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LayoutFrame().setVisible(true);
+                try {
+                    new LayoutFrame().setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
     }

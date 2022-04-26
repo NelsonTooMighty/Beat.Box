@@ -34,6 +34,15 @@ public class DatabaseQuery {
         }
         return null;
     }
+    public Song getSong(String songName){
+        for (Playlist currentPlaylist:db){
+            for (Song song : currentPlaylist){
+                if(songName.equals(song.getSongName())){
+                    return song;
+                }
+            }
+        }
+    return null;}
 
     /**
      * Renames the Playlist at the specified index.
@@ -102,6 +111,8 @@ public class DatabaseQuery {
                     artists.add(song.getArtistName()); //add it to the list
         return artists; //when done
     }
+
+
 //BB-89
     public ArrayList<String> getAllAlbums(){
         ArrayList<String> albums = new ArrayList<>();
@@ -120,6 +131,14 @@ public class DatabaseQuery {
                 if(!songs.contains(song.getSongName()))
                     songs.add (song.getSongName());//add it to the list
         return songs;
+    }
+    public Playlist getAllSongsPlaylist(){
+        Playlist allSongs = new Playlist();
+        ArrayList<String> songName = getAllSongs();
+        for (String name:songName){
+            allSongs.add(getSong(name));
+        }
+        return allSongs;
     }
 
     /**

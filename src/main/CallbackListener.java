@@ -27,7 +27,7 @@ public class CallbackListener implements Runnable {
             // get request from client
             String input = in.readLine();
             String code = input.split(" ")[1].substring(15);
-            spotifyAuth.setCode(code);
+            //spotifyAuth.setCode(code);
         } catch (IOException e) {
             e.printStackTrace();
         }

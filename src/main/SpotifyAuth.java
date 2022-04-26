@@ -28,7 +28,7 @@ import java.util.Date;
  * {@code SpotifyAuth.getInstance().fullyAuthorize();}
  */
 public class SpotifyAuth {
-    public SpotifyApi spotifyApi; //Importers and Exporters can use this authorized object
+    public static SpotifyApi spotifyApi; //Importers and Exporters can use this authorized object
     private static final SpotifyAuth singleton = new SpotifyAuth();
     private final String clientId = "0eeae725ca604326b3939e91ecc18c71"; //Avery's Beat Box Spotify App ID, not secret
     private long expireTime = 0; //time of token expiry in milliseconds; updated with System.currentTimeMillis()
@@ -40,14 +40,13 @@ public class SpotifyAuth {
     private String codeVerifier = null; //verifier to be exchanged alongside the code with Spotify for the access tokens; generateCodes()
     private volatile String code; //to be filled by the CallbackListener webserver with the code from the Spotify URI redirect
 
-    /**
-     * Calls {@link #generateCodes()} to generate cryptographically random challenge and verification codes for PKCE compliance.
-     */
-    private SpotifyAuth() {
+    private SpotifyAuth() { //reads client token from gitignored file
+        Path path = FileSystems.getDefault().getPath("credentials.config");
+        BufferedReader reader = null;
         try {
-            generateCodes();
-        } catch (UnsupportedEncodingException | NoSuchAlgorithmException e) {
-            System.out.println("\nCould not generate security keys!:\n" + e.getMessage());
+            reader = Files.newBufferedReader(path);
+        } catch (IOException e) {
+            System.out.println("\nCould not find credentials.config file in base directory!:\n" + e.getMessage());
         }
         clientAuthorize();
     }
@@ -136,7 +135,7 @@ public class SpotifyAuth {
     }
 
     /**
-     * Launches a web server that listens to PORT and updates {@link #code} after the Spotify URI from {@link #getURI()} is followed and authorized.
+     * Gets/refreshes client credentials from Spotify's API
      */
     private void captureRedirect() {
         try {

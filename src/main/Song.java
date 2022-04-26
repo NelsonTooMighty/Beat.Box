@@ -1,7 +1,10 @@
 import javax.swing.*;
 import java.io.Serializable;
 import java.net.URL;
-
+import javax.sound.sampled.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 public class Song implements Serializable { //API documentation: https://developer.spotify.com/documentation/web-api/reference/#/operations/get-track, https://developer.apple.com/documentation/musickit/track/
     private String songName;
     private String artistName;
@@ -10,6 +13,7 @@ public class Song implements Serializable { //API documentation: https://develop
     private String albumArtLocation;
     private boolean isLocal;
     private String localPath;
+    private ImageIcon albumIcon;
 
     public Song() {
     }
@@ -24,7 +28,7 @@ public class Song implements Serializable { //API documentation: https://develop
         localPath = null;
     }
 
-    public Song(String songName, String artistName, String albumName, String releaseDate, String localPath, boolean isLocal) {
+    public Song(String songName, String artistName, String albumName, String releaseDate, String localPath, boolean isLocal) throws Exception {
         this.songName = songName;
         this.artistName = artistName;
         this.albumName = albumName;
@@ -35,8 +39,20 @@ public class Song implements Serializable { //API documentation: https://develop
 
         }
         this.albumArtLocation = null; //Todo: check isLocal, find albumArtLocation
-    }
 
+    }
+    public Song(String songName, String artistName, String albumName, String releaseDate, String localPath, boolean isLocal,String albumArtLocation) throws Exception {
+        this.songName = songName;
+        this.artistName = artistName;
+        this.albumName = albumName;
+        this.releaseDate = releaseDate;
+        this.localPath = localPath;
+        this.isLocal = isLocal;
+        this.albumArtLocation = albumArtLocation; //Todo: check isLocal, find albumArtLocation
+        this.albumIcon = getAlbumArtImageIcon();
+
+    }
+    
     public ImageIcon getAlbumArtImageIcon() { //returns ImageIcon object for GUI purposes, regardless of online/offline
         if(albumArtLocation != null) {
             if (isLocal) {
