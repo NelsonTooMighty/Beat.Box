@@ -19,6 +19,12 @@ public class Controller {
         this.mainScreen = mainPanel;
         this.sideScreen = sidePanel;
     }
+    public void setMainPanel(JPanel mainPanel){
+        this.mainScreen = mainPanel;
+    }
+    public void setsidePanel(JPanel sideSceen){
+        this.sideScreen = sideSceen;
+    }
 
     /**
      * Displays all playlists within the local directory of the computer the user
@@ -255,12 +261,12 @@ public void inputScanner(String input){
         }
     }
 
-    public void currentSongImage(JPanel mainScreen, Song song) {           // as the song changes the image and info should change
+    public void currentSongText(JPanel mainScreen, Song song) {           // as the song changes the image and info should change
         mainScreen.removeAll();
         mainScreen.repaint();
         mainScreen.revalidate();
 
-        JButton output = new JButton(song.getAlbumArtImageIcon());
+        JButton output = new JButton();
         String songMessage = song.getSongName() + "\n \t" + song.getArtistName() + "\n\t" +
                 song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n";
         output.setText(songMessage);   // got code from https://www.tutorialspoint.com/swingexamples/create_button_with_icon_text.htm
@@ -332,7 +338,7 @@ public void inputScanner(String input){
         if ((click % 2) == 0) {             // clicked back button twice should go back
             try {
                 songPlayer.back();
-                currentSongImage(mainScreen, songPlayer.getCurrentSong()); //changes song image on main screen
+                currentSongText(mainScreen, songPlayer.getCurrentSong()); //changes song image on main screen
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -346,7 +352,7 @@ public void inputScanner(String input){
             public void actionPerformed(ActionEvent e) {
                 try {
                     songPlayer.next();
-                    currentSongImage(mainScreen, songPlayer.getCurrentSong()); //changes image on main screen
+                    currentSongText(mainScreen, songPlayer.getCurrentSong()); //changes image on main screen
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -388,9 +394,9 @@ public void inputScanner(String input){
      /*Playlist currentplaylist = currentSong.getPlaylist();
      songPlayer.setClip(currentplaylist);
      int index = currentplaylist.indexOf(currentSong.getSong());
-     songPlayer.play(index);
+     songPlayer.play(index);*/
      highlightMyMusic(currentSong,sideScreen,currentplaylist,index);
-     currentSongImage(mainScreen, currentSong.getSong());*/
+     currentSongText(mainScreen, currentSong.getSong());
  }
 
 

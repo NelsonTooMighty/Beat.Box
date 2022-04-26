@@ -1,12 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
  * @author naomipadilla
  */
 public class LayoutFrame extends javax.swing.JFrame {
-    private final Controller controller = new Controller(MainScreenPanel, SidePanel);
+    private final Controller controller = new Controller();
 
     /**
      * Creates new form LayoutFrame
@@ -47,6 +49,8 @@ public class LayoutFrame extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         SidePanel = new javax.swing.JPanel();
         sidePanelScroller = new javax.swing.JScrollPane(SidePanel);
+        controller.setMainPanel(MainScreenPanel);
+        controller.setsidePanel(SidePanel);
 
         MainScreenPanel.setLayout(new BoxLayout(MainScreenPanel, BoxLayout.Y_AXIS)); //https://stackoverflow.com/questions/13510641/add-controls-vertically-instead-of-horizontally-using-flow-layout
         SidePanel.setLayout(new BoxLayout(SidePanel, BoxLayout.Y_AXIS));
@@ -294,7 +298,7 @@ public class LayoutFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         MainScreenPanel.removeAll();
         MainScreenPanel.repaint();
-        controller.displayAllSongs(MainScreenPanel, SidePanel);
+        controller.displayAllSongs(MainScreenPanel);
         MainScreenPanel.revalidate();
 
     }
@@ -303,7 +307,7 @@ public class LayoutFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         MainScreenPanel.removeAll();
         MainScreenPanel.repaint();
-        controller.displayAllArtistList(MainScreenPanel);
+        controller.displayAllArtistList(MainScreenPanel,SidePanel);
         MainScreenPanel.revalidate();
 
     }
