@@ -120,7 +120,6 @@ public class SpotifyAuth {
         code = newCode;
     }
 
-    //TODO automatic link opening: https://stackoverflow.com/questions/5226212/how-to-open-the-default-webbrowser-using-java
     /**
      * Gets URI needed to authenticate the Spotify user. Once link has been provided to user, should be followed up with {@link #authorize()}.
      * @return Spotify OAuth URI to be opened by the user
@@ -131,8 +130,7 @@ public class SpotifyAuth {
                 .setClientId(clientId)
                 .setClientSecret(clientSecret)
                 .build();
-        clientCredentialsRequest = spotifyApi.clientCredentials()
-                .build();
+        return spotifyApi.authorizationCodePKCEUri(codeChallenge).scope("playlist-modify-private").build().execute();
     }
 
     /**
@@ -173,7 +171,7 @@ public class SpotifyAuth {
             spotifyApi.setAccessToken(authorizationCodeCredentials.getAccessToken());
             spotifyApi.setRefreshToken(authorizationCodeCredentials.getRefreshToken());
             if (verbose)
-                System.out.println("Authorization complete. Expires in: " + authorizationCodeCredentials.getExpiresIn());
+                System.out.println("PKCE Authorization complete. Expires in: " + authorizationCodeCredentials.getExpiresIn());
         } catch (IOException | SpotifyWebApiException | ParseException e) {
             System.out.println("\nError authorizing with redirect code!:\n" + e.getMessage());
         }
@@ -223,11 +221,21 @@ public class SpotifyAuth {
     }
 
     /**
-     * Checks if the object is authorized yet.
+     * Checks if the object is authorized at all, whether via Client Credentials or Authorization Code.
      * @return true if an access token exists and is not expired yet; otherwise false
      */
     public boolean isAuthorized() {
+        refreshAuthorization();
         return spotifyApi.getAccessToken() != null && System.currentTimeMillis() < expireTime;
+    }
+
+    /**
+     * Checks if the object is fully authorized via Authorization Code.
+     * @return true if PKCE code was returned and the access token isn't expired yet
+     */
+    public boolean isFullyAuthorized() {
+        refreshAuthorization();
+        return code != null && spotifyApi.getAccessToken() != null && System.currentTimeMillis() < expireTime;
     }
 
     /*  //driver test/example

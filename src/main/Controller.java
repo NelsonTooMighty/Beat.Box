@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -263,6 +262,11 @@ public void inputScanner(String input, JPanel mainscreen,JPanel sideScreen){
 
         mainScreen.add(output);
         mainScreen.revalidate();
+            }
+
+    public void inputScanner(String input, JPanel screen){
+        Playlist reqplaylist = scanner.scanFolder(input);
+        displayPlaylistContent(screen, reqplaylist);
     }
 
    /** 

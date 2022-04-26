@@ -14,7 +14,6 @@ public class Main {
             System.out.println(song.getSongName() + "\n");
         }
         */
-        /*
         Database db = Database.getInstance();
         {
             Playlist test = new Playlist();
@@ -40,7 +39,6 @@ public class Main {
                 System.out.println(i++ + ". " + s.getSongName());
             System.out.println("-----------------------------------------------\n");
         }
-        */
         //Demo demo = new Demo();
 
     }
