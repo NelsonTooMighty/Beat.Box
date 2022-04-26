@@ -13,7 +13,7 @@ public class Controller {
     private JPanel sideScreen = new JPanel();
 
 
-    public Controller() throws Exception {
+    public Controller() {
     }
     public Controller(JPanel mainPanel,JPanel sidePanel){
         this.mainScreen = mainPanel;
@@ -32,10 +32,8 @@ public class Controller {
      * <p>
      * Does this by getting each playlist in index order and shows it
      * by text area in the GUI.
-     *
-     * @param screen the screen to display AllPlaylist to
      */
-    public void displayAllPlaylists(JPanel mainScreen, JPanel sideScreen) {
+    public void displayAllPlaylists() {
         ArrayList<Playlist> playlists = model.getAllPlaylists();
         int i = 1;
         for (Playlist playlist : playlists) {    // gets each playlist in index order and shows it in a gui's
@@ -54,7 +52,7 @@ public class Controller {
     }
 
     //BB-89
-    public void displayAllSongs(JPanel screen) {
+    public void displayAllSongs() {
         ArrayList<String> songs = model.getAllSongs();
         Playlist allSongs = model.getAllSongsPlaylist();
         int i = 1;
@@ -62,23 +60,22 @@ public class Controller {
             SongButton newButton = new SongButton(i++ + ". " + name);
             newButton.setSong(model.getSong(name));
             newButton.setPlaylist(allSongs);
-            screen.add(newButton);
+            mainScreen.add(newButton);
         }
     }
 
     //BB-89
-    public void displayAllAlbumList(JPanel mainScreen, JPanel sideScreen) {
+    public void displayAllAlbumList() {
         ArrayList<String> albums = model.getAllAlbums();
         int i = 1;
         for (String name : albums) {
             SongButton newButton = new SongButton(i++ + ". " + name);
             newButton.setSong(model.getSong(name));
             newButton.setPlaylist(model.getAlbumSongList(name));
-            int index = i - 1;
             newButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    displayAlbumContent(mainScreen, name, sideScreen);
+                    displayAlbumContent(name);
                 }
             });
 
@@ -90,10 +87,8 @@ public class Controller {
     }
 
     /**
-     * Appends the a list of songs that have been flaged as "liked" by the user
+     * Appends the list of songs that have been flagged as "liked" by the user
      * resulting in a similar structure to the displayPlaylistContent above.
-     *
-     * @param screen the scrren to display Liked Lists to
      */
     public void displayLikedList() {
         mainScreen.removeAll();
@@ -125,12 +120,11 @@ public class Controller {
      * 
      * The function utilizes string and append methods to pull the song name, artist name,
      * album name and album release date
-     * 
-     * @param screen the screen to display the Playlist content on
+     *
      * @param playlistIndex the index of the desired Playlist
      */
-    public void displayPlaylistContent( int playlistIndex) {
-        displayPlaylistContent( model.getPlaylist_index(playlistIndex));
+    public void displayPlaylistContent(int playlistIndex) {
+        displayPlaylistContent(model.getPlaylist_index(playlistIndex));
     }
 
     /**
@@ -138,7 +132,6 @@ public class Controller {
      *
      * The function utilizes string and append methods to pull the song name, artist name,
      * album name and album release date
-     * @param screen the screen to display the Playlist content on
      * @param playlist the desired Playlist
      */
     public void displayPlaylistContent(Playlist playlist) {
@@ -179,7 +172,7 @@ public class Controller {
     }
 
     //#BB-89
-    public void displayAlbumContent(JPanel mainScreen, String album_name,JPanel sideScreen) {
+    public void displayAlbumContent(String album_name) {
         mainScreen.removeAll();
         mainScreen.revalidate();
         mainScreen.repaint();
@@ -205,13 +198,13 @@ public class Controller {
         }
 
     }
-public void inputScanner(String input){
+    public void inputScanner(String input){
         Playlist reqplaylist = scanner.scanFolder(input);
         mainScreen.removeAll();
         mainScreen.revalidate();
         mainScreen.repaint();
         displayPlaylistContent(reqplaylist);
-}
+    }
 
     /**
      * Appends a list of all unique artists with songs in the Database,
@@ -220,9 +213,8 @@ public void inputScanner(String input){
      * <t>      </t>
      * Songs: #
      *
-     * @param screen the screen to display artist lists to
      */
-    public void displayAllArtistList(JPanel mainScreen,JPanel sideScreen) {
+    public void displayAllArtistList() {
         mainScreen.removeAll();
         mainScreen.revalidate();
         ArrayList<String> artists = model.getAllArtists();
@@ -234,10 +226,9 @@ public void inputScanner(String input){
             newButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    displayArtistContent(mainScreen, name, sideScreen);
+                    displayArtistContent(name);
                 }
             });
-
             mainScreen.add(newButton);
         }
     }
@@ -247,10 +238,9 @@ public void inputScanner(String input){
      * providing the song name, artist name, album name and release date
      * for the specified Artist.
      *
-     * @param mainScreen      the screen to display the artist details
      * @param artist_name variable used to hold the information about the specific artist
      */
-    public void displayArtistContent(JPanel mainScreen, String artist_name, JPanel sideScreen) {
+    public void displayArtistContent(String artist_name) {
         mainScreen.removeAll();
         mainScreen.revalidate();
         mainScreen.repaint();
@@ -276,7 +266,7 @@ public void inputScanner(String input){
         }
     }
 
-    public void currentSongText(JPanel mainScreen, Song song) {           // as the song changes the image and info should change
+    public void currentSongText(Song song) {           // as the song changes the image and info should change
         mainScreen.removeAll();
         mainScreen.repaint();
         mainScreen.revalidate();
@@ -297,14 +287,14 @@ public void inputScanner(String input){
         displayPlaylistContent(reqplaylist);
     }
 
-   /** 
+    /**
      * Used boolean, action listener and images to give a clean UI of 
      * like and dislike buttons.
      * 
      * As well as takes off or adds songs to specified playlist depending on 
      * user actions
      * 
-     * @param likeButton the button that places and takes off songs from the LikedList
+     * //@param likeButton the button that places and takes off songs from the LikedList
      */
    /*
       public void likeButtonEffects(JButton likeButton){
@@ -348,12 +338,12 @@ public void inputScanner(String input){
         play.addActionListener(playSong);
     }
 
-    public void previousSong( ) {
+    public void previousSong() {
         click++;
         if ((click % 2) == 0) {             // clicked back button twice should go back
             try {
                 songPlayer.back();
-                currentSongText(mainScreen, songPlayer.getCurrentSong()); //changes song image on main screen
+                currentSongText(songPlayer.getCurrentSong()); //changes song image on main screen
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -367,7 +357,7 @@ public void inputScanner(String input){
             public void actionPerformed(ActionEvent e) {
                 try {
                     songPlayer.next();
-                    currentSongText(mainScreen, songPlayer.getCurrentSong()); //changes image on main screen
+                    currentSongText(songPlayer.getCurrentSong()); //changes image on main screen
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -382,7 +372,7 @@ public void inputScanner(String input){
      * As well as takes off or adds songs to specified playlist depending on
      * user actions
      *
-     * @param likeButton the button that places and takes off songs from the LikedList
+   //  * @param likeButton the button that places and takes off songs from the LikedList
      *                   <p>
      *                   public void likeButtonEffects(JButton likeButton){
      *                   Song currentSong;
@@ -405,18 +395,18 @@ public void inputScanner(String input){
      * likeButton.addActionListener(likeNow);
      * }
      */
- public void songButtonAction(SongButton currentSong) throws Exception {
+    public void songButtonAction(SongButton currentSong) throws Exception {
      Playlist currentplaylist = currentSong.getPlaylist();
      songPlayer.setClip(currentplaylist);
      int index = currentplaylist.indexOf(currentSong.getSong());
      songPlayer.play(index);
-     highlightMyMusic(currentSong,sideScreen,currentplaylist,index);
-     currentSongText(mainScreen, currentSong.getSong());
- }
+     highlightMyMusic(currentSong,currentplaylist,index);
+     currentSongText(currentSong.getSong());
+     }
 
 
 
-public void highlightMyMusic(JButton Song,JPanel sideScreen, Playlist desiredPlaylist,int index){
+    public void highlightMyMusic(JButton Song, Playlist desiredPlaylist, int index){
         sideScreen.removeAll();
         sideScreen.repaint();
         sideScreen.revalidate();
@@ -433,8 +423,5 @@ public void highlightMyMusic(JButton Song,JPanel sideScreen, Playlist desiredPla
             //
             sideScreen.add(newButton);
         }
-
-
-
-
-        }}
+    }
+}
