@@ -3,12 +3,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.io.IOException;
 
-public class SongIdentifierTest {
+public class SongDistributorTest{
     @Test
     @DisplayName("Test for Song Identifier With No Parameters")
-    public void SongIdentifierTest()
+    public void SongDistributorTest()
     {
-        Song song = new SongIdentifier().identify("Power");
+        Song song = new SongDistributer().distributer("Power");
         assertNotNull(song.getArtistName());
     }
 }

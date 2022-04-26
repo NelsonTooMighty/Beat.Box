@@ -4,7 +4,7 @@ public class SongButton extends PlaylistButton {
     private Song song;
 
     public SongButton(String s) {
-        super();
+        super(s);
     }
 
     public SongButton(ImageIcon albumArtImageIcon) {

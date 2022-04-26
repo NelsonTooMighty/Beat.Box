@@ -51,12 +51,16 @@ public class Player  {
         }
 
     }
-    public void play(int index) throws Exception {
+    public void play(int index) {
         for(int i = 0;i != index;i++){nowPlaying.next();}            //makes counter go to indexed position
         currentSong = currentPlaylist.get(index);
-        currentClip = makeClip(currentSong.getLocalPath());
-        songIndex = index;
-        play();
+        try {
+            currentClip = makeClip(currentSong.getLocalPath());
+            songIndex = index;
+            play();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
 

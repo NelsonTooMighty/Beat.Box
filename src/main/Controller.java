@@ -1,8 +1,8 @@
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.Color;
 
 public class Controller {
     private final DatabaseQuery model = new DatabaseQuery();
@@ -22,8 +22,8 @@ public class Controller {
     public void setMainPanel(JPanel mainPanel){
         this.mainScreen = mainPanel;
     }
-    public void setsidePanel(JPanel sideSceen){
-        this.sideScreen = sideSceen;
+    public void setSidePanel(JPanel sideScreen){
+        this.sideScreen = sideScreen;
     }
 
     /**
@@ -37,30 +37,40 @@ public class Controller {
         ArrayList<Playlist> playlists = model.getAllPlaylists();
         int i = 1;
         for (Playlist playlist : playlists) {    // gets each playlist in index order and shows it in a gui's
-            JButton newButton = new JButton(i++ + ". " + playlist.getPlaylistName() + "\n");
+            JPanel buttonPanel = new JPanel();
+            buttonPanel.setVisible(true);
+            buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
+            buttonPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+            PlaylistButton playlistButton = new PlaylistButton(i++ + ". " + playlist.getPlaylistName() + "\n");
+            JButton saveButton = new JButton(new ImageIcon(new ImageIcon("src/resources/DL.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT)));
+            JButton exportButton = new JButton(new ImageIcon(new ImageIcon("src/resources/Spotify_Logo.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT)));
+
             int index = i - 1;
-            newButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    displayPlaylistContent(index);
-                }
-            });
-            mainScreen.add(newButton);// text area
+            playlistButton.setPlaylist(playlist);
+            playlistButton.addActionListener(e -> displayPlaylistContent(index));
+            saveButton.addActionListener(e -> Database.getInstance().saveToFile(playlist));
+            exportButton.addActionListener(e -> new SpotifyExporter().exportPlaylist(playlist));
 
+            buttonPanel.add(playlistButton);// text area
+            buttonPanel.add(saveButton);
+            buttonPanel.add(exportButton);
+            buttonPanel.revalidate();
+            mainScreen.add(buttonPanel);
         }
-
     }
 
     //BB-89
     public void displayAllSongs() {
-        ArrayList<String> songs = model.getAllSongs();
-        Playlist allSongs = model.getAllSongsPlaylist();
+        ArrayList<Playlist> allPlaylists = model.getAllPlaylists();
         int i = 1;
-        for (String name : songs) {
-            SongButton newButton = new SongButton(i++ + ". " + name);
-            newButton.setSong(model.getSong(name));
-            newButton.setPlaylist(allSongs);
-            mainScreen.add(newButton);
+        for (Playlist playlist : allPlaylists) {
+            for(Song song : playlist) {
+                SongButton newButton = new SongButton(i++ + ". " + song.getSongName());
+                newButton.setSong(song);
+                newButton.setPlaylist(playlist);
+                mainScreen.add(newButton);
+            }
         }
     }
 
@@ -69,13 +79,14 @@ public class Controller {
         ArrayList<String> albums = model.getAllAlbums();
         int i = 1;
         for (String name : albums) {
+            Playlist playlist = model.getAlbumSongList(name);
             SongButton newButton = new SongButton(i++ + ". " + name);
             newButton.setSong(model.getSong(name));
-            newButton.setPlaylist(model.getAlbumSongList(name));
+            newButton.setPlaylist(playlist);
             newButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    displayAlbumContent(name);
+                    displayPlaylistContent(playlist);
                 }
             });
 
@@ -143,23 +154,18 @@ public class Controller {
         for (Song song : playlist) {
             SongButton newButton = new SongButton(song.getAlbumArtImageIcon());
             String text = i++ + ". " + song.getSongName();
-            if(song.getArtistName() != null) text += " " + song.getArtistName();
-            if(song.getAlbumName() != null) text += " " + song.getAlbumName();
-            if(song.getReleaseDate() != null) text += " " + song.getReleaseDate();
+            if(song.getArtistName() != null) text += "    " + song.getArtistName();
+            if(song.getAlbumName() != null) text += "    " + song.getAlbumName();
+            if(song.getReleaseDate() != null) text += "    " + song.getReleaseDate();
 
             newButton.setText(text);   // got code from https://www.tutorialspoint.com/swingexamples/create_button_with_icon_text.htm
-            newButton.setVerticalTextPosition(AbstractButton.CENTER);
-            newButton.setHorizontalTextPosition(AbstractButton.RIGHT);
             newButton.setPlaylist(playlist);
             newButton.setSong(song);
-            newButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    try {
-                        songButtonAction(newButton);
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
+            newButton.addActionListener(e -> {
+                try {
+                    songButtonAction(newButton);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
                 }
             });
 
@@ -180,30 +186,13 @@ public class Controller {
         int i = 1;
 
         for (Song song : desiredPlaylist) {
-            SongButton songButton = new SongButton(i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() +
-                    song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n");
+            SongButton songButton = new SongButton(i++ + ". " + song.getSongName() + "  " + song.getArtistName() + "  " +
+                    song.getAlbumName() + "  " + song.getReleaseDate());
             songButton.setSong(song);
             songButton.setPlaylist(desiredPlaylist);
-            songButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    try {
-                        songButtonAction(songButton);
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
-                }
-            });
+            songButton.addActionListener(e -> songButtonAction(songButton));
             mainScreen.add(songButton);
         }
-
-    }
-    public void inputScanner(String input){
-        Playlist reqplaylist = scanner.scanFolder(input);
-        mainScreen.removeAll();
-        mainScreen.revalidate();
-        mainScreen.repaint();
-        displayPlaylistContent(reqplaylist);
     }
 
     /**
@@ -220,13 +209,13 @@ public class Controller {
         ArrayList<String> artists = model.getAllArtists();
         int i = 1;
         for (String name : artists) {
-            SongButton newButton = new SongButton(i++ + ". " + name + "\tSongs: " + model.getArtistSongCount(name) + "\n");
-            newButton.setSong(model.getSong(name));
-            newButton.setPlaylist(model.getArtistSongList(name));
+            PlaylistButton newButton = new PlaylistButton(i++ + ". " + name + "  Songs: " + model.getArtistSongCount(name) + "\n");
+            Playlist artistPlaylist = model.getArtistSongList(name);
+            newButton.setPlaylist(artistPlaylist);
             newButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    displayArtistContent(name);
+                    displayPlaylistContent(artistPlaylist);
                 }
             });
             mainScreen.add(newButton);
@@ -248,7 +237,7 @@ public class Controller {
         int i = 1;
 
         for (Song song : desiredPlaylist) {
-            SongButton newButton = new SongButton(i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() +
+            SongButton newButton = new SongButton(i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() + "  " +
                     song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n");
             newButton.setPlaylist(desiredPlaylist);
             newButton.setSong(song);
@@ -280,11 +269,6 @@ public class Controller {
 
         mainScreen.add(output);
         mainScreen.revalidate();
-            }
-
-    public void inputScanner(String input, JPanel mainScreen){
-        Playlist reqplaylist = scanner.scanFolder(input);
-        displayPlaylistContent(reqplaylist);
     }
 
     /**
@@ -372,7 +356,7 @@ public class Controller {
      * As well as takes off or adds songs to specified playlist depending on
      * user actions
      *
-   //  * @param likeButton the button that places and takes off songs from the LikedList
+    //  * @param likeButton the button that places and takes off songs from the LikedList
      *                   <p>
      *                   public void likeButtonEffects(JButton likeButton){
      *                   Song currentSong;
@@ -395,14 +379,14 @@ public class Controller {
      * likeButton.addActionListener(likeNow);
      * }
      */
-    public void songButtonAction(SongButton currentSong) throws Exception {
-     Playlist currentplaylist = currentSong.getPlaylist();
-     songPlayer.setClip(currentplaylist);
-     int index = currentplaylist.indexOf(currentSong.getSong());
-     songPlayer.play(index);
-     highlightMyMusic(currentSong,currentplaylist,index);
-     currentSongText(currentSong.getSong());
-     }
+    public void songButtonAction(SongButton currentSong) {
+        Playlist currentPlaylist = currentSong.getPlaylist();
+        songPlayer.setClip(currentPlaylist);
+        int index = currentPlaylist.indexOf(currentSong.getSong());
+        songPlayer.play(index);
+        highlightMyMusic(currentSong,currentPlaylist,index);
+        currentSongText(currentSong.getSong());
+    }
 
 
 
@@ -423,5 +407,17 @@ public class Controller {
             //
             sideScreen.add(newButton);
         }
+    }
+
+    public void importURI(String input) {
+        Playlist reqPlaylist = null;
+        if (input.contains("spotify"))
+            reqPlaylist = new SpotifyImporter().importPlaylist(input);
+        else if (input.contains("youtube"))
+            reqPlaylist = new YTMusicImporter().importPlaylist(input);
+        else
+            reqPlaylist = scanner.scanFolder(input);
+        Database.getInstance().add(reqPlaylist);
+        displayPlaylistContent(reqPlaylist);
     }
 }

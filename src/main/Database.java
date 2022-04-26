@@ -59,10 +59,13 @@ public class Database extends ArrayList<Playlist> { //add(Playlist), remove(Play
      * playlist is being stored
      * 
      * @param pl this is our playlist variable used to load and save playlists
-     * @throws IOException
      */
-    void saveToFile(Playlist pl) throws IOException {
-        saveToFile(pl, localLibrary + pl.getPlaylistName().replace('/',' ') + pl.hashCode());
+    void saveToFile(Playlist pl) {
+        try {
+            saveToFile(pl, localLibrary + pl.getPlaylistName().replace('/',' ') + pl.hashCode());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

@@ -129,7 +129,7 @@ public class DatabaseQuery {
         for(Playlist playlist : db) //for every playlist
             for(Song song : playlist) //for every song in every playlist
                 if(!songs.contains(song.getSongName()))
-                    songs.add (song.getSongName());//add it to the list
+                    songs.add(song.getSongName());//add it to the list
         return songs;
     }
     public Playlist getAllSongsPlaylist(){

@@ -50,7 +50,7 @@ public class LayoutFrame extends javax.swing.JFrame {
         SidePanel = new javax.swing.JPanel();
         sidePanelScroller = new javax.swing.JScrollPane(SidePanel);
         controller.setMainPanel(MainScreenPanel);
-        controller.setsidePanel(SidePanel);
+        controller.setSidePanel(SidePanel);
 
         MainScreenPanel.setLayout(new BoxLayout(MainScreenPanel, BoxLayout.Y_AXIS)); //https://stackoverflow.com/questions/13510641/add-controls-vertically-instead-of-horizontally-using-flow-layout
         SidePanel.setLayout(new BoxLayout(SidePanel, BoxLayout.Y_AXIS));
@@ -133,11 +133,9 @@ public class LayoutFrame extends javax.swing.JFrame {
                                                 .addGap(17, 17, 17))))
         );
 
-        ImageIcon logoimage = new ImageIcon("src/resources/beatBox.png");
-        Image logo = logoimage.getImage();
-        jLabel1.setIcon(logoimage); // NOI18N
-
+        jLabel1.setIcon(new ImageIcon("src/resources/beatBox.png")); // NOI18N
         jLabel1.setText("jLabel1");
+        setIconImage(new ImageIcon("src/resources/full beatBox.png").getImage());
 
         MusicPlayerPanel.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -196,13 +194,13 @@ public class LayoutFrame extends javax.swing.JFrame {
         jButton3.getAccessibleContext().setAccessibleName("ForwardButton");
 
         //gather input from user to recieve the file path to transfer a playlist to the data base
-       jTextField1.setText("Enter Path");
+       jTextField1.setText("Enter Path or URL to import");
         ActionListener input = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 SidePanel.removeAll();
-                controller.inputScanner(jTextField1.getText(), SidePanel);
-                jTextField1.setText("");
+                controller.importURI(jTextField1.getText());
+                jTextField1.setText("Enter Path or URL to import");
                 SidePanel.revalidate();
             }
         };
@@ -241,7 +239,7 @@ public class LayoutFrame extends javax.swing.JFrame {
                                         .addComponent(MusicPlayerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,7 +255,7 @@ public class LayoutFrame extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(MainScreenScroller, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
