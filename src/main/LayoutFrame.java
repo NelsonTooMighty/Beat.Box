@@ -146,6 +146,12 @@ public class LayoutFrame extends javax.swing.JFrame {
         jButton1.setIcon(backimage); // NOI18N
         jButton1.setActionCommand("BackButton");
         jButton1.setText("");
+        jButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.previousSong();
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(0, 0, 0));
         ImageIcon playimage = new ImageIcon("src/resources/buttonDesign/play.png");
@@ -154,11 +160,13 @@ public class LayoutFrame extends javax.swing.JFrame {
         jButton2.setText("");
         jButton2.setMaximumSize(new java.awt.Dimension(80, 90));
         jButton2.setMinimumSize(new java.awt.Dimension(80, 90));
+        controller.playButton(jButton2); // add functionality to play button
 
         ImageIcon forwardimage = new ImageIcon("src/resources/buttonDesign/foward.png");
         Image forward = backimage.getImage();
         jButton3.setIcon(forwardimage); // NOI18N
         jButton3.setText("");
+        controller.nextSong(jButton3);
 
         javax.swing.GroupLayout MusicPlayerPanelLayout = new javax.swing.GroupLayout(MusicPlayerPanel);
         MusicPlayerPanel.setLayout(MusicPlayerPanelLayout);

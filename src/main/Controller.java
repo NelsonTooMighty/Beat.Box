@@ -56,9 +56,12 @@ public class Controller {
     //BB-89
     public void displayAllSongs(JPanel screen) {
         ArrayList<String> songs = model.getAllSongs();
+        Playlist allSongs = model.getAllSongsPlaylist();
         int i = 1;
         for (String name : songs) {
-            JButton newButton = new JButton(i++ + ". " + name);
+            SongButton newButton = new SongButton(i++ + ". " + name);
+            newButton.setSong(model.getSong(name));
+            newButton.setPlaylist(allSongs);
             screen.add(newButton);
         }
     }
@@ -68,7 +71,9 @@ public class Controller {
         ArrayList<String> albums = model.getAllAlbums();
         int i = 1;
         for (String name : albums) {
-            JButton newButton = new JButton(i++ + ". " + name);
+            SongButton newButton = new SongButton(i++ + ". " + name);
+            newButton.setSong(model.getSong(name));
+            newButton.setPlaylist(model.getAlbumSongList(name));
             int index = i - 1;
             newButton.addActionListener(new ActionListener() {
                 @Override
@@ -97,8 +102,10 @@ public class Controller {
         Playlist songs = model.getLikedList();
         int i = 1;
         for (Song song : songs) {
-            JButton output = new JButton(i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() + "\n \t" +
+            SongButton output = new SongButton(i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() + "\n \t" +
                     song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n");
+            output.setSong(song);
+            output.setPlaylist(songs);
             output.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -141,7 +148,7 @@ public class Controller {
 
         int i = 1;
         for (Song song : playlist) {
-            JButton newButton = new JButton(song.getAlbumArtImageIcon());
+            SongButton newButton = new SongButton(song.getAlbumArtImageIcon());
             String text = i++ + ". " + song.getSongName();
             if(song.getArtistName() != null) text += " " + song.getArtistName();
             if(song.getAlbumName() != null) text += " " + song.getAlbumName();
@@ -150,6 +157,8 @@ public class Controller {
             newButton.setText(text);   // got code from https://www.tutorialspoint.com/swingexamples/create_button_with_icon_text.htm
             newButton.setVerticalTextPosition(AbstractButton.CENTER);
             newButton.setHorizontalTextPosition(AbstractButton.RIGHT);
+            newButton.setPlaylist(playlist);
+            newButton.setSong(song);
             newButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -178,19 +187,21 @@ public class Controller {
         int i = 1;
 
         for (Song song : desiredPlaylist) {
-            JButton newButton = new JButton(i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() +
+            SongButton songButton = new SongButton(i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() +
                     song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n");
-            newButton.addActionListener(new ActionListener() {
+            songButton.setSong(song);
+            songButton.setPlaylist(desiredPlaylist);
+            songButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     try {
-                        songButtonAction(newButton);
+                        songButtonAction(songButton);
                     } catch (Exception ex) {
                         ex.printStackTrace();
                     }
                 }
             });
-            mainScreen.add(newButton);
+            mainScreen.add(songButton);
         }
 
     }
@@ -217,7 +228,9 @@ public void inputScanner(String input){
         ArrayList<String> artists = model.getAllArtists();
         int i = 1;
         for (String name : artists) {
-            JButton newButton = new JButton(i++ + ". " + name + "\tSongs: " + model.getArtistSongCount(name) + "\n");
+            SongButton newButton = new SongButton(i++ + ". " + name + "\tSongs: " + model.getArtistSongCount(name) + "\n");
+            newButton.setSong(model.getSong(name));
+            newButton.setPlaylist(model.getArtistSongList(name));
             newButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -234,7 +247,7 @@ public void inputScanner(String input){
      * providing the song name, artist name, album name and release date
      * for the specified Artist.
      *
-     * @param screen      the screen to display the artist details
+     * @param mainScreen      the screen to display the artist details
      * @param artist_name variable used to hold the information about the specific artist
      */
     public void displayArtistContent(JPanel mainScreen, String artist_name, JPanel sideScreen) {
@@ -245,8 +258,10 @@ public void inputScanner(String input){
         int i = 1;
 
         for (Song song : desiredPlaylist) {
-            JButton newButton = new JButton(i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() +
+            SongButton newButton = new SongButton(i++ + ". " + song.getSongName() + "\n \t" + song.getArtistName() +
                     song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n");
+            newButton.setPlaylist(desiredPlaylist);
+            newButton.setSong(song);
             newButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -266,7 +281,7 @@ public void inputScanner(String input){
         mainScreen.repaint();
         mainScreen.revalidate();
 
-        JButton output = new JButton();
+        PlaylistButtonExtension output = new PlaylistButtonExtension();
         String songMessage = song.getSongName() + "\n \t" + song.getArtistName() + "\n\t" +
                 song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n";
         output.setText(songMessage);   // got code from https://www.tutorialspoint.com/swingexamples/create_button_with_icon_text.htm
@@ -333,7 +348,7 @@ public void inputScanner(String input){
         play.addActionListener(playSong);
     }
 
-    public void previousSong( JPanel mainScreen) {
+    public void previousSong( ) {
         click++;
         if ((click % 2) == 0) {             // clicked back button twice should go back
             try {
@@ -346,7 +361,7 @@ public void inputScanner(String input){
             songPlayer.restart();
         }
     }
-    public void nextSong(JButton next, JPanel mainScreen) {
+    public void nextSong(JButton next) {
         ActionListener nextSong = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -390,11 +405,11 @@ public void inputScanner(String input){
      * likeButton.addActionListener(likeNow);
      * }
      */
- public void songButtonAction(JButton currentSong) throws Exception {
-     /*Playlist currentplaylist = currentSong.getPlaylist();
+ public void songButtonAction(SongButton currentSong) throws Exception {
+     Playlist currentplaylist = currentSong.getPlaylist();
      songPlayer.setClip(currentplaylist);
      int index = currentplaylist.indexOf(currentSong.getSong());
-     songPlayer.play(index);*/
+     songPlayer.play(index);
      highlightMyMusic(currentSong,sideScreen,currentplaylist,index);
      currentSongText(mainScreen, currentSong.getSong());
  }
