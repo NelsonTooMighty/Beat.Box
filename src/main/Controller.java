@@ -271,7 +271,7 @@ public class Controller {
         mainScreen.repaint();
         mainScreen.revalidate();
 
-        PlaylistButtonExtension output = new PlaylistButtonExtension();
+        PlaylistButton output = new PlaylistButton();
         String songMessage = song.getSongName() + "\n \t" + song.getArtistName() + "\n\t" +
                 song.getAlbumName() + "\n \t" + song.getReleaseDate() + "\n\n";
         output.setText(songMessage);   // got code from https://www.tutorialspoint.com/swingexamples/create_button_with_icon_text.htm

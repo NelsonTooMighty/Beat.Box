@@ -1,6 +1,6 @@
 import javax.swing.*;
 
-public class SongButton extends PlaylistButtonExtension  {
+public class SongButton extends PlaylistButton {
     private Song song;
 
     public SongButton(String s) {
@@ -13,15 +13,6 @@ public class SongButton extends PlaylistButtonExtension  {
 
     public void setSong(Song song) {
         this.song = song;
-    }
-
-    public String getPlaylistName() {return pl.getPlaylistName();}
-
-    public void setPlaylist(Playlist songPlaylist){
-        this.pl = songPlaylist;
-    }
-    public Playlist getPlaylist(){
-        return pl;
     }
 
     public Song getSong() { return song;}
