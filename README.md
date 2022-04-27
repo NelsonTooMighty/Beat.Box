@@ -404,7 +404,27 @@ Nelson Uzoaru
 
   - Issues/ Needed Fixes:
     - [BB-93] Finally getting the Icons to appear we ran into the issue of when it came to resizing the images, they began disorting the image. 
-  
+### Libin Koyikalathu
+- Work Done:
+    - [BB-86](https://cs3398s22romulans.atlassian.net/browse/BB-86) Refactor Music Player Class to be able to take any Song or Playlist Object that contained a playable music file. Also created methods in the Controller Class that gives action responsibilities to the buttons on the user's side of the application.
+        - Commit[8bf799f](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/8bf799f9b8b7ea910cc6ced045e249cbae6ce055)
+        - Commit[40cc895](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/40cc8953d75ae6d72cb9735d975ce7b4ef72cfa4)
+    - [BB-88](https://cs3398s22romulans.atlassian.net/browse/BB-88) Make a function in the song button class that can give the song or playlist to the music player. The music player will accept the playlist and run through the whole playlist, or play the song then stop.
+        - Commit[8bf799f](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/8bf799f9b8b7ea910cc6ced045e249cbae6ce055)
+    - [BB-91](https://cs3398s22romulans.atlassian.net/browse/BB-91) Make a function that highlights the current song on the user view of the music player. Everytime a new song that is played the music player will highlight the song on the side panel of the music player.
+        - Commit[8bf799f](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/8bf799f9b8b7ea910cc6ced045e249cbae6ce055)
+    - [BB-92](https://cs3398s22romulans.atlassian.net/browse/BB-92) Made a function that would take the playlist of songs that are selected on the main screen and will send it to the side screen of the music play. Allowing the user the ability to go through other tabs while still keeping track of their current playlist they are listening to.
+        - Commit[8bf799f](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/8bf799f9b8b7ea910cc6ced045e249cbae6ce055)
+        - Commit[ffdbf8e](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/ffdbf8e319c504947c4f71df632fbf03b2ad1fff)
+        - Commit[6d30c43](https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/6d30c43b1c3b753e2addbaeb07e8caada6678f15)
+- Issues/ Needed Fixes:
+    - When updating branches from master code, written and saved code from branch was being deleted unneccessarily
+        - Became hard or impossible to recover data at times
+    - Keeping tasks assigned to a different branch was difficult since tasks were very intertwined together.
+    - Ability to play more than one song
+    - Show album image and song text in main screen when a song is selected
+    - Fix song transferring issue
+    
 
 ## Acknowledgements
 Give credit here.
