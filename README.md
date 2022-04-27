@@ -408,6 +408,28 @@ Nelson Uzoaru
 
 ## Acknowledgements
 Give credit here.
+
+
+
+### Nelson Uzoaru
+
+  - Work Done:
+      - [BB-35] and [BB-37] Making test files for song identifier and song distributor class respectively.
+            - commit [edd96dd]: https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/edd96dd7ddaff9f30a2b69965194aca2a6fd6f6b
+    - [BB-85] Made extensions for the button classes 
+        -commit : [9fca805]: https://bitbucket.org/cs3398-s22-romulans/beat.box/commits/9fca8059da17bb2991cb5e49af7d73be80542afa
+  - Acknowledgements:
+
+  - Summary of Work Done:
+     - [BB-85]  Extension class to dynamically call and use buttons on the panel made by Libin 
+    - [[BB-35] and [BB-37] Making test files for song identifier and song distributor class respectively.
+    
+
+  - Issues/ Needed Fixes:
+   
+
+## Acknowledgements
+Give credit here.
 - This project was inspired by...
 - This project was based on [this tutorial](https://www.example.com).
 - Many thanks to...
