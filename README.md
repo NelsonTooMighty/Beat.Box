@@ -394,16 +394,18 @@ Nelson Uzoaru
     - [BB-93] Add Icons made for the player to the GUI
         -commit : [19557dd]: https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/19557dd6cddbafa2a4bf3c3c8bb97db9eda8b6d2
 
-  - Acknowledgements:
-
   - Summary of Work Done:
      -  [BB-89] Got all Four Main buttons to work by displaying all needed content that is in the database. When the buttons are pressed in the mainPanel it can display its own contents for albums, playlist and artist. This is all done dynamically. 
     - [BB-84] and [BB-90]From the side JtextArea when the path is entered for a folder of desired content. It sends this input through the controller and sends to the function folderscanner to put the playlist just read and puts it into the database and displays it to the side panel for the user to see what they just transferred.  
     - [BB-93] Incorporated the artwork made by another partner to be used for the buttons on the music player. These icons work as buttons, so when pressed they will perfom an action. 
-  - Status:
-
+  
   - Issues/ Needed Fixes:
+      - Test cases need to be made for the GUI, to ensure the functionality of the View and controller.
     - [BB-93] Finally getting the Icons to appear we ran into the issue of when it came to resizing the images, they began disorting the image. 
+    
+ - Future Sprint 
+   - An additional feature I would want to start is the website part of the application that would have the same functionality with the possibility of additional features.
+  
 ### Libin Koyikalathu
 - Work Done:
     - [BB-86](https://cs3398s22romulans.atlassian.net/browse/BB-86) Refactor Music Player Class to be able to take any Song or Playlist Object that contained a playable music file. Also created methods in the Controller Class that gives action responsibilities to the buttons on the user's side of the application.
