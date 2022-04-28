@@ -7,6 +7,8 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) throws Exception {
+
+        LayoutFrame.main(args);
         /*
         SpotifyImporter si = new SpotifyImporter();
         Playlist pl = si.importPlaylist("https://open.spotify.com/playlist/2DxvKWtxPfttWviSORrEqc");
@@ -14,6 +16,7 @@ public class Main {
             System.out.println(song.getSongName() + "\n");
         }
         */
+        /*
         Database db = Database.getInstance();
         {
             Playlist test = new Playlist();
@@ -40,6 +43,6 @@ public class Main {
             System.out.println("-----------------------------------------------\n");
         }
         //Demo demo = new Demo();
-
+        */
     }
 }
