@@ -449,6 +449,47 @@ Give credit here.
 
   - Issues/ Needed Fixes:
    
+### Austin Sansing
+
+  - Work Done:
+      - [BB-71](https://cs3398s22romulans.atlassian.net/browse/BB-71) Song Info Distributor Class
+          - Commit[31485d4](https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/31485d467a65acc940c3ed8145b9e96eea1fb638)
+          - Commit[556f273](https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/556f2731f9cead9f713f5478753191fdb44de056)
+      - [BB-73](https://cs3398s22romulans.atlassian.net/browse/BB-73) Refactoring Import and Export methods for playlists on local machine
+          - Commit[57790d7](https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/57790d72566da3e9b5ff9377a2627951e1177ed4)
+          - Commit[a5160e2](https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/a5160e242201fb8017dfdb4d1895e07c4ababf08)
+      - [BB-74](https://cs3398s22romulans.atlassian.net/browse/BB-74) Playlist Method's Full Intergration with GUI
+          - Note* I do not have a commit to this due to a conflict I had with gitkraken, however Avery's push that he made after
+          - the Sprint due date shows the work I did with him.
+      - [BB-75](https://cs3398s22romulans.atlassian.net/browse/BB-75) Refactoring DatabaseQuery File
+          - Commit[29cabb7](https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/29cabb7c62459d95db0d49c0828b684f40dc8d48)
+          - Commit[14be3a5](https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/14be3a5ffeb09ef7c45d887e283d87b2bad3624c)
+          - Commit[604f46a](https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/604f46a3a26d7f8b822f3bb83002f4d90963fd53)
+      - [BB-76](https://cs3398s22romulans.atlassian.net/browse/BB-76) Refactoring Controller File
+          - Commit[70fd564](https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/70fd564a720340db5661ec9d3dfb8b70b5e62b59)
+          - Commit[bd3d841](https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/bd3d84164655a907c6bdcce33898acaa01da692a)
+
+  - Acknowledgements:
+    - [Object-Oriented Design & Patterns 2nd Edition by Cay Horstmann](https://horstmann.com/design_and_patterns.html) for the refresher on Model-View-Controller architecture
+    
+  - Summary of Work Done:
+    - [BB-71] The song info distributor classes main functionality was to pull information about songs pulled from local or online direcories via the song identifier class and 
+    - distribute the information to the respective classes within our program and then output the information to the GUI.
+    - [BB-73] & [BB-75] & [BB-76] These three commits were all refactoring for different classes in our program. Ensuring the readability and purpose of each function was clear.
+    - [BB-74] This commit was to ensure that the back-end code that we have been working on all sprint was fully functional and able to be used during the demo time.
+
+  - Status:
+      - As of now, full functionality between the back-end and GUI has been achieved.
+      - There is still plenty more features that can be added if there were additional sprints. Myslef and Avery have discussed continueing this program even though
+      - the class is over to see the full potential of the program.
+
+  - Issues/ Needed Fixes:
+      - Find a way to get the Apple API information and code without having the pay the $100 needed for a membership.
+      - The GUI needs more functionality as well as better UI design.
+
+  - Sprint 4 Expectations:
+      - Add more features to the GUI to make the UI of the entire program better functioning.
+      - Add Apple API to the list of convertable methods we can use.
 
 ## Acknowledgements
 Give credit here.
