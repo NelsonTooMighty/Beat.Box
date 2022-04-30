@@ -1,4 +1,4 @@
- # Beat.Box
+## Beat.Box
 > Our team is building a media platform for music playlists so listeners can save time by making sharing playlists a breeze. Beat.Box will allow users to import and export playlists to and from their favorite streaming platforms and convert their offline libraries to sharable playlists.
 
 > By Libin Koyikalathu, Naomi Padilla, Austin Sansing, Nelson Uzoaru, and Avery VanAusdal
@@ -8,7 +8,6 @@
 * [General Info](#general-information)
 * [Technologies Used](#technologies-used)
 * [Features](#features)
-* [Acknowledgements](#acknowledgements)
 
 <!-- 
 * [Screenshots](#screenshots)
@@ -262,31 +261,31 @@ Planned features:
 
 ### Avery VanAusdal
 
-- Work Done:
-  - [BB-56](https://cs3398s22romulans.atlassian.net/browse/BB-56): Created a Controller class for MVC architecture/linking allowing the GUI access to the backend
-    - Commit: [119d9ed](https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/119d9ed057daa9969ac0fedfb98af1bd704a1e33)
-  - [BB-59](https://cs3398s22romulans.atlassian.net/browse/BB-59): Created a method for Controller to list all unique artists in the Database
-    - [Pull Request](https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/pull-requests/5), Commits: [ee1f31e](https://bitbucket.org/%7B%7D/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/ee1f31e169089e55185d822aef0794fd53452068), [805f04a](https://bitbucket.org/%7B%7D/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/805f04ac479128ea80a124d77ab585877d070bd2)
-  - [BB-69](https://cs3398s22romulans.atlassian.net/browse/BB-69): Created CloudPlaylistImporter interface for service decoupling
-    - Commits: [8ca5ab2](https://bitbucket.org/%7B%7D/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/8ca5ab2f1b8e083538293c389bbb280fcc8bded3), [b74469b](https://bitbucket.org/%7B%7D/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/b74469b413b7bea25d36f0fcb8d6874fde7ee63d)
-  - [BB-70](https://cs3398s22romulans.atlassian.net/browse/BB-70): Created SpotifyImporter class extending CloudPlaylistImporter which allows for entire Spotify playlists (by URL) to be converted to local Database objects
-    - [Pull Request](https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/pull-requests/6), Commits: [25d9b6c](https://bitbucket.org/%7B%7D/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/25d9b6ccdc13772b77c6741343a91255c6cf52b2), [4dc36d3](https://bitbucket.org/%7B%7D/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/4dc36d3e419c898660758ce43ce5b8cdb8b00ca2), [bf93adb](https://bitbucket.org/%7B%7D/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/bf93adb00cc4394f71e3b2305870b78105ee304b)
+  - Work Done:
+    - [BB-56](https://cs3398s22romulans.atlassian.net/browse/BB-56): Created a Controller class for MVC architecture/linking allowing the GUI access to the backend
+        - Commit: [119d9ed](https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/119d9ed057daa9969ac0fedfb98af1bd704a1e33)
+    - [BB-59](https://cs3398s22romulans.atlassian.net/browse/BB-59): Created a method for Controller to list all unique artists in the Database
+        - [Pull Request](https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/pull-requests/5), Commits: [ee1f31e](https://bitbucket.org/%7B%7D/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/ee1f31e169089e55185d822aef0794fd53452068), [805f04a](https://bitbucket.org/%7B%7D/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/805f04ac479128ea80a124d77ab585877d070bd2)
+    - [BB-69](https://cs3398s22romulans.atlassian.net/browse/BB-69): Created CloudPlaylistImporter interface for service decoupling
+        - Commits: [8ca5ab2](https://bitbucket.org/%7B%7D/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/8ca5ab2f1b8e083538293c389bbb280fcc8bded3), [b74469b](https://bitbucket.org/%7B%7D/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/b74469b413b7bea25d36f0fcb8d6874fde7ee63d)
+    - [BB-70](https://cs3398s22romulans.atlassian.net/browse/BB-70): Created SpotifyImporter class extending CloudPlaylistImporter which allows for entire Spotify playlists (by URL) to be converted to local Database objects
+       - [Pull Request](https://bitbucket.org/cs3398-s22-romulans/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/pull-requests/6), Commits: [25d9b6c](https://bitbucket.org/%7B%7D/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/25d9b6ccdc13772b77c6741343a91255c6cf52b2), [4dc36d3](https://bitbucket.org/%7B%7D/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/4dc36d3e419c898660758ce43ce5b8cdb8b00ca2), [bf93adb](https://bitbucket.org/%7B%7D/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/commits/bf93adb00cc4394f71e3b2305870b78105ee304b)
 
-- Acknowledgements:
-  - [Spotify Web API Java](https://github.com/spotify-web-api-java/spotify-web-api-java) for the massive help streamlining Spotify authentication and HTTPS requests
-  - [Object-Oriented Design & Patterns 2nd Edition by Cay Horstmann](https://horstmann.com/design_and_patterns.html) for the refresher on Model-View-Controller architecture
-- Summary of Work Done:
-  - Much of my time this sprint was focused on clear, seperated class responsibilities, such as creating the Controller class so the GUI will be updated, and moving some methods into a new class DatabaseQuery for operations more complicated than Database itself should be responsible for.
-  - The other half was spent laying the foundation for Spotify imports; the SpotifyImporter class is now ready to import playlists simply when provided the URL.
-- Status:
-  - From the lens of model-view-controller architecture, the model and controller are practically done. The view (GUI) is barebones but has most of what it needs to use from here on out.
-  - Currently, we have functionality for importing from local folders and Spotify, as well as the ability to store those playlists between app launches.
-- Issues/ Needed Fixes:
-  - Our Spotify authentication currently doesn't support an authorization level high enough for exporting, which will need to be added later
-  - May need user input validation soon
-- Sprint 3 Expectations:
-  - We'll mostly work on getting the GUI together and using the rest of the codebase, which will likely lead us to identify problems or missing functionality that we couldn't see before.
-  - A good bit of refactoring and class diagrams for easier navigation
+  - Acknowledgements:
+    - [Spotify Web API Java](https://github.com/spotify-web-api-java/spotify-web-api-java) for the massive help streamlining Spotify authentication and HTTPS requests
+    - [Object-Oriented Design & Patterns 2nd Edition by Cay Horstmann](https://horstmann.com/design_and_patterns.html) for the refresher on Model-View-Controller architecture
+  - Summary of Work Done:
+    - Much of my time this sprint was focused on clear, seperated class responsibilities, such as creating the Controller class so the GUI will be updated, and moving some methods into a new class DatabaseQuery for operations more complicated than Database itself should be responsible for.
+    - The other half was spent laying the foundation for Spotify imports; the SpotifyImporter class is now ready to import playlists simply when provided the URL.
+  - Status:
+    - From the lens of model-view-controller architecture, the model and controller are practically done. The view (GUI) is barebones but has most of what it needs to use from here on out.
+    - Currently, we have functionality for importing from local folders and Spotify, as well as the ability to store those playlists between app launches.
+  - Issues/ Needed Fixes:
+    - Our Spotify authentication currently doesn't support an authorization level high enough for exporting, which will need to be added later
+    - May need user input validation soon
+  - Sprint 3 Expectations:
+    - We'll mostly work on getting the GUI together and using the rest of the codebase, which will likely lead us to identify problems or missing functionality that we couldn't see before.
+    - A good bit of refactoring and class diagrams for easier navigation
 
 ### Naomi Padilla 
 
@@ -322,19 +321,6 @@ Planned features:
       - For the next sprint All frames should be able to access and perform all the methods that allows the user to recieve information based on their input.
       - Want to create a button on every frame that could lead you to another frame based on what the user is wanting too access.
       - Testcase for all the Frames to insure the database is being accessed and displaying desired content correctly.
-### Template (Name goes here)
-
-  - Work Done:
-
-  - Acknowledgements:
-
-  - Summary of Work Done:
-
-  - Status:
-
-  - Issues/ Needed Fixes:
-
-  - Sprint 3 Expectations:
     
 Nelson Uzoaru
 
@@ -382,7 +368,7 @@ Nelson Uzoaru
       - Ensure all functions of music player are working and connected
       - A finished and complete gui
 
-###   Sprint #3
+### Sprint #3
 
 ### Naomi Padilla
 
@@ -426,11 +412,6 @@ Nelson Uzoaru
     - Ability to play more than one song
     - Show album image and song text in main screen when a song is selected
     - Fix song transferring issue
-    
-
-## Acknowledgements
-Give credit here.
-
 
 
 ### Nelson Uzoaru
@@ -480,7 +461,7 @@ Give credit here.
 
   - Status:
       - As of now, full functionality between the back-end and GUI has been achieved.
-      - There is still plenty more features that can be added if there were additional sprints. Myslef and Avery have discussed continueing this program even though
+      - There is still plenty more features that can be added if there were additional sprints. Myself and Avery have discussed continueing this program even though
       - the class is over to see the full potential of the program.
 
   - Issues/ Needed Fixes:
@@ -491,6 +472,46 @@ Give credit here.
       - Add more features to the GUI to make the UI of the entire program better functioning.
       - Add Apple API to the list of convertable methods we can use.
 
+### Avery VanAusdal
+
+  - Work Done:
+      - [BB-34](https://cs3398s22romulans.atlassian.net/browse/BB-34): Wrote the SongIdentifier class to abstracting Song searching from the specific service used
+          - [Pull Request](https://bitbucket.org/%7B%7D/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/pull-requests/20)
+      - [BB-72](https://cs3398s22romulans.atlassian.net/browse/BB-72): Extracted the authorization responsibilities from SpotifyImporter into a new class, SpotifyAuth
+          - [Pull Request](https://bitbucket.org/%7B%7D/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/pull-requests/13)
+      - [BB-78](https://cs3398s22romulans.atlassian.net/browse/BB-78): Upgraded SpotifyAuth's authentication level to support PKCE Authorization Code Flow scheme for export capabilities
+          - Includes a utility class CallbackListener for capturing the redirect code Spotify sends back
+          - [Pull Request](https://bitbucket.org/%7B%7D/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/pull-requests/15)
+      - [BB-77](https://cs3398s22romulans.atlassian.net/browse/BB-77): Created SpotifyExporter which utilizes SpotifyAuth's access token and authorization functions to export Playlist objects to Spotify
+          - [Pull Request](https://bitbucket.org/%7B%7D/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/pull-requests/22)
+      - [BB-79](https://cs3398s22romulans.atlassian.net/browse/BB-79): Created a method to open the authorization URI in the default browser for the user
+          - [Pull Request](https://bitbucket.org/%7B%7D/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/pull-requests/19)
+      - [BB-80](https://cs3398s22romulans.atlassian.net/browse/BB-80): Created the SpotifySearcher class for querying Spotify
+          - [Pull Request](https://bitbucket.org/%7B%7D/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/pull-requests/18)
+      - [BB-81](https://cs3398s22romulans.atlassian.net/browse/BB-81): Created the YTMusicAuth class for authorizing YouTube Music requests
+          - [Pull Request](https://bitbucket.org/%7B%7D/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/pull-requests/26)
+      - [BB-82](https://cs3398s22romulans.atlassian.net/browse/BB-82): Created the YTMusicImporter class for importing YouTube playlists
+          - [Pull Request](https://bitbucket.org/%7B%7D/%7Bbb8e6ef5-13af-4669-bce3-8c34a9c649fd%7D/pull-requests/28)
+
+  - Acknowledgements:
+      - [Google Java API Client Services](https://github.com/googleapis/google-api-java-client-services/tree/main/clients/google-api-services-youtube/v3) for YouTube HTTP requests
+
+  - Summary of Work Done:
+      - Mostly worked on authorization backend for my own tasks and assisted with implementing GUI functions whenever necessary
+
+  - Status:
+      - Most core functionality is complete and just needs some polish!
+
+  - Issues/ Needed Fixes:
+      - Overhauling the GUI in IntelliJ for access to the Java swing form system
+
+  - Next Steps:
+      - Improve the identifier algorithm, possibly introduce user choice
+      - Create some interfaces for better extensibility, especially for the external service integration classes
+      - Add more cloud services, more integration with current ones
+          - SpotifyImporter should probably support albums
+
+<!--
 ## Acknowledgements
 Give credit here.
 - This project was inspired by...
